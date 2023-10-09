@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local development settings
+*.env
+*.sqlite3
+
+# Logs and backups
+*.log
+*.bak
+
+# Media files
+media/
+
+# Static files
+staticfiles/
+
+# Secret keys and passwords
+*.secret
+*.key
+*.pem
+
+# Other Django-specific files
+*.cache
+*.pyc
+*.DS_Store
