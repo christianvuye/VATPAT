@@ -16,3 +16,6 @@ class CreditNotes(models.Model):
     TotalDocumentAmountWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
     AccountingNumberID = models.CharField(max_length=30)
     IssuedDate = models.DateTimeField()
+
+class CreditNoteResumeEmail(models.Model):
+    pass
