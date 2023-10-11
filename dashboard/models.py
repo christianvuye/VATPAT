@@ -8,3 +8,5 @@ class Dealers(models.Model):
     CreatedDate = models.DateTimeField()
     ModifiedDate = models.DateTimeField()
 
+class CreditNotes(models.Model):
+    pass
