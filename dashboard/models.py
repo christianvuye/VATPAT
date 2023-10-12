@@ -27,3 +27,6 @@ class CreditNoteResumeEmail(models.Model):
     Subject = models.CharField(max_length=40)
     Status = models.BooleanField()
     IsValid = models.BooleanField()
+
+class AcknowledgementRequest(models.Model):
+    pass
