@@ -8,6 +8,9 @@ class Dealers(models.Model):
     CreatedDate = models.DateTimeField()
     ModifiedDate = models.DateTimeField()
 
+    class Meta:
+        db_table = 'Dealers'
+
 class CreditNotes(models.Model):
     CN_ID = models.CharField(max_length=20, unique=True)
     D_ID = models.CharField(max_length=10)
