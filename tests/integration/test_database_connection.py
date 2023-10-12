@@ -13,8 +13,6 @@ def test_db_connection():
         f"{db_settings['OPTIONS']['Extra Params']}"
     )
 
-    print(f"Connection String: {connection_string}")
-
     try:
         with pyodbc.connect(connection_string):
             pass
