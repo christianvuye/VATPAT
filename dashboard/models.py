@@ -35,3 +35,7 @@ class AcknowledgementRequest(models.Model):
     CreatedDate = models.DateTimeField()
     SendDate = models.DateTimeField()
 
+class AcknowledgementReceived(models.Model):
+    A_ID = models.AutoField(primary_key=True, unique=True)
+    R_ID = models.IntegerField(null=True)
+    MsgFile = models.BinaryField()
