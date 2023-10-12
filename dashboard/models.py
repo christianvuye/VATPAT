@@ -18,4 +18,12 @@ class CreditNotes(models.Model):
     IssuedDate = models.DateTimeField()
 
 class CreditNoteResumeEmail(models.Model):
-    pass
+    CNR_ID = models.AutoField(primary_key=True)
+    CN_ID = models.CharField(max_length=10)
+    DateIssued = models.DateTimeField()
+    Month = models.IntegerField()
+    Year = models.IntegerField()
+    Body = models.TextField()
+    Subject = models.CharField(max_length=40)
+    Status = models.BooleanField()
+    IsValid = models.BooleanField()
