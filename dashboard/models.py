@@ -29,4 +29,9 @@ class CreditNoteResumeEmail(models.Model):
     IsValid = models.BooleanField()
 
 class AcknowledgementRequest(models.Model):
-    pass
+    R_ID = models.AutoField(primary_key=True)
+    CNR_ID = models.IntegerField(null=True)
+    Status = models.BooleanField()
+    CreatedDate = models.DateTimeField()
+    SendDate = models.DateTimeField()
+
