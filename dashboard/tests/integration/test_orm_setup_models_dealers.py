@@ -1,7 +1,7 @@
 import pytest
 from dashboard.models import Dealers
 
-@pytest.mark.django_db
+@pytest.mark.django_db(transaction=True, reset_sequences=True)
 def test_orm_setup_for_dealers():
     all_dealers = Dealers.objects.all()
 
