@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import json 
 from pathlib import Path
 from decouple import config
 
@@ -82,7 +82,7 @@ DATABASES = {
         'HOST': config('DB_SERVER'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
-        'OPTIONS': config('DB_OPTIONS')
+        'OPTIONS': json.loads(config('DB_OPTIONS'))
     }
 }
 
