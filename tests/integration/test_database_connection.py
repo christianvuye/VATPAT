@@ -6,7 +6,7 @@ def test_db_connection():
     
     connection_string = (
         f"DRIVER={{{db_settings['OPTIONS']['driver']}}};" 
-        f"SERVER={db_settings['HOST']};"
+        f"SERVER={db_settings['HOST']},{db_settings['PORT']};"
         f"DATABASE={db_settings['NAME']};"
         f"UID={db_settings['USER']};"
         f"PWD={db_settings['PASSWORD']};"

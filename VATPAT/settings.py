@@ -82,7 +82,8 @@ DATABASES = {
         'HOST': config('DB_SERVER'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
-        'OPTIONS': json.loads(config('DB_OPTIONS'))
+        'OPTIONS': json.loads(config('DB_OPTIONS')),
+        'PORT': config('DB_PORT')
     }
 }
 
