@@ -77,15 +77,15 @@ WSGI_APPLICATION = 'VATPAT.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': config('DB_ENGINE'),
-        'NAME': config('DB_NAME'),
-        'HOST': config('DB_SERVER'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'OPTIONS': json.loads(config('DB_OPTIONS')),
-        'PORT': config('DB_PORT')
+        'ENGINE': 'mssql',  # Using mssql-django backend
+        'NAME': config('DB_NAME'),  # Database name
+        'HOST': config('DB_HOST'),  # Database server
+        'USER': '',  # Blank for Windows Authentication
+        'PASSWORD': '',  # Blank for Windows Authentication
+        'PORT': '',  # Leave blank for SQL Server default port 1433
+        'OPTIONS': json.loads(config('DB_OPTIONS')) # Extra options
+        },
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

@@ -5,12 +5,10 @@ def test_db_connection():
     db_settings = settings.DATABASES['default']
     
     connection_string = (
-        f"DRIVER={{{db_settings['OPTIONS']['driver']}}};" 
-        f"SERVER={db_settings['HOST']},{db_settings['PORT']};"
+        f"DRIVER={{{db_settings['OPTIONS']['driver']}}};"
+        f"SERVER={db_settings['HOST']};"
         f"DATABASE={db_settings['NAME']};"
-        f"UID={db_settings['USER']};"
-        f"PWD={db_settings['PASSWORD']};"
-        f"{db_settings['OPTIONS']['Extra Params']}"
+        f"Trusted_Connection={db_settings['OPTIONS']['Trusted_Connection']};"
     )
 
     try:
