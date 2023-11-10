@@ -1,4 +1,3 @@
-import pytest
 from django.conf import settings
 
 def test_secret_key():
