@@ -7,41 +7,41 @@ from dashboard.models import Dealers
 
 '''
 Here is a verbose explanation of what the @pytest.mark.django_db decorator does:
-python
-import pytest
+    python
+    import pytest
 
-def django_db_decorator(test_func):
-    def wrapper(*args, **kwargs):
-        # Start a database transaction
-        db.start_transaction()
+    def django_db_decorator(test_func):
+        def wrapper(*args, **kwargs):
+            # Start a database transaction
+            db.start_transaction()
         
-        # Reset database sequences to initial values
-        db.reset_sequences()
+            # Reset database sequences to initial values
+            db.reset_sequences()
         
-        # Run the test function
-        test_result = test_func(*args, **kwargs)
+            # Run the test function
+            test_result = test_func(*args, **kwargs)
         
-        # Rollback the database transaction to undo any changes
-        db.rollback_transaction()
+            # Rollback the database transaction to undo any changes
+            db.rollback_transaction()
         
-        return test_result
-    return wrapper
+            return test_result
+        return wrapper
 
-@django_db_decorator
-def my_test():
-    # Interact with the database
-    MyModel.objects.create(...)
+    @django_db_decorator
+        def my_test():
+            # Interact with the database
+            MyModel.objects.create(...)
     
-my_test()
+    my_test()
 
 In words, the @pytest.mark.django_db decorator:
-Starts a database transaction before running each test
-Resets the database sequences to their initial values (to prevent primary key collisions between tests)
-Runs the actual test function
-Rolls back the transaction after the test finishes, undoing any changes made to the database by the test
-This allows each test to operate within its own isolated database transaction, 
-avoid interfering with other tests, and start from a clean initial database state. 
-The resetting of sequences also prevents primary key conflicts between tests.
+1. Starts a database transaction before running each test
+2. Resets the database sequences to their initial values (to prevent primary key collisions between tests)
+3. Runs the actual test function
+4. Rolls back the transaction after the test finishes, undoing any changes made to the database by the test
+5. This allows each test to operate within its own isolated database transaction, 
+   avoid interfering with other tests, and start from a clean initial database state. 
+   The resetting of sequences also prevents primary key conflicts between tests.
 '''
 @pytest.mark.django_db(transaction=True, reset_sequences=True)
 def test_orm_setup_for_dealers():
