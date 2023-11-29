@@ -34,6 +34,9 @@ class CreditNoteResumeEmail(models.Model):
     Status = models.BooleanField()
     IsValid = models.BooleanField()
 
+    class Meta:
+        db_table = 'CreditNoteResumeEmail'
+
 class AcknowledgementRequest(models.Model):
     R_ID = models.AutoField(primary_key=True)
     CNR_ID = models.IntegerField(null=True)
@@ -41,7 +44,13 @@ class AcknowledgementRequest(models.Model):
     CreatedDate = models.DateTimeField()
     SendDate = models.DateTimeField()
 
+    class Meta:
+        db_table = 'AcknowledgementRequest'
+
 class AcknowledgementReceived(models.Model):
     A_ID = models.AutoField(primary_key=True, unique=True)
     R_ID = models.IntegerField(null=True)
     MsgFile = models.BinaryField()
+
+    class Meta:
+        db_table = 'AcknowledgementReceived'
