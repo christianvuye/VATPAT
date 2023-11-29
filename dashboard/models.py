@@ -20,6 +20,9 @@ class CreditNotes(models.Model):
     AccountingNumberID = models.CharField(max_length=30)
     IssuedDate = models.DateTimeField()
 
+    class Meta:
+        db_table = 'CreditNotes'
+
 class CreditNoteResumeEmail(models.Model):
     CNR_ID = models.AutoField(primary_key=True)
     CN_ID = models.CharField(max_length=10)
