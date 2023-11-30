@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, IntegrityError
 
 class Dealers(models.Model):
     D_ID = models.CharField(max_length=10, unique=True)
@@ -10,6 +10,9 @@ class Dealers(models.Model):
 
     class Meta:
         db_table = 'Dealers'
+
+    def delete(self):
+        raise IntegrityError("Dealers cannot be deleted")
 
 class CreditNotes(models.Model):
     CN_ID = models.CharField(max_length=20, unique=True)
