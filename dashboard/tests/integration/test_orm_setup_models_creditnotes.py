@@ -1,13 +1,24 @@
 import pytest
 from django.utils import timezone
-from dashboard.models import CreditNotes
+from dashboard.models import CreditNotes, Dealers 
 
 @pytest.fixture
 def create_credit_note():
     now = timezone.now()  # timezone-aware datetime for the IssuedDate
+
+    # Create an instance of the Dealers model with sample data
+    dealer_instance = Dealers.objects.create(
+        D_ID='D001',
+        DealerName='Sample Dealer',
+        DealerVATnumber='VAT12345678',
+        DealerEmail='dealer@example.com',
+        CreatedDate=now,
+        ModifiedDate=now
+    )
+
     return CreditNotes.objects.create(
         CN_ID='CN001',
-        D_ID='D001',
+        D_ID=dealer_instance,
         TotalDocumentAmount=12345.67,
         TotalVATAmountDocumentt=1234.56,
         TotalDocumentAmountWithVAT=13580.23,
