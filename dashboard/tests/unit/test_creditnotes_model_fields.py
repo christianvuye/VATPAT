@@ -1,4 +1,5 @@
 from django.apps import apps
+from dashboard.models import Dealers   
 
 def test_creditnotes_model_fields():
     try:
@@ -14,8 +15,8 @@ def test_creditnotes_model_fields():
 
     # Test D_ID field
     d_id_field = CreditNotes._meta.get_field('D_ID')
-    assert d_id_field.max_length == 10, "D_ID field max_length does not match"
-    assert d_id_field.get_internal_type() == 'CharField', "D_ID field type is not CharField"
+    assert d_id_field.get_internal_type() == 'ForeignKey', "D_ID field type is not ForeignKey"
+    assert d_id_field.related_model == Dealers, "D_ID field does not relate to Dealers model"
 
     # Test TotalDocumentAmount field
     total_document_amount_field = CreditNotes._meta.get_field('TotalDocumentAmount')
