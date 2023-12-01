@@ -26,3 +26,6 @@ staticfiles/
 *.cache
 *.pyc
 *.DS_Store
+
+# Ignore all files in the dashboard/tests/checklists directory
+dashboard/tests/checklists/*
