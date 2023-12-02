@@ -28,7 +28,7 @@ def dummy_dealer_and_credit_note():
     return dealer, credit_note
 
 @pytest.mark.django_db
-def test_dealer_creditnote_relationship_updates(dummy_dealer_and_credit_note):
+def test_dealers_creditnote_models_relationship_updates(dummy_dealer_and_credit_note):
     dealer, credit_note = dummy_dealer_and_credit_note
 
     # Update all fields of the dealer
