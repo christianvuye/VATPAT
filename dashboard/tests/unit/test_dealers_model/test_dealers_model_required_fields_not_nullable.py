@@ -1,10 +1,10 @@
 import pytest
 from django.db import transaction
 from django.db.utils import IntegrityError
-from django.utils import timezone
+#from django.utils import timezone
 from dashboard.models import Dealers
 
-@pytest.fixture
+"""@pytest.fixture
 def dealer_data():
     return {
         "D_ID": "D001",
@@ -13,12 +13,12 @@ def dealer_data():
         "DealerEmail": "firstdealer@example.com",
         "CreatedDate": timezone.now(),
         "ModifiedDate": timezone.now()
-    }
+    }"""
 
 @pytest.mark.django_db
-def test_dealers_model_required_fields_not_nullable(dealer_data):
-    for field in dealer_data:
-        data_with_null_field = dealer_data.copy()
+def test_dealers_model_required_fields_not_nullable(test_dealer_data):
+    for field in test_dealer_data:
+        data_with_null_field = test_dealer_data.copy()
         data_with_null_field[field] = None
 
         with transaction.atomic():  # Wrap the test in an atomic block
