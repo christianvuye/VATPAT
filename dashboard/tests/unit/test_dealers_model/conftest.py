@@ -2,7 +2,7 @@ import pytest
 from django.utils import timezone
 from dashboard.models import Dealers
 
-@pytest.fixture(scope='module')
+@pytest.fixture
 def test_dealer_data():
     """Fixture to provide dealer data dictionary."""
     return {
@@ -14,7 +14,7 @@ def test_dealer_data():
         "ModifiedDate": timezone.now(),
     }
 
-@pytest.fixture(scope='module')
+@pytest.fixture
 def test_dealer_instance(test_dealer_data):
     """Fixture to create and return a dealer instance."""
     return Dealers.objects.create(**test_dealer_data)

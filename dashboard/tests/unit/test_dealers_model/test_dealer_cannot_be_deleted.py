@@ -1,9 +1,9 @@
 import pytest
-from django.utils import timezone
-from dashboard.models import Dealers
+#from django.utils import timezone
+#from dashboard.models import Dealers
 from django.db import IntegrityError, OperationalError, DatabaseError
 
-@pytest.fixture
+"""@pytest.fixture
 def dealer_instance():
     # Create a Dealer instance
     dealer = Dealers.objects.create(
@@ -14,11 +14,11 @@ def dealer_instance():
         CreatedDate=timezone.now(),
         ModifiedDate=timezone.now()
     )
-    return dealer
+    return dealer"""
 
 @pytest.mark.django_db
-def test_dealer_cannot_be_deleted(dealer_instance):
-    dealer = dealer_instance
+def test_dealer_cannot_be_deleted(test_dealer_instance):
+    dealer = test_dealer_instance
 
     # Attempt to delete the dealer and expect an error
     with pytest.raises((IntegrityError, OperationalError, DatabaseError)):
