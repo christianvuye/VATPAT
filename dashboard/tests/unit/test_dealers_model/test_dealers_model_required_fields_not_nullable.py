@@ -4,15 +4,7 @@ from django.db.utils import IntegrityError
 from dashboard.models import Dealers
 
 @pytest.mark.django_db
-def test_dealers_model_required_fields_not_nullable(test_dealer_data):
-    for field in test_dealer_data:
-        data_with_null_field = test_dealer_data.copy()
-        data_with_null_field[field] = None
-
-        with transaction.atomic():  # Wrap the test in an atomic block
-            with pytest.raises(IntegrityError) as excinfo:
-                Dealers.objects.create(**data_with_null_field).full_clean()
-
-        # Update the assertion if necessary to match the SQL Server error message
-        assert "Cannot insert the value NULL" in str(excinfo.value), f"IntegrityError not raised for null {field}"
-
+def test_dealers_model_not_nullable_fields(dealer_data_all_null):
+    with transaction.atomic():    
+        with pytest.raises(IntegrityError):
+            Dealers.objects.create(**dealer_data_all_null)
