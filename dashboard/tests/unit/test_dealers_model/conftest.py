@@ -19,8 +19,6 @@ def test_dealer_instance(test_dealer_data):
     """Fixture to create and return a dealer instance."""
     return Dealers.objects.create(**test_dealer_data)
 
-import pytest
-
 @pytest.fixture
 def test_dealer_data_no_timestamps():
     """Fixture to provide dealer data without timestamps."""
@@ -32,6 +30,6 @@ def test_dealer_data_no_timestamps():
     }
 
 @pytest.fixture
-def test_dealer_instance_no_timestamps(dealer_data_no_timestamps, db):
+def test_dealer_instance_no_timestamps(test_dealer_data_no_timestamps):
     """Fixture to create a dealer instance without manually setting timestamps, using the provided dealer data."""
-    return Dealers.objects.create(**dealer_data_no_timestamps)
+    return Dealers.objects.create(**test_dealer_data_no_timestamps)
