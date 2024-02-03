@@ -1,7 +1,7 @@
 import pytest
 
 @pytest.mark.django_db
-def test_dealers_model_charfields_string(test_dealer_instance):
+def test_dealers_model_charfields(test_dealer_instance):
     """
     Verify that CharFields in Dealers model store string values correctly.
     """

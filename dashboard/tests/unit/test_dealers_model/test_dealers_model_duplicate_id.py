@@ -4,7 +4,7 @@ from django.utils import timezone
 from dashboard.models import Dealers
 
 @pytest.mark.django_db
-def test_duplicate_d_id_raises_error(test_dealer_instance):
+def test_dealers_model_duplicate_id(test_dealer_instance):
     # Fixture 'test_dealer_instance' from conftest.py is used to create the first dealer instanc
     initial_dealer = test_dealer_instance
 

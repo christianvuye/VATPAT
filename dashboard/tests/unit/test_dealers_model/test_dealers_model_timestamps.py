@@ -1,7 +1,7 @@
 import pytest
 
 @pytest.mark.django_db
-def test_dealers_timestamps_existence(test_dealer_instance_no_timestamps):
+def test_dealers_model_timestamps(test_dealer_instance_no_timestamps):
     """
     Test that `CreatedDate` and `ModifiedDate` fields in the Dealers model
     are set upon instance creation.

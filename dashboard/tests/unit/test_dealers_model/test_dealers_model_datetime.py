@@ -2,7 +2,7 @@ import pytest
 from datetime import datetime
 
 @pytest.mark.django_db
-def test_dealers_model_datetime_fields(test_dealer_instance):
+def test_dealers_model_datetime(test_dealer_instance):
     """
     Ensure DateTimeFields in Dealers model store datetime objects correctly.
     """

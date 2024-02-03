@@ -4,7 +4,7 @@ from dashboard.models import Dealers
 from django.utils import timezone
 
 @pytest.mark.django_db
-def test_dealers_model_unique_constraints(test_dealer_instance):
+def test_dealers_model_unique(test_dealer_instance):
     # Fixture 'create_initial_dealer' is used to create the first dealer instance
     initial_dealer = test_dealer_instance
 

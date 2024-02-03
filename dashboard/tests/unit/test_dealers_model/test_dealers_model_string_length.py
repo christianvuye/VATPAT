@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 
 @pytest.mark.django_db
-def test_dealers_model_string_max_length_constraints(test_dealer_instance):
+def test_dealers_model_string_length(test_dealer_instance):
     # Test D_ID field max_length
     with pytest.raises(ValidationError) as exc_info:
         test_dealer_instance.D_ID = 'x' * 11  # Exceeds max_length
