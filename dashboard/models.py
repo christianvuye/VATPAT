@@ -5,8 +5,8 @@ class Dealers(models.Model):
     DealerName = models.CharField(max_length=100)
     DealerVATnumber = models.CharField(max_length=20)
     DealerEmail = models.CharField(max_length=80)
-    CreatedDate = models.DateTimeField()
-    ModifiedDate = models.DateTimeField()
+    CreatedDate = models.DateTimeField(auto_now_add=True)
+    ModifiedDate = models.DateTimeField(auto_now=True)
 
     class Meta:
         db_table = 'Dealers'
