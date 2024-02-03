@@ -1,19 +1,7 @@
 import pytest
 from django.db import transaction
 from django.db.utils import IntegrityError
-#from django.utils import timezone
 from dashboard.models import Dealers
-
-"""@pytest.fixture
-def dealer_data():
-    return {
-        "D_ID": "D001",
-        "DealerName": "First Dealer",
-        "DealerVATnumber": "VAT12345678",
-        "DealerEmail": "firstdealer@example.com",
-        "CreatedDate": timezone.now(),
-        "ModifiedDate": timezone.now()
-    }"""
 
 @pytest.mark.django_db
 def test_dealers_model_required_fields_not_nullable(test_dealer_data):
