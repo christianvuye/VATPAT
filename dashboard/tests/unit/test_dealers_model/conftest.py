@@ -44,3 +44,35 @@ def test_dealer_data_all_null():
         "CreatedDate": None,
         "ModifiedDate": None,
     }
+
+@pytest.fixture
+def test_dealer_data_invalid_vat():
+    return {
+        "D_ID": "D003",
+        "DealerName": "Invalid VAT Dealer",
+        "DealerVATnumber": "123456789",  # Invalid VAT number
+        "DealerEmail": "auto@example.com",
+        "CreatedDate": timezone.now(),
+        "ModifiedDate": timezone.now(),
+    }
+
+@pytest.fixture
+def test_dealer_instance_invalid_vat(test_dealer_data_invalid_vat):
+    """Fixture to create and return a dealer instance with an invalid VAT number."""
+    return Dealers.objects.create(**test_dealer_data_invalid_vat)
+
+@pytest.fixture
+def test_test_dealer_data_valid_vat():
+    return {
+        "D_ID": "D004",
+        "DealerName": "Valid VAT Dealer",
+        "DealerVATnumber": "594901626",  # Valid VAT number
+        "DealerEmail": "auto@example.com",
+        "CreatedDate": timezone.now(),
+        "ModifiedDate": timezone.now(),
+    }
+
+@pytest.fixture
+def test_dealer_instance_valid_vat(test_test_dealer_data_valid_vat):
+    """Fixture to create and return a dealer instance with a valid VAT number."""
+    return Dealers.objects.create(**test_test_dealer_data_valid_vat)
