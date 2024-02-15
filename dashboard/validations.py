@@ -71,6 +71,3 @@ def validate_vat(vat):
 
     # Return the boolean result True or False
     return is_valid
- 
-
-

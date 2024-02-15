@@ -2,16 +2,19 @@ import pytest
 from dashboard.validations import validate_vat  
 
 @pytest.mark.parametrize("vat_number, expected_result", [
-    (501964843, True),  # Valid case for non-residents
-    (123456789, False),  # Invalid case, incorrect prefix
-    (201234567, True),  # Valid case for individuals
-    (301234567, True),  # Valid new case for individuals from 2019
-    (501234567, True),  # Valid case for businesses
-    (601234567, True),  # Valid case for public entities
-    (801234567, True),  # Valid case for sole traders
-    (901234567, True),  # Valid case for temporary numbers
-    (12345678, False),  # Invalid, too short
-    (1234567890, False),  # Invalid, too long
+    (173635679, True),  
+    (290528089, True),  
+    (323399819, True),  
+    (529784149, True),  
+    (678785937, True),  
+    (817607374, True),  
+    (943520274, True), 
+
+    (456789123, False),  
+    (789123456, False),  
+    ("PT1234567", False),
+    ("1234567890", False)
 ])
+
 def test_validations_vat(vat_number, expected_result):
     assert validate_vat(vat_number) == expected_result
