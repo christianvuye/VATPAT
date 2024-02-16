@@ -1,4 +1,6 @@
 from django.db import models, IntegrityError
+from django.core.exceptions import ValidationError
+from dashboard.validations import validate_vat
 
 class Dealers(models.Model):
     D_ID = models.CharField(max_length=10, unique=True)
@@ -10,6 +12,15 @@ class Dealers(models.Model):
 
     class Meta:
         db_table = 'Dealers'
+
+    def clean(self):
+        # Validate VAT
+        if not validate_vat(self.DealerVATnumber):
+            raise ValidationError({"DealerVATnumber": f"Invalid VAT number: {self.DealerVATnumber}"})
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
 
     def delete(self):
         raise IntegrityError("Dealers cannot be deleted")
