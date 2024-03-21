@@ -10,7 +10,7 @@ def test_dealers_model_charfields(test_dealer_instance):
     # Asserting CharFields correctly store string values
     assert dealer.D_ID == "D001", "D_ID does not store string correctly"
     assert dealer.DealerName == "Test Dealer", "DealerName does not store string correctly"
-    assert dealer.DealerVATnumber == "VAT12345678", "DealerVATnumber does not store string correctly"
+    assert dealer.DealerVATnumber == "253512182", "DealerVATnumber does not store string correctly"
     assert dealer.DealerEmail == "dealer@example.com", "DealerEmail does not store string correctly"
     
     # Verifying data types are strings

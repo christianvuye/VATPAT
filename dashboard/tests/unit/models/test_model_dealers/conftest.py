@@ -8,7 +8,7 @@ def test_dealer_data():
     return {
         "D_ID": "D001",
         "DealerName": "Test Dealer",
-        "DealerVATnumber": "VAT12345678",
+        "DealerVATnumber": "253512182",
         "DealerEmail": "dealer@example.com",
         "CreatedDate": timezone.now(),
         "ModifiedDate": timezone.now(),
