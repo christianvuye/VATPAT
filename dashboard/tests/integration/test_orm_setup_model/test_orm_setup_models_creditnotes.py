@@ -10,7 +10,7 @@ def create_credit_note():
     dealer_instance = Dealers.objects.create(
         D_ID='D001',
         DealerName='Sample Dealer',
-        DealerVATnumber='VAT12345678',
+        DealerVATnumber='229986358',
         DealerEmail='dealer@example.com',
         CreatedDate=now,
         ModifiedDate=now
