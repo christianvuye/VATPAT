@@ -1,5 +1,5 @@
 import pytest
-from django.db.utils import IntegrityError
+from django.core.exceptions import ValidationError
 from dashboard.models import Dealers
 from django.utils import timezone
 
@@ -9,12 +9,16 @@ def test_dealers_model_unique(test_dealer_instance):
     initial_dealer = test_dealer_instance
 
     # Attempt to create another dealer with the same D_ID as the initial dealer
-    with pytest.raises(IntegrityError):
+    with pytest.raises(ValidationError) as excinfo:
         Dealers.objects.create(
             D_ID=initial_dealer.D_ID,
             DealerName="Second Dealer",
-            DealerVATnumber="VAT87654321",
+            DealerVATnumber="246426993",
             DealerEmail="seconddealer@example.com",
             CreatedDate=timezone.now(),
             ModifiedDate=timezone.now()
-        )
+        ).full_clean()
+    
+    # Check if the ValidationError message is what we expect
+    assert 'D_ID' in excinfo.value.message_dict
+    assert 'already exists' in excinfo.value.message_dict['D_ID'][0]
