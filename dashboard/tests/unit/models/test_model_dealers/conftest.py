@@ -25,7 +25,7 @@ def test_dealer_data_no_timestamps():
     return {
         "D_ID": "D002",  # Ensure unique D_ID for testing
         "DealerName": "Auto Timestamp Dealer",
-        "DealerVATnumber": "VAT87654321",
+        "DealerVATnumber": "542915340",
         "DealerEmail": "auto@example.com"
     }
 
