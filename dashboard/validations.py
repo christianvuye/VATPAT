@@ -1,3 +1,5 @@
+import re
+from django.core.exceptions import ValidationError
 """
 The algorithm to verify the NIF number in Portugal is as follows:
 
@@ -71,3 +73,10 @@ def validate_vat(vat):
 
     # Return the boolean result True or False
     return is_valid
+
+def validate_d_id(d_id):
+    # Regular expression to match the required D_ID format
+    d_id_regex = re.compile(r'^PT\d{6}$')
+
+    if not d_id_regex.match(d_id):
+        raise ValidationError("D_ID must start with 'PT' followed by 6 digits.")
