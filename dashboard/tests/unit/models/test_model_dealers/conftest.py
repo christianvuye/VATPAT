@@ -70,7 +70,7 @@ def test_dealer_data_valid_d_id():
 @pytest.fixture
 def test_dealer_data_invalid_d_id():
     return {
-        "D_ID": "PT123456",
+        "D_ID": "00123456",
         "DealerName": "Valid VAT Dealer",
         "DealerVATnumber": "594901626",  # Valid VAT number
         "DealerEmail": "auto@example.com",
