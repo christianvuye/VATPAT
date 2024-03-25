@@ -57,7 +57,7 @@ def test_dealer_data_invalid_vat():
     }
 
 @pytest.fixture
-def test_dealer_data_valid_vat():
+def test_dealer_data_valid_d_id():
     return {
         "D_ID": "PT123456",
         "DealerName": "Valid VAT Dealer",
@@ -68,7 +68,7 @@ def test_dealer_data_valid_vat():
     }
 
 @pytest.fixture
-def test_dealer_data_valid_d_id():
+def test_dealer_data_invalid_d_id():
     return {
         "D_ID": "PT123456",
         "DealerName": "Valid VAT Dealer",
