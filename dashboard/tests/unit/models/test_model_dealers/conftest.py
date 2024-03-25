@@ -6,7 +6,7 @@ from dashboard.models import Dealers
 def test_dealer_data():
     """Fixture to provide dealer data dictionary."""
     return {
-        "D_ID": "D001",
+        "D_ID": "PT123456",
         "DealerName": "Test Dealer",
         "DealerVATnumber": "253512182",
         "DealerEmail": "dealer@example.com",
@@ -23,7 +23,7 @@ def test_dealer_instance(test_dealer_data):
 def test_dealer_data_no_timestamps():
     """Fixture to provide dealer data without timestamps."""
     return {
-        "D_ID": "D002",  # Ensure unique D_ID for testing
+        "D_ID": "PT123456",  # Ensure unique D_ID for testing
         "DealerName": "Auto Timestamp Dealer",
         "DealerVATnumber": "542915340",
         "DealerEmail": "auto@example.com"
@@ -48,7 +48,7 @@ def test_dealer_data_all_null():
 @pytest.fixture
 def test_dealer_data_invalid_vat():
     return {
-        "D_ID": "D003",
+        "D_ID": "PT123456",
         "DealerName": "Invalid VAT Dealer",
         "DealerVATnumber": "456789123",  # Invalid VAT number
         "DealerEmail": "auto@example.com",
@@ -59,7 +59,7 @@ def test_dealer_data_invalid_vat():
 @pytest.fixture
 def test_dealer_data_valid_vat():
     return {
-        "D_ID": "D004",
+        "D_ID": "PT123456",
         "DealerName": "Valid VAT Dealer",
         "DealerVATnumber": "594901626",  # Valid VAT number
         "DealerEmail": "auto@example.com",
