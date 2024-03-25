@@ -1,9 +1,9 @@
 from django.db import models, IntegrityError
 from django.core.exceptions import ValidationError
-from dashboard.validations import validate_vat
+from dashboard.validations import validate_vat, validate_d_id
 
 class Dealers(models.Model):
-    D_ID = models.CharField(max_length=10, unique=True)
+    D_ID = models.CharField(max_length=10, unique=True, validators=[validate_d_id])
     DealerName = models.CharField(max_length=100)
     DealerVATnumber = models.CharField(max_length=20)
     DealerEmail = models.EmailField(max_length=80)
@@ -13,6 +13,8 @@ class Dealers(models.Model):
     class Meta:
         db_table = 'Dealers'
 
+    #remove this clean method and add the validation in the main model class
+    #when refactoring the code    
     def clean(self):
         # Validate VAT
         if not validate_vat(self.DealerVATnumber):
