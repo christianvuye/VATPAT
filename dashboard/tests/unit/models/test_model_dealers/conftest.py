@@ -46,6 +46,17 @@ def test_dealer_data_all_null():
     }
 
 @pytest.fixture
+def test_dealer_data_valid_vat():
+    return {
+        "D_ID": "PT123456",
+        "DealerName": "Valid VAT Dealer",
+        "DealerVATnumber": "594901626",  # Valid VAT number
+        "DealerEmail": "auto@example.com",
+        "CreatedDate": timezone.now(),
+        "ModifiedDate": timezone.now(),
+    }
+
+@pytest.fixture
 def test_dealer_data_invalid_vat():
     return {
         "D_ID": "PT123456",
