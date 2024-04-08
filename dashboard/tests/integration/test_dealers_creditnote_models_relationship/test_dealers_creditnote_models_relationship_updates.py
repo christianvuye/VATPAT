@@ -6,7 +6,7 @@ from dashboard.models import CreditNotes, Dealers
 def dummy_dealer_and_credit_note():
     # Create a dummy Dealer instance
     dealer = Dealers.objects.create(
-        D_ID="D001",
+        D_ID="PT123456",
         DealerName="Dummy Dealer",
         DealerVATnumber="538046554",
         DealerEmail="dummydealer@example.com",

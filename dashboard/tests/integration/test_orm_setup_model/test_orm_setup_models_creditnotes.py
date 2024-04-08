@@ -8,7 +8,7 @@ def create_credit_note():
 
     # Create an instance of the Dealers model with sample data
     dealer_instance = Dealers.objects.create(
-        D_ID='D001',
+        D_ID='PT123456',
         DealerName='Sample Dealer',
         DealerVATnumber='229986358',
         DealerEmail='dealer@example.com',

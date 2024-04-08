@@ -6,7 +6,7 @@ from dashboard.models import Dealers
 def create_dealer():
     now = timezone.now()  # This will be a timezone-aware datetime
     return Dealers.objects.create(
-        D_ID='D001',
+        D_ID='PT123456',
         DealerName='Test Dealer',
         DealerVATnumber='123456789',
         DealerEmail='test@example.com',
