@@ -91,21 +91,11 @@ def test_dealer_data_invalid_d_id():
 
 @pytest.fixture
 def test_dealer_data_with_credit_note():
-    """Fixture to create a dealer with a related credit note."""
-    dealer = Dealers.objects.create(
-        D_ID="PT123456",
-        DealerName="Test Dealer",
-        DealerVATnumber="594901626",
-        DealerEmail="dealer@example.com",
-        CreatedDate=timezone.now(),
-        ModifiedDate=timezone.now(),
-    )
-    CreditNotes.objects.create(
-        CN_ID="CN0001",
-        D_ID=dealer,
-        TotalDocumentAmount=1000.00,
-        TotalVATAmountDocumentt=150.00,
-        TotalDocumentAmountWithVAT=1150.00,
-        AccountingNumberID="ACC123456",
-        IssuedDate=timezone.now(),
-    )
+    return {
+        "D_ID": "PT123456",
+        "DealerName": "Valid VAT Dealer",
+        "DealerVATnumber": "594901626",
+        "DealerEmail": "auto@example.com",
+        "CreatedDate": timezone.now(),
+        "ModifiedDate": timezone.now(),
+    }
