@@ -1,6 +1,6 @@
 import pytest
 from django.utils import timezone
-from dashboard.models import Dealers, CreditNotes
+from dashboard.models import Dealers
 
 @pytest.fixture
 def test_dealer_data():

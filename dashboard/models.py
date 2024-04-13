@@ -26,6 +26,9 @@ class Dealers(models.Model):
 
     def delete(self):
         raise IntegrityError("Dealers cannot be deleted")
+    
+    def __str__(self):
+        return f"{self.D_ID} | {self.DealerName} | {self.DealerVATnumber} | {self.DealerEmail} | {self.D_ID}"
 
 class CreditNotes(models.Model):
     CN_ID = models.CharField(max_length=20, unique=True)
