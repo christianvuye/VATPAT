@@ -16,7 +16,8 @@ def test_dealers_model_unique(test_dealer_instance):
             DealerVATnumber="246426993",
             DealerEmail="seconddealer@example.com",
             CreatedDate=timezone.now(),
-            ModifiedDate=timezone.now()
+            ModifiedDate=timezone.now(),
+            is_active=True
         ).full_clean()
     
     # Check if the ValidationError message is what we expect
