@@ -12,6 +12,7 @@ def test_dealer_data():
         "DealerEmail": "dealer@example.com",
         "CreatedDate": timezone.now(),
         "ModifiedDate": timezone.now(),
+        "is_active": True
     }
 
 @pytest.fixture
@@ -26,7 +27,8 @@ def test_dealer_data_no_timestamps():
         "D_ID": "PT123456",  # Ensure unique D_ID for testing
         "DealerName": "Auto Timestamp Dealer",
         "DealerVATnumber": "542915340",
-        "DealerEmail": "auto@example.com"
+        "DealerEmail": "auto@example.com",
+        "is_active": True
     }
 
 @pytest.fixture
@@ -43,6 +45,7 @@ def test_dealer_data_all_null():
         "DealerEmail": None,
         "CreatedDate": None,
         "ModifiedDate": None,
+        "is_active": None
     }
 
 @pytest.fixture
@@ -54,6 +57,7 @@ def test_dealer_data_valid_vat():
         "DealerEmail": "auto@example.com",
         "CreatedDate": timezone.now(),
         "ModifiedDate": timezone.now(),
+        "is_active": True
     }
 
 @pytest.fixture
@@ -65,6 +69,7 @@ def test_dealer_data_invalid_vat():
         "DealerEmail": "auto@example.com",
         "CreatedDate": timezone.now(),
         "ModifiedDate": timezone.now(),
+        "is_active": True
     }
 
 @pytest.fixture
@@ -76,6 +81,7 @@ def test_dealer_data_valid_d_id():
         "DealerEmail": "auto@example.com",
         "CreatedDate": timezone.now(),
         "ModifiedDate": timezone.now(),
+        "is_active": True
     }
 
 @pytest.fixture
@@ -87,6 +93,7 @@ def test_dealer_data_invalid_d_id():
         "DealerEmail": "auto@example.com",
         "CreatedDate": timezone.now(),
         "ModifiedDate": timezone.now(),
+        "is_active": True
     }
 
 @pytest.fixture
@@ -98,4 +105,5 @@ def test_dealer_data_with_credit_note():
         "DealerEmail": "auto@example.com",
         "CreatedDate": timezone.now(),
         "ModifiedDate": timezone.now(),
+        "is_active": True
     }
