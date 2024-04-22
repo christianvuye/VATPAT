@@ -32,15 +32,7 @@ class Dealers(models.Model):
 
 class CreditNotes(models.Model):
     CN_ID = models.CharField(max_length=20, unique=True)
-    """
-    Check with Paulo to see if every credit note needs to have an associated dealer and if dealer gets deleted, what happens to the credit notes.
-    
-    For now, I will make it so that a credit note does not need to have an associated dealer. If the dealer gets deleted, the credit note will still exist.
-
-    Change this based on the feedback from Paulo.
-    """
-    D_ID = models.ForeignKey(Dealers, on_delete=models.SET_NULL, db_column='D_ID', null=True)
-    #D_ID = models.ForeignKey(Dealers, on_delete=models.CASCADE, db_column='D_ID')
+    D_ID = models.ForeignKey(Dealers, on_delete=models.CASCADE, db_column='D_ID')
     TotalDocumentAmount = models.DecimalField(max_digits=38, decimal_places=20)
     TotalVATAmountDocumentt = models.DecimalField(max_digits=38, decimal_places=20)
     TotalDocumentAmountWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
