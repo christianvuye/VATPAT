@@ -34,3 +34,7 @@ def test_dealers_model_fields():
     # Test ModifiedDate field
     modified_date_field = Dealers._meta.get_field('ModifiedDate')
     assert modified_date_field.get_internal_type() == 'DateTimeField', "ModifiedDate field type is not DateTimeField"
+
+    # Test is_active field
+    is_active_field = Dealers._meta.get_field('is_active')
+    assert is_active_field.get_internal_type() == 'BooleanField', "is_active field type is not BooleanField"

@@ -14,6 +14,7 @@ def test_dealers_model_data_integrity(test_dealer_data):
     dealer.DealerName = "Updated Dealer Name"
     dealer.DealerVATnumber = "241964644"
     dealer.DealerEmail = "updatedemail@example.com"
+    dealer.is_active = False
 
     #Validate the updated data against model constraints and Save the updated dealer instance
     try:
@@ -27,3 +28,4 @@ def test_dealers_model_data_integrity(test_dealer_data):
     assert updated_dealer.DealerName == "Updated Dealer Name"
     assert updated_dealer.DealerVATnumber == "241964644"
     assert updated_dealer.DealerEmail == "updatedemail@example.com"
+    assert updated_dealer.is_active == False

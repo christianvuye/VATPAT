@@ -32,3 +32,4 @@ def test_dealers_model_unrelatedfields(test_dealer_data):
     assert test_dealer.DealerVATnumber == original_vat, "DealerVATnumber should not change."
     assert test_dealer.DealerEmail == original_email, "DealerEmail should not change."
     assert test_dealer.CreatedDate == original_created_date, "CreatedDate should not change."
+    assert test_dealer.is_active == True, "is_active should not change."
