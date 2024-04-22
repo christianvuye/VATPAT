@@ -9,6 +9,7 @@ class Dealers(models.Model):
     DealerEmail = models.EmailField(max_length=80)
     CreatedDate = models.DateTimeField(auto_now_add=True)
     ModifiedDate = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         db_table = 'Dealers'
