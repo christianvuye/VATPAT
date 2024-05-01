@@ -17,6 +17,7 @@
 - In Django: if a model is dependent on another model through a foreign key relationship
     -> You can use an instance of that model stored in a variable to directly assign it as the foreign key for the model that is dependent on it.
     -> test_credit_note_data['D_ID'] = dealer
+- In Django, the '.full_clean()' method is a Django model instance method, and what it does it validate all of the fields of that model. It can be used to manually trigger a validation on a model instance that has been created but not yet saved. When the validation fails, Django will raise a ValidationError. 
 
 **Blockers**:
 - Had to set up venv, Git, .env, .gitignore etc. on new laptop.
