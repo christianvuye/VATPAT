@@ -2,6 +2,21 @@
 
 ### Date: 01/05/2024
 
+**Task**: Test field validations for the Credit Notes model
+**Time Spent**: 2.5h
+**Objective**: Test that that the Credit Notes model does what it needs to do.
+**Achievements**:
+- Wrote a test to make sure that no credit notes could be added with the same Credit Notes ID.
+- 
+**Blockers**:
+- Had to set up venv, Git, .env, .gitignore etc. on new laptop.
+
+**Next Steps**:
+- 
+
+---
+Template below: 
+---
 **Task**: [Issue #123](Link to the GitHub issue or task)  
 **Time Spent**: X hours  
 **Contributor**: [Contributor Name](GitHub profile link)
