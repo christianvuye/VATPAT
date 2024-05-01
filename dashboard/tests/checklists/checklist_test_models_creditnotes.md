@@ -1,7 +1,7 @@
 # Credit Notes Model Testing Checklist
 
 ## Test Field Validations
-- [ ] Test that creating a credit note with a duplicate `CN_ID` raises an error.
+- [X] Test that creating a credit note with a duplicate `CN_ID` raises an error.
 - [ ] Test for maximum length constraints on string fields (`CN_ID`, `AccountingNumberID`).
 - [ ] Test for required fields being not nullable.
 - [ ] Test for unique constraints on fields that should be unique (`CN_ID`).
