@@ -26,6 +26,96 @@ def test_credit_note_data():
         "TotalDocumentAmount": Decimal('1234.56'),
         "TotalVATAmountDocumentt": Decimal('234.56'),
         "TotalDocumentAmountWithVAT": Decimal('1469.13'),
-        "AccountingNumberID": "AC1234567890", #Check with Paulo if this is the correct format
+        "AccountingNumberID": "AC1234567890", 
         "IssuedDate": timezone.now()
+    }
+
+@pytest.fixture
+def test_credit_note_data_missing_cn_id():
+    """
+    Fixture to provide credit note data dictionary with missing CN_ID.
+    """
+    return {
+        #"CN_ID": "CN20230001", 
+        #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
+        "TotalDocumentAmount": Decimal('1234.56'),
+        "TotalVATAmountDocumentt": Decimal('234.56'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "AccountingNumberID": "AC1234567890", 
+        "IssuedDate": timezone.now()
+    }
+
+@pytest.fixture
+def test_credit_note_data_missing_total_document_amount():
+    """
+    Fixture to provide credit note data dictionary with missing TotalDocumentAmount.
+    """
+    return {
+        "CN_ID": "CN20230001", 
+        #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
+        #"TotalDocumentAmount": Decimal('1234.56'),
+        "TotalVATAmountDocumentt": Decimal('234.56'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "AccountingNumberID": "AC1234567890", 
+        "IssuedDate": timezone.now()
+    }
+
+@pytest.fixture
+def test_credit_note_data_missing_total_vat_amount_document():
+    """
+    Fixture to provide credit note data dictionary with missing TotalVATAmountDocumentt.
+    """
+    return {
+        "CN_ID": "CN20230001", 
+        #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
+        "TotalDocumentAmount": Decimal('1234.56'),
+        #"TotalVATAmountDocumentt": Decimal('234.56'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "AccountingNumberID": "AC1234567890", 
+        "IssuedDate": timezone.now()
+    }
+
+@pytest.fixture
+def test_credit_note_data_missing_total_document_amount_with_vat():
+    """
+    Fixture to provide credit note data dictionary with missing TotalDocumentAmountWithVAT.
+    """
+    return {
+        "CN_ID": "CN20230001", 
+        #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
+        "TotalDocumentAmount": Decimal('1234.56'),
+        "TotalVATAmountDocumentt": Decimal('234.56'),
+        #"TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "AccountingNumberID": "AC1234567890", 
+        "IssuedDate": timezone.now()
+    }
+
+@pytest.fixture
+def test_credit_note_data_missing_accounting_number_id():
+    """
+    Fixture to provide credit note data dictionary with missing AccountingNumberID.
+    """
+    return {
+        "CN_ID": "CN20230001", 
+        #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
+        "TotalDocumentAmount": Decimal('1234.56'),
+        "TotalVATAmountDocumentt": Decimal('234.56'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        #"AccountingNumberID": "AC1234567890", 
+        "IssuedDate": timezone.now()
+    }
+
+@pytest.fixture
+def test_credit_note_data_missing_issued_date():
+    """
+    Fixture to provide credit note data dictionary with missing IssuedDate.
+    """
+    return {
+        "CN_ID": "CN20230001", 
+        #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
+        "TotalDocumentAmount": Decimal('1234.56'),
+        "TotalVATAmountDocumentt": Decimal('234.56'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "AccountingNumberID": "AC1234567890", 
+        #"IssuedDate": timezone.now()
     }
