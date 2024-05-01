@@ -7,7 +7,9 @@
 **Objective**: Test that that the Credit Notes model does what it needs to do.
 **Achievements**:
 - Wrote a test to make sure that no credit notes could be added with the same Credit Notes ID.
-- 
+- Wrote tests to make sure that CN_ID and Account number ID do not exceed character lenght limit.
+- Set up fixture dictionaries containing data for the fields of credit notes model instance, with missing fields.
+- Wrote a test to see if missing CN_ID would raise IntegrityError.  
 
 **What did I learn?**:
 - In Python: when using the syntax 'dictionary["key"] = value' 
@@ -23,7 +25,7 @@
 - Had to set up venv, Git, .env, .gitignore etc. on new laptop.
 
 **Next Steps**:
-- 
+- Figure out why the missing CN_ID test does not raise an IntegrityError, while the CN_ID is set as primary key in the database, which implicitly constraints it from being a null value. 
 
 ---
 Template below: 
