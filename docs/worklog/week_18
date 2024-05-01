@@ -8,6 +8,16 @@
 **Achievements**:
 - Wrote a test to make sure that no credit notes could be added with the same Credit Notes ID.
 - 
+
+**What did I learn?**:
+- In Python: when using the syntax 'dictionary["key"] = value' 
+    -> Python checks first if "key" exists in the dictionary.
+    -> If the key exists, then its value will be updated.
+    -> If "key" does not exist yet in the dictionary, the key will be added with the      specifified value. 
+- In Django: if a model is dependent on another model through a foreign key relationship
+    -> You can use an instance of that model stored in a variable to directly assign it as the foreign key for the model that is dependent on it.
+    -> test_credit_note_data['D_ID'] = dealer
+
 **Blockers**:
 - Had to set up venv, Git, .env, .gitignore etc. on new laptop.
 
