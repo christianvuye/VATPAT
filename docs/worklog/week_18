@@ -27,6 +27,14 @@
 **Next Steps**:
 - Figure out why the missing CN_ID test does not raise an IntegrityError, while the CN_ID is set as primary key in the database, which implicitly constraints it from being a null value. 
 
+### Date: 02/05/2024
+**Task**: Test field validations for the Credit Notes model
+**Time Spent**: 
+**Objective**: Figure out why the missing CN_ID test does not raise an IntegrityError, while the CN_ID is set as primary key in the database, which implicitly constraints it from being a null value. 
+
+**Achievements**:
+- 
+
 ---
 Template below: 
 ---
