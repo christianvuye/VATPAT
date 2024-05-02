@@ -35,6 +35,8 @@
 **Achievements**:
 - 
 
+**Next Steps**:
+- Make sure to set primary keys in each of your models. This is currently not done for the Dealers model either. 
 ---
 Template below: 
 ---
