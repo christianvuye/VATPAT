@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from dashboard.validations import validate_vat, validate_d_id
 
 class Dealers(models.Model):
-    D_ID = models.CharField(max_length=10, unique=True, validators=[validate_d_id])
+    D_ID = models.CharField(max_length=10, unique=True, validators=[validate_d_id], primary_key=True) 
     DealerName = models.CharField(max_length=100)
     DealerVATnumber = models.CharField(max_length=20)
     DealerEmail = models.EmailField(max_length=80)
@@ -13,6 +13,7 @@ class Dealers(models.Model):
 
     class Meta:
         db_table = 'Dealers'
+        managed = False
 
     #remove this clean method and add the validation in the main model class
     #when refactoring the code    
@@ -32,7 +33,7 @@ class Dealers(models.Model):
         return f"{self.D_ID} | {self.DealerName} | {self.DealerVATnumber} | {self.DealerEmail} | {self.D_ID}"
 
 class CreditNotes(models.Model):
-    CN_ID = models.CharField(max_length=20, unique=True)
+    CN_ID = models.CharField(max_length=20, unique=True, primary_key=True)
     D_ID = models.ForeignKey(Dealers, on_delete=models.CASCADE, db_column='D_ID')
     TotalDocumentAmount = models.DecimalField(max_digits=38, decimal_places=20)
     TotalVATAmountDocumentt = models.DecimalField(max_digits=38, decimal_places=20)
@@ -42,6 +43,7 @@ class CreditNotes(models.Model):
 
     class Meta:
         db_table = 'CreditNotes'
+        managed = False
 
 class CreditNoteResumeEmail(models.Model):
     CNR_ID = models.AutoField(primary_key=True)
@@ -56,6 +58,7 @@ class CreditNoteResumeEmail(models.Model):
 
     class Meta:
         db_table = 'CreditNoteResumeEmail'
+        managed = False
 
 class AcknowledgementRequest(models.Model):
     R_ID = models.AutoField(primary_key=True)
@@ -66,6 +69,7 @@ class AcknowledgementRequest(models.Model):
 
     class Meta:
         db_table = 'AcknowledgementRequest'
+        managed = False
 
 class AcknowledgementReceived(models.Model):
     A_ID = models.AutoField(primary_key=True, unique=True)
@@ -74,3 +78,4 @@ class AcknowledgementReceived(models.Model):
 
     class Meta:
         db_table = 'AcknowledgementReceived'
+        managed = False
