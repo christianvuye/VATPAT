@@ -29,14 +29,18 @@
 
 ### Date: 02/05/2024
 **Task**: Test field validations for the Credit Notes model
-**Time Spent**: 
+**Time Spent**: 2h
 **Objective**: Figure out why the missing CN_ID test does not raise an IntegrityError, while the CN_ID is set as primary key in the database, which implicitly constraints it from being a null value. 
 
 **Achievements**:
-- 
+- I undid all the previous migrations, and set up the models with primary keys for each table, and made sure that the Django models cannot make changes to the database schema.
+
+**Blockers**:
+- All the tests are failing now =)
 
 **Next Steps**:
-- Make sure to set primary keys in each of your models. This is currently not done for the Dealers model either. 
+- Figure out why all the test are failing. 
+
 ---
 Template below: 
 ---
