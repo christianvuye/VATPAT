@@ -13,7 +13,7 @@ class Dealers(models.Model):
 
     class Meta:
         db_table = 'Dealers'
-        managed = False
+        managed = True
 
     #remove this clean method and add the validation in the main model class
     #when refactoring the code    
@@ -43,7 +43,7 @@ class CreditNotes(models.Model):
 
     class Meta:
         db_table = 'CreditNotes'
-        managed = False
+        managed = True
 
 class CreditNoteResumeEmail(models.Model):
     CNR_ID = models.AutoField(primary_key=True)
@@ -58,7 +58,7 @@ class CreditNoteResumeEmail(models.Model):
 
     class Meta:
         db_table = 'CreditNoteResumeEmail'
-        managed = False
+        managed = True
 
 class AcknowledgementRequest(models.Model):
     R_ID = models.AutoField(primary_key=True)
@@ -69,7 +69,7 @@ class AcknowledgementRequest(models.Model):
 
     class Meta:
         db_table = 'AcknowledgementRequest'
-        managed = False
+        managed = True
 
 class AcknowledgementReceived(models.Model):
     A_ID = models.AutoField(primary_key=True, unique=True)
@@ -78,4 +78,4 @@ class AcknowledgementReceived(models.Model):
 
     class Meta:
         db_table = 'AcknowledgementReceived'
-        managed = False
+        managed = True
