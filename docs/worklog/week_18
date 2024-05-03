@@ -41,6 +41,19 @@
 **Next Steps**:
 - Figure out why all the test are failing. 
 
+### Date: 03/05/2024
+**Task**: Figure out why all the tests are failing.
+**Time Spent**: 2,5h
+**Objective**: Figure out why suddenly there is regression of all the previously passing tests. 
+**Achievements**:
+- After struggling to find out what exactly had gone wrong, I decided to revert the repository back into a state where the tests were passing, the state prior to introducing the changes that brought forth the regression.
+- I removed the meta parameter 'managed' which was previously set to 'true' for the database models.
+- I had to set default values for the CN_ID and D_ID in the credit notes models to an empty string '' as these are mandatory fields that cannot be NULL values, and the database still had some records with NULL values in them for these columns.
+- After making these changes to the model(s) I remade the migrations and ran them.
+- After these reversions, the tests ran again.
+- Note: the test to check if the 'CN_ID' value could be NULL was not included yet.
+**Next Steps**:
+- Re-introduce test to see if an empty 'CN_ID' value raises an integrity error.  
 ---
 Template below: 
 ---
