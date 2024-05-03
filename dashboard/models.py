@@ -13,7 +13,6 @@ class Dealers(models.Model):
 
     class Meta:
         db_table = 'Dealers'
-        managed = True
 
     #remove this clean method and add the validation in the main model class
     #when refactoring the code    
@@ -33,8 +32,8 @@ class Dealers(models.Model):
         return f"{self.D_ID} | {self.DealerName} | {self.DealerVATnumber} | {self.DealerEmail} | {self.D_ID}"
 
 class CreditNotes(models.Model):
-    CN_ID = models.CharField(max_length=20, unique=True, primary_key=True)
-    D_ID = models.ForeignKey(Dealers, on_delete=models.CASCADE, db_column='D_ID')
+    CN_ID = models.CharField(max_length=20, unique=True, primary_key=True, default='')
+    D_ID = models.ForeignKey(Dealers, on_delete=models.CASCADE, db_column='D_ID', default='')
     TotalDocumentAmount = models.DecimalField(max_digits=38, decimal_places=20)
     TotalVATAmountDocumentt = models.DecimalField(max_digits=38, decimal_places=20)
     TotalDocumentAmountWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
@@ -43,7 +42,6 @@ class CreditNotes(models.Model):
 
     class Meta:
         db_table = 'CreditNotes'
-        managed = True
 
 class CreditNoteResumeEmail(models.Model):
     CNR_ID = models.AutoField(primary_key=True)
@@ -58,7 +56,6 @@ class CreditNoteResumeEmail(models.Model):
 
     class Meta:
         db_table = 'CreditNoteResumeEmail'
-        managed = True
 
 class AcknowledgementRequest(models.Model):
     R_ID = models.AutoField(primary_key=True)
@@ -69,7 +66,6 @@ class AcknowledgementRequest(models.Model):
 
     class Meta:
         db_table = 'AcknowledgementRequest'
-        managed = True
 
 class AcknowledgementReceived(models.Model):
     A_ID = models.AutoField(primary_key=True, unique=True)
@@ -78,4 +74,3 @@ class AcknowledgementReceived(models.Model):
 
     class Meta:
         db_table = 'AcknowledgementReceived'
-        managed = True
