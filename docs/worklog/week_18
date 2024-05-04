@@ -79,6 +79,7 @@
 
 **Achievements**: 
 - Wrote tests for required fields CN_ID and D_ID not being nullable.
+- Wrote test for validating that CN_ID is unique at the model level.
 
 **What did I learn?**:
 - A "ValidationError" is raised for a model-level error.
@@ -89,7 +90,8 @@
 - IMPORTANT! The .save() model does not perform any validation of the data. To ensure the data is valid before saving to the database, call the .full_clean() method before calling .save()
 
 **Next Steps**:
-- Check with Paulo if TotalDocumentAmount, TotalVATAmountDocument, TotalDocumentAmountWithVAT, AccountingNumberID and IssuedDate are all mandatory fields. 
+- Check with Paulo if TotalDocumentAmount, TotalVATAmountDocument, TotalDocumentAmountWithVAT, AccountingNumberID and IssuedDate are all mandatory fields.
+- Paulo has confirmed to me that these fields are all mandatory. Tomorrow, I will write tests to make sure that these constraints are implemented.  
 ----------------------------------------------------------------------------------------
 Template below: 
 ---
