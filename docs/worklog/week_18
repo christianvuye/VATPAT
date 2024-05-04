@@ -84,6 +84,9 @@
 - A "ValidationError" is raised for a model-level error.
 - An "IntegrityError" is raised for a database-level data integrity error.
 - An "OperationalError" is raised for a database connection error.
+- The .full_clean() model method checks for unique constraints as defined in the Django model and should be explicitly called to catch validation errors before data hitting the database.
+- The .save() model method saves model instances to the database. It takes the current state of the fields in the model instance and writes them to the database table. If the primary key already exists, the .save() method updates the record, otherwise it creates a new record. 
+- IMPORTANT! The .save() model does not perform any validation of the data. To ensure the data is valid before saving to the database, call the .full_clean() method before calling .save()
 
 **Next Steps**:
 - Check with Paulo if TotalDocumentAmount, TotalVATAmountDocument, TotalDocumentAmountWithVAT, AccountingNumberID and IssuedDate are all mandatory fields. 
