@@ -5,8 +5,6 @@
 - [X] Test for maximum length constraints on string fields (`CN_ID`, `AccountingNumberID`).
 - [ ] Test for required fields being not nullable.
 - [ ] Test for unique constraints on fields that should be unique (`CN_ID`).
-- [ ] Create shared fixture for credit notes model that each test can refer to.
-- [ ] Rewrite and retest all tests with shared fixture.
 
 ## Test Field Data Types
 - [ ] Ensure `CharFields` accept and store strings.
