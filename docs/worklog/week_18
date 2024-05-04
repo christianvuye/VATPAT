@@ -3,8 +3,11 @@
 ### Date: 01/05/2024
 
 **Task**: Test field validations for the Credit Notes model
+
 **Time Spent**: 2.5h
+
 **Objective**: Test that that the Credit Notes model does what it needs to do.
+
 **Achievements**:
 - Wrote a test to make sure that no credit notes could be added with the same Credit Notes ID.
 - Wrote tests to make sure that CN_ID and Account number ID do not exceed character lenght limit.
@@ -27,9 +30,13 @@
 **Next Steps**:
 - Figure out why the missing CN_ID test does not raise an IntegrityError, while the CN_ID is set as primary key in the database, which implicitly constraints it from being a null value. 
 
+---------------------------------------------------------------------------------------
 ### Date: 02/05/2024
+
 **Task**: Test field validations for the Credit Notes model
+
 **Time Spent**: 2h
+
 **Objective**: Figure out why the missing CN_ID test does not raise an IntegrityError, while the CN_ID is set as primary key in the database, which implicitly constraints it from being a null value. 
 
 **Achievements**:
@@ -41,10 +48,15 @@
 **Next Steps**:
 - Figure out why all the test are failing. 
 
+---------------------------------------------------------------------------------------
 ### Date: 03/05/2024
+
 **Task**: Figure out why all the tests are failing.
+
 **Time Spent**: 2,5h
+
 **Objective**: Figure out why suddenly there is regression of all the previously passing tests. 
+
 **Achievements**:
 - After struggling to find out what exactly had gone wrong, I decided to revert the repository back into a state where the tests were passing, the state prior to introducing the changes that brought forth the regression.
 - I removed the meta parameter 'managed' which was previously set to 'true' for the database models.
@@ -52,9 +64,30 @@
 - After making these changes to the model(s) I remade the migrations and ran them.
 - After these reversions, the tests ran again.
 - Note: the test to check if the 'CN_ID' value could be NULL was not included yet.
+
 **Next Steps**:
 - Re-introduce test to see if an empty 'CN_ID' value raises an integrity error.  
----
+
+----------------------------------------------------------------------------------------
+### Date: 04/05/2024
+
+**Task**: Test field validations for the credit notes model.
+
+**Time Spent**: 2,5h
+
+**Objective**: Complete test field validation tests for the credit notes model.
+
+**Achievements**: 
+- Wrote tests for required fields CN_ID and D_ID not being nullable.
+
+**What did I learn?**:
+- A "ValidationError" is raised for a model-level error.
+- An "IntegrityError" is raised for a database-level data integrity error.
+- An "OperationalError" is raised for a database connection error.
+
+**Next Steps**:
+- Check with Paulo if TotalDocumentAmount, TotalVATAmountDocument, TotalDocumentAmountWithVAT, AccountingNumberID and IssuedDate are all mandatory fields. 
+----------------------------------------------------------------------------------------
 Template below: 
 ---
 **Task**: [Issue #123](Link to the GitHub issue or task)  
