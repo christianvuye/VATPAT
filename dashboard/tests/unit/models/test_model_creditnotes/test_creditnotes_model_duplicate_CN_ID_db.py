@@ -5,7 +5,8 @@ from dashboard.models import CreditNotes, Dealers
 @pytest.mark.django_db
 def test_creditnotes_model_duplicate_cn_id(test_dealer_data, test_credit_note_data):
     """
-    Test that creating a credit note with a duplicate CN_ID raises an error.
+    Test that creating a credit note with a duplicate CN_ID raises an error
+    on the database level - IntegrityError.
     """
     # Creating a dealer instance first
     dealer = Dealers.objects.create(**test_dealer_data)
