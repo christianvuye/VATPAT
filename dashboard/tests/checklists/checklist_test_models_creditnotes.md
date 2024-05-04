@@ -4,7 +4,7 @@
 - [X] Test that creating a credit note with a duplicate `CN_ID` raises an error.
 - [X] Test for maximum length constraints on string fields (`CN_ID`, `AccountingNumberID`).
 - [ ] Test for required fields being not nullable.
-- [ ] Test for unique constraints on fields that should be unique (`CN_ID`).
+- [X] Test for unique constraints on fields that should be unique (`CN_ID`).
 
 ## Test Field Data Types
 - [ ] Ensure `CharFields` accept and store strings.
