@@ -38,7 +38,7 @@ class CreditNotes(models.Model):
     TotalVATAmountDocumentt = models.DecimalField(max_digits=38, decimal_places=20)
     TotalDocumentAmountWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
     AccountingNumberID = models.CharField(max_length=30)
-    IssuedDate = models.DateTimeField()
+    IssuedDate = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'CreditNotes'
