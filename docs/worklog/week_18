@@ -112,7 +112,7 @@
 
 **What did I learn?**:
 - TDD is a very useful practice, but it can take a lot of time initially to set up all of the tests. If I had more time, I would have continued TDD, but that is not the case unfortunately. 
-- 
+- Difference between 'auto_now_add" and "auto_now"
 -
 
 **Next Steps**:
