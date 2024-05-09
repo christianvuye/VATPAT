@@ -22,7 +22,7 @@
 - [ ] Test that `TotalVATAmountDocumentt` cannot exceed `TotalDocumentAmount`.
 - [ ] Test that `TotalDocumentAmountWithVAT` is calculated correctly based on the other total fields.
 
-## Test Model's QuerySet Methods
+## Test Model's QuerySet Methods > not needed for now, maybe later -> test them when you have business logic to test
 - [ ] Test custom QuerySet methods return expected results.
 - [ ] Test custom manager methods behave correctly.
 
