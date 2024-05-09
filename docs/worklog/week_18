@@ -92,7 +92,30 @@
 **Next Steps**:
 - Check with Paulo if TotalDocumentAmount, TotalVATAmountDocument, TotalDocumentAmountWithVAT, AccountingNumberID and IssuedDate are all mandatory fields.
 - Paulo has confirmed to me that these fields are all mandatory. Tomorrow, I will write tests to make sure that these constraints are implemented.  
+
 ----------------------------------------------------------------------------------------
+### Date: 09/05/2024 (TODAY)
+
+**Task**: Complete models for dashboard ap
+
+**Time Spent**: 2,5h
+
+**Objective**: Complete models for dashboard app, stop doing TDD as it takes too much time and you will not be able to deliver the application on time to the business.
+
+**Achievements**:
+- 
+- 
+
+**What did I learn?**:
+- TDD is a very useful practice, but it can take a lot of time initially to set up all of the tests. If I had more time, I would have continued TDD, but that is not the case unfortunately. 
+-
+-
+
+**Next Steps**:
+- 
+
+
+
 Template below: 
 ---
 **Task**: [Issue #123](Link to the GitHub issue or task)  
