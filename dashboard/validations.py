@@ -80,3 +80,17 @@ def validate_d_id(d_id):
 
     if not d_id_regex.match(d_id):
         raise ValidationError("D_ID must start with 'PT' followed by 6 digits.")
+
+def validate_vat_amounts(TotalVATAmountDocumentt, TotalDocumentAmount):
+    """
+    Validates that the VAT amount does not exceed the total document amount.
+    
+    Args:
+    TotalVATAmountDocument (Decimal): The VAT amount on the document.
+    TotalDocumentAmount (Decimal): The total amount of the document.
+
+    Raises:
+    ValidationError: If the VAT amount exceeds the total document amount.
+    """
+    if TotalVATAmountDocumentt > TotalDocumentAmount:
+        raise ValidationError("The VAT amount cannot exceed the total document amount.")
