@@ -42,6 +42,16 @@ class CreditNotes(models.Model):
 
     class Meta:
         db_table = 'CreditNotes'
+    
+    def save(self, *args, **kwargs):
+        self.full_clean() # Ensures validation is done before saving
+        super().save(*args, **kwargs)
+
+    def delete(self):
+        raise IntegrityError("CreditNotes cannot be deleted")
+
+    def __str__(self):
+        return f"{self.CN_ID} | {self.D_ID} | {self.TotalDocumentAmount} | {self.TotalVATAmountDocumentt} | {self.TotalDocumentAmountWithVAT} | {self.AccountingNumberID} | {self.IssuedDate}"
 
 class CreditNoteResumeEmail(models.Model):
     CNR_ID = models.AutoField(primary_key=True)
