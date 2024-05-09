@@ -94,3 +94,18 @@ def validate_vat_amounts(TotalVATAmountDocumentt, TotalDocumentAmount):
     """
     if TotalVATAmountDocumentt > TotalDocumentAmount:
         raise ValidationError("The VAT amount cannot exceed the total document amount.")
+
+def validate_total_with_vat(TotalDocumentAmount, TotalVATAmountDocumentt, TotalDocumentAmountWithVAT):
+    """
+    Validates that the total amount with VAT is the sum of the total amount and the VAT amount.
+
+    Args:
+    TotalDocumentAmount (Decimal): The total amount of the document.
+    TotalVATAmountDocument (Decimal): The VAT amount on the document.
+    TotalDocumentAmountWithVAT (Decimal): The total amount with VAT.
+
+    Raises:
+    ValidationError: If the total amount with VAT does not match the sum of the total amount and the VAT amount.
+    """
+    if TotalDocumentAmount + TotalVATAmountDocumentt != TotalDocumentAmountWithVAT:
+        raise ValidationError("The total amount with VAT must be the sum of the total amount and the VAT amount.")
