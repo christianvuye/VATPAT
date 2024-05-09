@@ -61,7 +61,7 @@ class CreditNotes(models.Model):
         return f"{self.CN_ID} | {self.D_ID} | {self.TotalDocumentAmount} | {self.TotalVATAmountDocumentt} | {self.TotalDocumentAmountWithVAT} | {self.AccountingNumberID} | {self.IssuedDate}"
 
 class CreditNoteResumeEmail(models.Model):
-    CNR_ID = models.AutoField(primary_key=True)
+    CNR_ID = models.AutoField(unique=True, primary_key=True)
     CN_ID = models.CharField(max_length=10)
     DateIssued = models.DateTimeField()
     Month = models.IntegerField()
