@@ -62,7 +62,7 @@ class CreditNotes(models.Model):
 
 class CreditNoteResumeEmail(models.Model):
     CNR_ID = models.AutoField(unique=True, primary_key=True)
-    CN_ID = models.CharField(max_length=10)
+    CN_ID = models.ForeignKey(CreditNotes, on_delete=models.CASCADE, db_column='CN_ID')
     DateIssued = models.DateTimeField()
     Month = models.IntegerField()
     Year = models.IntegerField()
