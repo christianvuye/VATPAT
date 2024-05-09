@@ -1,6 +1,6 @@
 from django.db import models, IntegrityError
 from django.core.exceptions import ValidationError
-from dashboard.validations import validate_vat, validate_d_id, validate_vat_amounts
+from dashboard.validations import validate_vat, validate_d_id, validate_vat_amounts, validate_total_with_vat
 
 class Dealers(models.Model):
     D_ID = models.CharField(max_length=10, unique=True, validators=[validate_d_id], primary_key=True) 
@@ -46,6 +46,9 @@ class CreditNotes(models.Model):
     def clean(self):
         # Validate VAT amounts
         validate_vat_amounts(self.TotalVATAmountDocumentt, self.TotalDocumentAmount)
+
+        # Validate TotalDocumentAmountWithVAT is correctly calculated
+        validate_total_with_vat(self.TotalDocumentAmount, self.TotalVATAmountDocumentt, self.TotalDocumentAmountWithVAT)
         
     def save(self, *args, **kwargs):
         self.full_clean() # Ensures validation is done before saving
