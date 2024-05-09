@@ -1,4 +1,6 @@
-# Worklog for Week 18 (01/05/2024 - 05/05/2024)
+# Worklog for May 
+
+# Week 18 (01/05/2024 - 05/05/2024)
 
 ### Date: 01/05/2024
 
@@ -94,7 +96,9 @@
 - Paulo has confirmed to me that these fields are all mandatory. Tomorrow, I will write tests to make sure that these constraints are implemented.  
 
 ----------------------------------------------------------------------------------------
-### Date: 09/05/2024 (TODAY)
+# Week 18 (06/05/2024 - 12/05/2024)
+
+### Date: 09/05/2024
 
 **Task**: Complete models for dashboard ap
 
@@ -108,7 +112,7 @@
 
 **What did I learn?**:
 - TDD is a very useful practice, but it can take a lot of time initially to set up all of the tests. If I had more time, I would have continued TDD, but that is not the case unfortunately. 
--
+- 
 -
 
 **Next Steps**:
