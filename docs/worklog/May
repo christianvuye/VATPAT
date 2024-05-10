@@ -133,14 +133,17 @@
 - Figure out if the dates on instances of credit notes, credit note resumes and acknowledgementrequest should be assigned on the creation of that instance or whether they have been set prior. 
 
 **Achievements**:
-- Completed the Credit Notes model, but it is untested. 
-- Started working on Credit Notes Resume Email model. 
+- 
+
+**Blockers**:
+- 8 tests failed or raised an error after the changes I made yesterday to the CreditNotes model, so I had to fix them first. 
 
 **What did I learn?**:
-- TDD is a very useful practice, but it can take a lot of time initially to set up all of the tests. If I had more time, I would have continued TDD, but that is not the case unfortunately. 
-- Difference between "auto_now_add" and "auto_now":
-    - "auto_now_add": sets the field to the current date and time only when the model instance is created.
-    - "auto_now": sets the field to the current date and time every time the model instance is saved.
+- Tests add a lot of overhead, but at the same time they are needed to make sure that the code does what it needs to do.
+- From my own documentation, a reminder: 
+    - The system should retrieve all credit notes issued to Dealers from the Navision database in the past month. This means that the IssuedDate field in the credit notes should not be assigned at the creation of an instance, it will be provided by the data from the Navision database. 
+    - The system should produce a Credit Notes Resume table for each dealer. This means that the dates on instance of credit note resumes should be assigned on the creation of that instance.
+    - The system wil will generate an acknowledgement request for the credit notes resume table. So the dates on an instance of the acknowledgement request need to be assigned upon creation of the instance. 
 
 **Next Steps**:
 
