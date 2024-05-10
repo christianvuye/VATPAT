@@ -100,7 +100,7 @@
 
 ### Date: 09/05/2024
 
-**Task**: Complete models for dashboard ap
+**Task**: Complete models for dashboard app
 
 **Time Spent**: 2h
 
@@ -120,7 +120,32 @@
 - Complete CreditNoteResume model.
 - Figure out if the dates on instances of credit notes, credit note resumes and acknowledgementrequest should be assigned on the creation of that instance or whether they have been set prior. 
 
-----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+
+### Date: 10/05/2024
+
+**Task**: Complete models for dashboard app
+
+**Time Spent**: 2.5h
+
+**Objective**:
+- Complete CreditNoteResume model.
+- Figure out if the dates on instances of credit notes, credit note resumes and acknowledgementrequest should be assigned on the creation of that instance or whether they have been set prior. 
+
+**Achievements**:
+- Completed the Credit Notes model, but it is untested. 
+- Started working on Credit Notes Resume Email model. 
+
+**What did I learn?**:
+- TDD is a very useful practice, but it can take a lot of time initially to set up all of the tests. If I had more time, I would have continued TDD, but that is not the case unfortunately. 
+- Difference between "auto_now_add" and "auto_now":
+    - "auto_now_add": sets the field to the current date and time only when the model instance is created.
+    - "auto_now": sets the field to the current date and time every time the model instance is saved.
+
+**Next Steps**:
+
+
+---------------------------------------------------------------------------------------
 
 Template below: 
 ---
