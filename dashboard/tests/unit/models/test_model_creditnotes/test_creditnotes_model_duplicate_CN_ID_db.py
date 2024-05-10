@@ -3,7 +3,7 @@ from django.db.utils import IntegrityError
 from dashboard.models import CreditNotes, Dealers
 
 @pytest.mark.django_db
-def test_creditnotes_model_duplicate_cn_id(test_dealer_data, test_credit_note_data):
+def test_creditnotes_model_duplicate_cn_id_db(test_dealer_data, test_credit_note_data):
     """
     Test that creating a credit note with a duplicate CN_ID raises an error
     on the database level - IntegrityError.
