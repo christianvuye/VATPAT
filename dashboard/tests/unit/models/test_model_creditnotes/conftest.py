@@ -25,7 +25,7 @@ def test_credit_note_data():
         #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
         "TotalDocumentAmount": Decimal('1234.56'),
         "TotalVATAmountDocumentt": Decimal('234.56'),
-        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.12'),
         "AccountingNumberID": "AC1234567890", 
         "IssuedDate": timezone.now()
     }
@@ -40,7 +40,7 @@ def test_credit_note_data_missing_cn_id():
         #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
         "TotalDocumentAmount": Decimal('1234.56'),
         "TotalVATAmountDocumentt": Decimal('234.56'),
-        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.12'),
         "AccountingNumberID": "AC1234567890", 
         "IssuedDate": timezone.now()
     }
@@ -55,7 +55,7 @@ def test_credit_note_data_missing_total_document_amount():
         #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
         #"TotalDocumentAmount": Decimal('1234.56'),
         "TotalVATAmountDocumentt": Decimal('234.56'),
-        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.12'),
         "AccountingNumberID": "AC1234567890", 
         "IssuedDate": timezone.now()
     }
@@ -70,7 +70,7 @@ def test_credit_note_data_missing_total_vat_amount_document():
         #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
         "TotalDocumentAmount": Decimal('1234.56'),
         #"TotalVATAmountDocumentt": Decimal('234.56'),
-        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.12'),
         "AccountingNumberID": "AC1234567890", 
         "IssuedDate": timezone.now()
     }
@@ -85,7 +85,7 @@ def test_credit_note_data_missing_total_document_amount_with_vat():
         #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
         "TotalDocumentAmount": Decimal('1234.56'),
         "TotalVATAmountDocumentt": Decimal('234.56'),
-        #"TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        #"TotalDocumentAmountWithVAT": Decimal('1469.12'),
         "AccountingNumberID": "AC1234567890", 
         "IssuedDate": timezone.now()
     }
@@ -100,7 +100,7 @@ def test_credit_note_data_missing_accounting_number_id():
         #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
         "TotalDocumentAmount": Decimal('1234.56'),
         "TotalVATAmountDocumentt": Decimal('234.56'),
-        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.12'),
         #"AccountingNumberID": "AC1234567890", 
         "IssuedDate": timezone.now()
     }
@@ -115,7 +115,7 @@ def test_credit_note_data_missing_issued_date():
         #"D_ID": "PT123456", Omit the D_ID since it will be set to the dealer created during tests.
         "TotalDocumentAmount": Decimal('1234.56'),
         "TotalVATAmountDocumentt": Decimal('234.56'),
-        "TotalDocumentAmountWithVAT": Decimal('1469.13'),
+        "TotalDocumentAmountWithVAT": Decimal('1469.12'),
         "AccountingNumberID": "AC1234567890", 
         #"IssuedDate": timezone.now()
     }

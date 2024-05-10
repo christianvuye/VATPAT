@@ -22,7 +22,7 @@ def test_creditnotes_model_create_creditnote(test_dealer_data, test_credit_note_
     assert credit_note.CN_ID == "CN20230001"
     assert credit_note.TotalDocumentAmount == Decimal('1234.56')
     assert credit_note.TotalVATAmountDocumentt == Decimal('234.56')
-    assert credit_note.TotalDocumentAmountWithVAT == Decimal('1469.13')
+    assert credit_note.TotalDocumentAmountWithVAT == Decimal('1469.12')
     assert credit_note.AccountingNumberID == "AC1234567890"
     assert credit_note.IssuedDate.date() == timezone.now().date() # Asserting the date only since the time will be slightly different
 
