@@ -1,6 +1,7 @@
 import pytest
 from django.utils import timezone
 from dashboard.models import CreditNotes, Dealers
+from decimal import Decimal
 
 @pytest.fixture
 def dummy_dealer_and_credit_note():
@@ -18,9 +19,9 @@ def dummy_dealer_and_credit_note():
     credit_note = CreditNotes.objects.create(
         CN_ID="CN001",
         D_ID=dealer,  # Reference the dummy dealer instance
-        TotalDocumentAmount=12345.67,
-        TotalVATAmountDocumentt=1234.56,
-        TotalDocumentAmountWithVAT=13580.23,
+        TotalDocumentAmount=Decimal('12345.67'),
+        TotalVATAmountDocumentt=Decimal('1234.56'),
+        TotalDocumentAmountWithVAT=Decimal('13580.23'),
         AccountingNumberID="AN12345",
         IssuedDate=timezone.now()
     )
