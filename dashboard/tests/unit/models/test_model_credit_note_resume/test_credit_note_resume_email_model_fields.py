@@ -1,21 +1,22 @@
+import pytest
 from django.apps import apps
+from django.db import models
+from dashboard.models import CreditNotes
 
+@pytest.mark.django_db
 def test_credit_note_resume_email_model_fields():
-    try:
-        CreditNoteResumeEmail = apps.get_model('dashboard', 'CreditNoteResumeEmail')
-    except LookupError:
-        assert False, "The 'CreditNoteResumeEmail' model does not exist."
+    CreditNoteResumeEmail = apps.get_model('dashboard', 'CreditNoteResumeEmail')
 
     # Test CNR_ID field
     cnr_id_field = CreditNoteResumeEmail._meta.get_field('CNR_ID')
     assert cnr_id_field.get_internal_type() == 'AutoField', "CNR_ID field type is not AutoField"
-    assert cnr_id_field.unique == True, "CNR_ID field is not unique"
-    assert cnr_id_field.primary_key == True, "CNR_ID field is not a primary key"
+    assert cnr_id_field.unique, "CNR_ID field is not unique"
+    assert cnr_id_field.primary_key, "CNR_ID field is not a primary key"
 
     # Test CN_ID field
     cn_id_field = CreditNoteResumeEmail._meta.get_field('CN_ID')
-    assert cn_id_field.max_length == 10, "CN_ID field max_length does not match"
-    assert cn_id_field.get_internal_type() == 'CharField', "CN_ID field type is not CharField"
+    assert isinstance(cn_id_field, models.ForeignKey), "CN_ID field is not a ForeignKey"
+    assert cn_id_field.related_model is CreditNotes, "CN_ID does not link to CreditNotes model"
 
     # Test DateIssued field
     date_issued_field = CreditNoteResumeEmail._meta.get_field('DateIssued')
