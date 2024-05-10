@@ -4,7 +4,7 @@ from dashboard.models import CreditNotes, Dealers
 from decimal import Decimal
 
 @pytest.mark.django_db
-def test_credit_notes_cn_id_unique_model_level(test_dealer_data, test_credit_note_data):
+def test_credit_notes_model_duplicate_CN_ID(test_dealer_data, test_credit_note_data):
     """
     Test that the CN_ID field in the CreditNotes model is unique at the model level.
     """
