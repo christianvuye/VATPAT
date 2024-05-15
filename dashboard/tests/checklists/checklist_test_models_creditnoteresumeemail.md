@@ -2,7 +2,7 @@
 
 ## Test Field Validations
 - [ ] Test that creating a resume email with a duplicate `CNR_ID` raises an error.
-- [ ] Test for maximum length constraints on string fields (`CN_ID`, `Subject`).
+- [ ] Test for maximum length constraints on string fields (`Subject`).
 - [ ] Test for required fields being not nullable.
 - [ ] Test for proper date handling in `DateIssued`.
 
