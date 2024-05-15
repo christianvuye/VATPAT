@@ -147,8 +147,32 @@
 
 **Next Steps**:
 - As the Dealers data is being imported from the Navision database, should the dateTime be set on creation of the instance or should it just be imported from the Navision database? Check with Paulo. 
+    - If you're importing data through a process that uses this model (for instance, through Django's ORM, admin interface, or custom scripts using the model), these fields will behave as expected. However, if data is directly inserted into the database bypassing Django's ORM (like using raw SQL or external tools), Django's automatic date handling will not apply, and those fields will need to be manually handled.
 - The database is currently empty. 
 - Complete CreditNoteResume model.
+
+---------------------------------------------------------------------------------------
+
+### Date: 16/05/2024
+
+**Task**: Complete models for dashboard app
+
+**Time Spent**: 2.5h
+
+**Objective**:
+- Complete CreditNoteResume model.
+
+**Achievements**:
+- 
+
+**Blockers**:
+- 
+
+**What did I learn?**:
+
+
+**Next Steps**:
+
 
 ---------------------------------------------------------------------------------------
 
