@@ -119,8 +119,18 @@ class AcknowledgementRequest(models.Model):
 
 class AcknowledgementReceived(models.Model):
     A_ID = models.AutoField(primary_key=True, unique=True)
-    R_ID = models.IntegerField(null=True)
-    MsgFile = models.BinaryField()
+    R_ID = models.ForeignKey(AcknowledgementRequest, on_delete=models.CASCADE, db_column='R_ID')
+    MsgFile = models.BinaryField() # ask Paulo if there are any restrictions on the file type and size
 
     class Meta:
         db_table = 'AcknowledgementReceived'
+    
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+    
+    def delete(self):
+        raise IntegrityError("AcknowledgementReceived cannot be deleted")
+    
+    def __str__(self):
+        return f"{self.A_ID} | {self.R_ID}"
