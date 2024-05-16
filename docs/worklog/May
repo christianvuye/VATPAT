@@ -172,6 +172,7 @@
 
 
 **Next Steps**:
+- Check with Paulo why subject of the CreditNotesResumeEmail is stored in the database, as it should be the same for every email sent?
 
 
 ---------------------------------------------------------------------------------------
