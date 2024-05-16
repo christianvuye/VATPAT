@@ -132,3 +132,7 @@ def validate_month(month):
 def validate_year(year):
     if year < 2000 or year > 2050:
         raise ValidationError("Year must be between 2000 and 2050.")
+
+def validate_send_date(created_date, send_date):
+    if send_date < created_date:
+        raise ValidationError("Send date cannot be earlier than the created date.")
