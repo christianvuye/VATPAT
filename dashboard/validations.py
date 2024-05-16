@@ -124,3 +124,7 @@ def validate_email_date_consistency(month, year, date_issued):
     """
     if date_issued.month != month or date_issued.year != year:
         raise ValidationError("Month and Year must match the date the email was issued.")
+
+def validate_month(month):
+    if month < 1 or month > 12:
+        raise ValidationError("Month must be between 1 and 12.")
