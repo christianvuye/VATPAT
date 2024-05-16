@@ -109,3 +109,18 @@ def validate_total_with_vat(TotalDocumentAmount, TotalVATAmountDocumentt, TotalD
     """
     if TotalDocumentAmount + TotalVATAmountDocumentt != TotalDocumentAmountWithVAT:
         raise ValidationError("The total amount with VAT must be the sum of the total amount and the VAT amount.")
+    
+def validate_email_date_consistency(month, year, date_issued):
+    """
+    Validates that the Month and Year fields correspond to the DateIssued.
+    
+    Args:
+    month (int): Month extracted from DateIssued.
+    year (int): Year extracted from DateIssued.
+    date_issued (datetime): Date when the email was issued.
+    
+    Raises:
+    ValidationError: If Month and Year do not match those of DateIssued.
+    """
+    if date_issued.month != month or date_issued.year != year:
+        raise ValidationError("Month and Year must match the date the email was issued.")
