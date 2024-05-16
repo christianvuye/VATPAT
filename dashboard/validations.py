@@ -128,3 +128,7 @@ def validate_email_date_consistency(month, year, date_issued):
 def validate_month(month):
     if month < 1 or month > 12:
         raise ValidationError("Month must be between 1 and 12.")
+    
+def validate_year(year):
+    if year < 2000 or year > 2050:
+        raise ValidationError("Year must be between 2000 and 2050.")
