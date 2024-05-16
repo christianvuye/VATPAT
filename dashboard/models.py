@@ -1,6 +1,6 @@
 from django.db import models, IntegrityError
 from django.core.exceptions import ValidationError
-from dashboard.validations import validate_vat, validate_d_id, validate_vat_amounts, validate_total_with_vat
+from dashboard.validations import validate_vat, validate_d_id, validate_vat_amounts, validate_total_with_vat, validate_email_date_consistency
 
 class Dealers(models.Model):
     D_ID = models.CharField(max_length=10, unique=True, validators=[validate_d_id], primary_key=True) 
@@ -73,6 +73,10 @@ class CreditNoteResumeEmail(models.Model):
 
     class Meta:
         db_table = 'CreditNoteResumeEmail'
+
+    def clean(self):
+        # Validate consistency between DateIssued, Month, and Year
+        validate_email_date_consistency(self.Month, self.Year, self.DateIssued)
 
 class AcknowledgementRequest(models.Model):
     R_ID = models.AutoField(primary_key=True)
