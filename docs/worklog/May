@@ -163,19 +163,24 @@
 - Complete CreditNoteResume model.
 
 **Achievements**:
-- 
+- Completed CreditNoteResume, AcknowledgementRequest, AcknowledgementReceoved models.
 
 **Blockers**:
-- 
+- None. Only one test failed, regarding the wrong title of a template, which is fixed now.
 
 **What did I learn?**:
-
+- Developing without TDD is much faster, but I am not very confident in all behaviour working as desired. After completing a version or something visual for the users and business to be happy to see progress, I want to run some more unit tests to test the behaviour of the invidual components.
+- It's nice to see things come together, and I want to polish the shit out of this tool to make it work as fast as possible, the most secure way and cover edge cases. 
+- I feel my understanding of the Django models is much better now, so I can write the code faster too. 
 
 **Next Steps**:
 - Check with Paulo why subject of the CreditNotesResumeEmail is stored in the database, as it should be the same for every email sent?
 - Figure out or ask Paulo what the purpose of the Status and IsValid fields are for again in the CreditNotesResume model. 
     - Figured it out: isValid is a bool that can be modified to False if a faulty CreditNoteResume email has been sent
-
+- ask Paulo if there are any restrictions on the file type and size in the AcknowledgementReceived table
+- If MsgFile might contain sensitive information:
+    - Encryption: Consider encrypting the data before it's stored and decrypting it upon retrieval if security is a major concern.
+    - Secure Access: Ensure that only authorized users can access or manipulate these records, perhaps by implementing view and change permissions.
 
 ---------------------------------------------------------------------------------------
 
