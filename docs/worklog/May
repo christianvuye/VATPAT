@@ -173,6 +173,7 @@
 
 **Next Steps**:
 - Check with Paulo why subject of the CreditNotesResumeEmail is stored in the database, as it should be the same for every email sent?
+- Figure out or ask Paulo what the purpose of the Status and IsValid fields are for again in the CreditNotesResume model. 
 
 
 ---------------------------------------------------------------------------------------
