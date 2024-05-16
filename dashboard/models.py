@@ -95,14 +95,24 @@ class CreditNoteResumeEmail(models.Model):
         return f"{self.CNR_ID} | {self.CN_ID} | {self.DateIssued} | {self.Month} | {self.Year} | {self.Body} | {self.Subject} | {self.Status} | {self.IsValid}"
 
 class AcknowledgementRequest(models.Model):
-    R_ID = models.AutoField(primary_key=True)
-    CNR_ID = models.IntegerField(null=True)
+    R_ID = models.AutoField(primary_key=True, unique=True)
+    CNR_ID = models.ForeignKey(CreditNoteResumeEmail, on_delete=models.CASCADE, db_column='CNR_ID')
     Status = models.BooleanField()
-    CreatedDate = models.DateTimeField()
-    SendDate = models.DateTimeField()
+    CreatedDate = models.DateTimeField(auto_now_add=True)
+    SendDate = models.DateTimeField() # figure out why this value is different from the created date
 
     class Meta:
         db_table = 'AcknowledgementRequest'
+    
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+    
+    def delete(self):
+        raise IntegrityError("AcknowledgementRequest cannot be deleted")
+    
+    def __str__(self):
+        return f"{self.R_ID} | {self.CNR_ID} | {self.Status} | {self.CreatedDate} | {self.SendDate}"
 
 class AcknowledgementReceived(models.Model):
     A_ID = models.AutoField(primary_key=True, unique=True)
