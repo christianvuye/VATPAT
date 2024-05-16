@@ -1,6 +1,6 @@
 from django.db import models, IntegrityError
 from django.core.exceptions import ValidationError
-from dashboard.validations import validate_vat, validate_d_id, validate_vat_amounts, validate_total_with_vat, validate_email_date_consistency, validate_month, validate_year
+from dashboard.validations import validate_vat, validate_d_id, validate_vat_amounts, validate_total_with_vat, validate_email_date_consistency, validate_month, validate_year, validate_send_date
 
 class Dealers(models.Model):
     D_ID = models.CharField(max_length=10, unique=True, validators=[validate_d_id], primary_key=True) 
@@ -103,6 +103,9 @@ class AcknowledgementRequest(models.Model):
 
     class Meta:
         db_table = 'AcknowledgementRequest'
+    
+    def clean(self):
+        validate_send_date(self.CreatedDate, self.SendDate)
     
     def save(self, *args, **kwargs):
         self.full_clean()
