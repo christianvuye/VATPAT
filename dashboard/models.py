@@ -69,7 +69,7 @@ class CreditNoteResumeEmail(models.Model):
     Body = models.TextField()
     Subject = models.CharField(max_length=40)
     Status = models.BooleanField()
-    IsValid = models.BooleanField()
+    IsValid = models.BooleanField(default=True)
 
     class Meta:
         db_table = 'CreditNoteResumeEmail'
