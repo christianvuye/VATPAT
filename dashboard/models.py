@@ -77,6 +77,16 @@ class CreditNoteResumeEmail(models.Model):
     def clean(self):
         # Validate consistency between DateIssued, Month, and Year
         validate_email_date_consistency(self.Month, self.Year, self.DateIssued)
+    
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+    
+    def delete(self):
+        raise IntegrityError("CreditNoteResumeEmail cannot be deleted")
+
+    def __str__(self):
+        return f"{self.CNR_ID} | {self.CN_ID} | {self.DateIssued} | {self.Month} | {self.Year} | {self.Body} | {self.Subject} | {self.Status} | {self.IsValid}"
 
 class AcknowledgementRequest(models.Model):
     R_ID = models.AutoField(primary_key=True)
