@@ -21,5 +21,5 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', include('dashboard.urls')),
-    path('', RedirectView.as_view(url='dashboard/', permanent=True)),
+    path('', RedirectView.as_view(url='dashboard/', permanent=True)), # Homepage should be login probably, but for now redirect to dashboard
 ]
