@@ -138,7 +138,8 @@ class AcknowledgementRequest(models.Model):
     CNR_ID = models.ForeignKey( # send the same request over and over again until it is acknowledged
         CreditNoteResumeEmail, 
         on_delete=models.CASCADE, 
-        db_column='CNR_ID'
+        db_column='CNR_ID',
+        default=''
         ) 
     CreatedDate = models.DateTimeField(auto_now_add=True)
     SendDate = models.DateTimeField() #this will store the latest date a reminder has been sent
@@ -170,7 +171,8 @@ class AcknowledgementReceived(models.Model):
     R_ID = models.ForeignKey(
         AcknowledgementRequest, 
         on_delete=models.CASCADE, 
-        db_column='R_ID'
+        db_column='R_ID',
+        default=''
         )
     MsgFile = models.BinaryField() #store the email message file
 
