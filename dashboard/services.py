@@ -57,17 +57,16 @@ def create_credit_note_resume_emails():
     month = now.month
     year = now.year
 
-    for dealer_name, notes in grouped_credit_notes:
+    for dealer_name, notes in grouped_credit_notes.items():
         resume_email = CreditNoteResumeEmail.objects.create(
             DateIssued=now,
             Month=month,
             Year=year
         )
-
-    print(f'Created CreditNoteResumeEmail: {resume_email} for Dealer: {dealer_name}')
-
-    # Step 5: Update the CreditNotes records to associate them with the created CreditNoteResumeEmail instance.
-    for note in notes:
-        note.CNR_ID = resume_email
-        note.save()
-        print(f'Updated CreditNote: {note.CN_ID} with CreditNoteResumeEmail: {resume_email}')
+        print(f'Created CreditNoteResumeEmail: {resume_email} for Dealer: {dealer_name}')
+        
+        # Step 5: Update the CreditNotes records to associate them with the created CreditNoteResumeEmail instance.
+        for note in notes:
+            note.CNR_ID = resume_email
+            note.save()
+            print(f'Updated CreditNote: {note.CN_ID} with CreditNoteResumeEmail: {resume_email}')

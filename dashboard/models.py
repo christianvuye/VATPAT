@@ -54,6 +54,9 @@ class CreditNoteResumeEmail(models.Model):
     Month = models.PositiveIntegerField()
     Year = models.PositiveIntegerField()
     IsValid = models.BooleanField(default=True)
+    #CreditNoteResume table should contain a field with the sum of 
+    #the total amount of all credit notes for the dealer in the month and year 
+    #of the CreditNoteResume
 
     class Meta:
         db_table = 'CreditNoteResumeEmail'

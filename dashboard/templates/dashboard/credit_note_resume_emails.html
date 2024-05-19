@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Credit Note Resume Emails</title>
+</head>
+<body>
+    <h1>Create Credit Note Resume Emails</h1>
+    <a href="{% url 'credit_note_resume_emails' %}">
+        <button type="button">Create Credit Note Resume Emails</button>
+    </a>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>

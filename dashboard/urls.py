@@ -14,7 +14,7 @@ urlpatterns = [
     path('credit_notes_previous_month_grouped_by_dealer/', 
          credit_notes_previous_month_grouped_by_dealer_view, 
          name='credit_notes_previous_month_grouped_by_dealer'),
-    path('create_credit_note_resume_emails/',
+    path('credit_note_resume_emails/',
         create_credit_note_resume_emails_view,
-        name='create_credit_note_resume_emails')
+        name='credit_note_resume_emails')
 ]
