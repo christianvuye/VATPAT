@@ -26,4 +26,5 @@ def credit_notes_previous_month_grouped_by_dealer_view(request):
 
 def create_credit_note_resume_emails_view(request):
     create_credit_note_resume_emails()
-    return render(request, 'dashboard/credit_note_resume_emails.html')
+    message = "Credit note resume emails created successfully."
+    return render(request, 'dashboard/credit_note_resume_emails.html', {'message': message})
