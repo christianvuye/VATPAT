@@ -2,7 +2,8 @@ from django.urls import path
 from .views import (
     dashboard_view, 
     credit_notes_previous_month_view,
-    credit_notes_previous_month_grouped_by_dealer_view
+    credit_notes_previous_month_grouped_by_dealer_view,
+    create_credit_note_resume_emails_view
 )
 
 urlpatterns = [
@@ -12,5 +13,8 @@ urlpatterns = [
          name='credit_notes_previous_month'),
     path('credit_notes_previous_month_grouped_by_dealer/', 
          credit_notes_previous_month_grouped_by_dealer_view, 
-         name='credit_notes_previous_month_grouped_by_dealer')
+         name='credit_notes_previous_month_grouped_by_dealer'),
+    path('create_credit_note_resume_emails/',
+        create_credit_note_resume_emails_view,
+        name='create_credit_note_resume_emails')
 ]
