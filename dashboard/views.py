@@ -30,6 +30,19 @@ def create_credit_note_resume_emails_view(request):
     return render(request, 'dashboard/credit_note_resume_emails.html', {'message': message})
 
 def dashboard_2_view(request):
+    credit_notes = collect_credit_notes_from_previous_month()
+
+    unique_dealers = collect_unique_dealers_from_credit_notes(credit_notes)
+
+    grouped_credit_notes = credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealers)
+
+    return render(request, 'dashboard/dashboard_2.html', {
+        'unique_dealers': unique_dealers,
+        'grouped_credit_notes': grouped_credit_notes
+    })
+
+"""
+def dashboard_2_view(request):
     # Step 1: Collect credit notes from the previous month
     credit_notes = collect_credit_notes_from_previous_month()
     
@@ -47,3 +60,4 @@ def dashboard_2_view(request):
         'selected_dealer': [int(selected_dealer)] if selected_dealer else []
     }
     return render(request, 'dashboard/dashboard_2.html', context)
+"""
