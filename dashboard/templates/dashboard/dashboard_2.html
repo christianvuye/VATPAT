@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Credit Notes by Dealer</title>
+    <style>
+        .dealer {
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .credit-notes {
+            display: none;
+            margin-left: 20px;
+            list-style-type: none;
+        }
+        .credit-notes li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard - Credit Notes by Dealer</h1>
+    <form method="post">
+        {% csrf_token %}
+        <ul>
+            {% for dealer, notes in credit_notes.items %}
+                <li>
+                    <button type="submit" name="dealer" value="{{ dealer.id }}" class="dealer">
+                        {{ dealer.DealerName }}
+                    </button>
+                    {% if dealer.id in selected_dealer %}
+                        <ul class="credit-notes">
+                            {% for note in notes %}
+                                <li>
+                                    {{ note.CN_ID }} |
+                                    Total Document Amount: {{ note.TotalDocumentAmount }} |
+                                    Total VAT Amount: {{ note.TotalVATAmountDocumentt }} |
+                                    Total Document Amount with VAT: {{ note.TotalDocumentAmountWithVAT }} |
+                                    Issued Date: {{ note.IssuedDate }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </form>
+</body>
+</html>

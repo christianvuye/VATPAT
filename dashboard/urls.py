@@ -17,6 +17,6 @@ urlpatterns = [
          name='credit_notes_previous_month_grouped_by_dealer'),
     path('credit_note_resume_emails/',
         create_credit_note_resume_emails_view,
-        name='credit_note_resume_emails')
+        name='credit_note_resume_emails'),
     path('dashboard_2/', dashboard_2_view, name='dashboard_2')
 ]
