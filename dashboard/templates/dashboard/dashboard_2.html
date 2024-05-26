@@ -17,6 +17,9 @@
         th {
             background-color: #f2f2f2;
         }
+        .hidden {
+            display: none;
+        }
         ul {
             list-style-type: none;
             padding: 0;
@@ -42,34 +45,47 @@
         </thead>
         <tbody>
             {% for dealer in unique_dealers %}
-                {% for dealer_key, totals_per_dealer in totals_per_dealer.items %}
+                {% for dealer_key, totals in totals_per_dealer.items %}
                     {% if dealer_key == dealer %}
-                        <tr>
+                        <tr onclick="toggleDetails('{{ dealer|slugify }}-details')">
                             <td><strong>{{ dealer }}</strong></td>
                             <td>CNR_ID</td>
                             <td>May 1, 2024</td>
-                            <td><strong>{{ totals_per_dealer.TotalDocumentAmount|floatformat:2 }}</strong></td>
-                            <td><strong>{{ totals_per_dealer.TotalVATAmountDocumentt|floatformat:2 }}</strong></td>
-                            <td><strong>{{ totals_per_dealer.TotalDocumentAmountWithVAT|floatformat:2 }}</strong></td>
+                            <td><strong>{{ totals.TotalDocumentAmount|floatformat:2 }}</strong></td>
+                            <td><strong>{{ totals.TotalVATAmountDocumentt|floatformat:2 }}</strong></td>
+                            <td><strong>{{ totals.TotalDocumentAmountWithVAT|floatformat:2 }}</strong></td>
                         </tr>
                     {% endif %}
                 {% endfor %}
-                {% for dealer_key, credit_notes in grouped_credit_notes.items %}
-                    {% if dealer_key == dealer %}
-                        {% for credit_note in credit_notes %}
-                            <tr>
-                                <td></td>
-                                <td>{{ credit_note.CN_ID }}</td>
-                                <td>{{ credit_note.IssuedDate|date:"F j, Y" }}</td>
-                                <td>{{ credit_note.TotalDocumentAmount|floatformat:2 }}</td>
-                                <td>{{ credit_note.TotalVATAmountDocumentt|floatformat:2 }}</td>
-                                <td>{{ credit_note.TotalDocumentAmountWithVAT|floatformat:2 }}</td>
-                            </tr>
-                        {% endfor %}
-                    {% endif %}
-                {% endfor %}
+                <tbody id="{{ dealer|slugify }}-details" class="hidden">
+                    {% for dealer_key, credit_notes in grouped_credit_notes.items %}
+                        {% if dealer_key == dealer %}
+                            {% for credit_note in credit_notes %}
+                                <tr>
+                                    <td></td>
+                                    <td>{{ credit_note.CN_ID }}</td>
+                                    <td>{{ credit_note.IssuedDate|date:"F j, Y" }}</td>
+                                    <td>{{ credit_note.TotalDocumentAmount|floatformat:2 }}</td>
+                                    <td>{{ credit_note.TotalVATAmountDocumentt|floatformat:2 }}</td>
+                                    <td>{{ credit_note.TotalDocumentAmountWithVAT|floatformat:2 }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
             {% endfor %}
         </tbody>
     </table>
+    <script>
+        function toggleDetails(id) {
+            console.log("Toggling details for: ", id);
+            var element = document.getElementById(id);
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
