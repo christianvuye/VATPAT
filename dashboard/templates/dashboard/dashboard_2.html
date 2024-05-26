@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard - Credit Notes by Dealer</title>
+    <title>Dashboard - Credit Notes Last Month</title>
     <style>
         table {
             width: 80%;
@@ -28,23 +28,32 @@
     </style>
 </head>
 <body>
-    <h1>Dashboard - Credit Notes by Dealer</h1>
+    <h1>Dashboard - Credit Notes Last Month</h1>
     <table>
         <thead>
             <tr>
                 <th>Dealer Name</th>
-                <th>Credit Note ID</th>
+                <th>ID</th>
                 <th>Issued Date</th>
-                <th>Total Document Amount</th>
-                <th>Total VAT Amount Document</th>
-                <th>Total Document Amount With VAT</th>
+                <th>Total Amount</th>
+                <th>Total VAT Amount</th>
+                <th>Total Amount + VAT</th>
             </tr>
         </thead>
         <tbody>
             {% for dealer in unique_dealers %}
-                <tr>
-                    <td colspan="4"><strong>{{ dealer }}</strong></td>
-                </tr>
+                {% for dealer_key, totals_per_dealer in totals_per_dealer.items %}
+                    {% if dealer_key == dealer %}
+                        <tr>
+                            <td><strong>{{ dealer }}</strong></td>
+                            <td>CNR_ID</td>
+                            <td>May 1, 2024</td>
+                            <td>{{ totals_per_dealer.TotalDocumentAmount|floatformat:2 }}</td>
+                            <td>{{ totals_per_dealer.TotalVATAmountDocumentt|floatformat:2 }}</td>
+                            <td>{{ totals_per_dealer.TotalDocumentAmountWithVAT|floatformat:2 }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
                 {% for dealer_key, credit_notes in grouped_credit_notes.items %}
                     {% if dealer_key == dealer %}
                         {% for credit_note in credit_notes %}

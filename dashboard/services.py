@@ -42,6 +42,31 @@ def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list
     
     return grouped_credit_notes
 
+def credit_notes_totals_per_dealer(grouped_credit_notes):
+    """
+    Calculate the Total Document Amount, Total Document VAT Amount, and Total Document Amount with VAT for each dealer. 
+    """
+
+    totals_per_dealer = {}
+
+    for dealer, notes in grouped_credit_notes.items():
+        total_document_amount = 0
+        total_document_vat_amount = 0
+        total_document_amount_with_vat = 0
+
+        for note in notes:
+            total_document_amount += note.TotalDocumentAmount
+            total_document_vat_amount += note.TotalVATAmountDocumentt
+            total_document_amount_with_vat += note.TotalDocumentAmountWithVAT
+        
+        totals_per_dealer[dealer] = {
+            'TotalDocumentAmount': total_document_amount,
+            'TotalVATAmountDocumentt': total_document_vat_amount,
+            'TotalDocumentAmountWithVAT': total_document_amount_with_vat
+        }
+    
+    return totals_per_dealer
+
 def create_credit_note_resume_emails():
     # Step 1: Collect credit notes from the previous month
     credit_notes = collect_credit_notes_from_previous_month()
