@@ -2,86 +2,76 @@
 <html>
 <head>
     <title>Dashboard - Credit Notes Last Month</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 18px;
-            text-align: left;
-        }
-        th, td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        tr.clickable-row {
+        .clickable-row {
             cursor: pointer;
         }
-        tr.clickable-row:hover {
+        .clickable-row:hover {
             background-color: #f1f1f1;
         }
         .hidden {
             display: none;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        li {
-            margin-bottom: 5px;
-        }
     </style>
 </head>
 <body>
-    <h1>Dashboard - Credit Notes Last Month</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Dealer Name</th>
-                <th>ID</th>
-                <th>Issued Date</th>
-                <th>Total Amount</th>
-                <th>Total VAT Amount</th>
-                <th>Total Amount + VAT</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for dealer in unique_dealers %}
-                {% for dealer_key, totals in totals_per_dealer.items %}
-                    {% if dealer_key == dealer %}
-                        <tr class="clickable-row" onclick="toggleDetails('{{ dealer|slugify }}-details')">
-                            <td><strong>{{ dealer }}</strong></td>
-                            <td></td>
-                            <td></td>
-                            <td><strong>{{ totals.TotalDocumentAmount|floatformat:2 }}</strong></td>
-                            <td><strong>{{ totals.TotalVATAmountDocumentt|floatformat:2 }}</strong></td>
-                            <td><strong>{{ totals.TotalDocumentAmountWithVAT|floatformat:2 }}</strong></td>
-                        </tr>
-                    {% endif %}
-                {% endfor %}
-                <tbody id="{{ dealer|slugify }}-details" class="hidden">
-                    {% for dealer_key, credit_notes in grouped_credit_notes.items %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Dashboard - Credit Notes Last Month</h1>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Dealer Name</th>
+                    <th>ID</th>
+                    <th>Issued Date</th>
+                    <th>Total Amount</th>
+                    <th>Total VAT Amount</th>
+                    <th>Total Amount + VAT</th>
+                    <th>Credit Note Resume Sent?</th>
+                    <th>Acknowledgement Received?</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dealer in unique_dealers %}
+                    {% for dealer_key, totals in totals_per_dealer.items %}
                         {% if dealer_key == dealer %}
-                            {% for credit_note in credit_notes %}
-                                <tr>
-                                    <td></td>
-                                    <td>{{ credit_note.CN_ID }}</td>
-                                    <td>{{ credit_note.IssuedDate|date:"F j, Y" }}</td>
-                                    <td>{{ credit_note.TotalDocumentAmount|floatformat:2 }}</td>
-                                    <td>{{ credit_note.TotalVATAmountDocumentt|floatformat:2 }}</td>
-                                    <td>{{ credit_note.TotalDocumentAmountWithVAT|floatformat:2 }}</td>
-                                </tr>
-                            {% endfor %}
+                            <tr class="clickable-row" onclick="toggleDetails('{{ dealer|slugify }}-details')">
+                                <td><strong>{{ dealer }}</strong></td>
+                                <td></td>
+                                <td></td>
+                                <td><strong>{{ totals.TotalDocumentAmount|floatformat:2 }}</strong></td>
+                                <td><strong>{{ totals.TotalVATAmountDocumentt|floatformat:2 }}</strong></td>
+                                <td><strong>{{ totals.TotalDocumentAmountWithVAT|floatformat:2 }}</strong></td>
+                                <td>No</td>
+                                <td>No</td>
+                            </tr>
                         {% endif %}
                     {% endfor %}
-                </tbody>
-            {% endfor %}
-        </tbody>
-    </table>
+                    <tbody id="{{ dealer|slugify }}-details" class="hidden">
+                        {% for dealer_key, credit_notes in grouped_credit_notes.items %}
+                            {% if dealer_key == dealer %}
+                                {% for credit_note in credit_notes %}
+                                    <tr>
+                                        <td></td>
+                                        <td>{{ credit_note.CN_ID }}</td>
+                                        <td>{{ credit_note.IssuedDate|date:"F j, Y" }}</td>
+                                        <td>{{ credit_note.TotalDocumentAmount|floatformat:2 }}</td>
+                                        <td>{{ credit_note.TotalVATAmountDocumentt|floatformat:2 }}</td>
+                                        <td>{{ credit_note.TotalDocumentAmountWithVAT|floatformat:2 }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         function toggleDetails(id) {
             console.log("Toggling details for: ", id);
