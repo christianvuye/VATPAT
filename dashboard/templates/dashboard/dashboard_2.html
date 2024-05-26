@@ -14,6 +14,10 @@
         .hidden {
             display: none;
         }
+        .text-red-bold {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -43,8 +47,8 @@
                                 <td><strong>{{ totals.TotalDocumentAmount|floatformat:2 }}</strong></td>
                                 <td><strong>{{ totals.TotalVATAmountDocumentt|floatformat:2 }}</strong></td>
                                 <td><strong>{{ totals.TotalDocumentAmountWithVAT|floatformat:2 }}</strong></td>
-                                <td>No</td>
-                                <td>No</td>
+                                <td class="text-red-bold">No</td>
+                                <td class="text-red-bold">No</td>
                             </tr>
                         {% endif %}
                     {% endfor %}
