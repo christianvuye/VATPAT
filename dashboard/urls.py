@@ -3,7 +3,8 @@ from .views import (
     dashboard_view, 
     credit_notes_previous_month_view,
     credit_notes_previous_month_grouped_by_dealer_view,
-    create_credit_note_resume_emails_view
+    create_credit_note_resume_emails_view,
+    dashboard_2_view
 )
 
 urlpatterns = [
@@ -17,4 +18,5 @@ urlpatterns = [
     path('credit_note_resume_emails/',
         create_credit_note_resume_emails_view,
         name='credit_note_resume_emails')
+    path('dashboard_2/', dashboard_2_view, name='dashboard_2')
 ]
