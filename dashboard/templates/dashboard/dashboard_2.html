@@ -48,9 +48,9 @@
                             <td><strong>{{ dealer }}</strong></td>
                             <td>CNR_ID</td>
                             <td>May 1, 2024</td>
-                            <td>{{ totals_per_dealer.TotalDocumentAmount|floatformat:2 }}</td>
-                            <td>{{ totals_per_dealer.TotalVATAmountDocumentt|floatformat:2 }}</td>
-                            <td>{{ totals_per_dealer.TotalDocumentAmountWithVAT|floatformat:2 }}</td>
+                            <td><strong>{{ totals_per_dealer.TotalDocumentAmount|floatformat:2 }}</strong></td>
+                            <td><strong>{{ totals_per_dealer.TotalVATAmountDocumentt|floatformat:2 }}</strong></td>
+                            <td><strong>{{ totals_per_dealer.TotalDocumentAmountWithVAT|floatformat:2 }}</strong></td>
                         </tr>
                     {% endif %}
                 {% endfor %}
