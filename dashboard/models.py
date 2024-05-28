@@ -29,8 +29,7 @@ class Dealers(models.Model):
    
     def clean(self):
         validate_d_id(self.D_ID)
-        if not validate_vat(self.DealerVATnumber):
-            raise ValidationError({"DealerVATnumber": f"Invalid VAT number: {self.DealerVATnumber}"})
+        validate_vat(self.DealerVATnumber)
 
     def save(self, *args, **kwargs):
         self.full_clean()
