@@ -44,15 +44,15 @@ def validate_vat(vat):
     
     # Check if VAT has exactly 9 digits
     if len(vat) != 9:
-        return False
+        raise ValidationError("VAT number must have 9 digits.")
 
     # Check if VAT has only digits
     if not vat.isdigit():
-        return False
+        raise ValidationError("VAT number must contain only digits.")
 
     # Check if the first digit is one of the allowed prefixes
     if vat[0] not in ["1", "2", "3", "5", "6", "8", "9"]:
-        return False
+        raise ValidationError("Prefix of VAT number is invalid.")
     
     # Define the sequence of multipliers
     multipliers = [9, 8, 7, 6, 5, 4, 3, 2]
