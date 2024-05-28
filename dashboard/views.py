@@ -7,6 +7,9 @@ from .services import (
 )
 
 def dashboard_view(request):
+    """
+    Renders the dashboard view with the data from the previous month.
+    """
     credit_notes = collect_credit_notes_from_previous_month()
 
     unique_dealers = collect_unique_dealers_from_credit_notes(credit_notes)
