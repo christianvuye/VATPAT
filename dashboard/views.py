@@ -3,16 +3,11 @@ from .services import (
     collect_credit_notes_from_previous_month,
     collect_unique_dealers_from_credit_notes, 
     credit_notes_previous_month_per_dealer_dict,
-    create_credit_note_resume_emails,
     credit_notes_totals_per_dealer
 )
 
 def dashboard_view(request):
     return render(request, 'dashboard/dashboard.html')
-
-def credit_notes_previous_month_view(request):
-    credit_notes = collect_credit_notes_from_previous_month()
-    return render(request, 'dashboard/credit_notes_previous_month.html', {'credit_notes': credit_notes})
 
 def dashboard_2_view(request):
     credit_notes = collect_credit_notes_from_previous_month()
