@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Dealers, CreditNoteResumeEmail, CreditNotes, AcknowledgementRequest, AcknowledgementReceived
+from .models import (
+    Dealers, 
+    CreditNoteResumeEmail, 
+    CreditNotes, 
+    AcknowledgementRequest, 
+    AcknowledgementReceived
+)
 
 # Register your models here.
 admin.site.register(Dealers)
