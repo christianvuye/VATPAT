@@ -6,9 +6,6 @@ from .services import (
     credit_notes_totals_per_dealer
 )
 
-def dashboard_view(request):
-    return render(request, 'dashboard/dashboard.html')
-
 def dashboard_2_view(request):
     credit_notes = collect_credit_notes_from_previous_month()
 
