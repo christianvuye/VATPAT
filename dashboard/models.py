@@ -48,14 +48,15 @@ class Dealers(models.Model):
         )
 
 class CreditNoteResumeEmail(models.Model):
+    """
+    Should the CreditNoteResume table contain a field with the sum of 
+    the total amount(s) of all the aggregated credit notes for that dealer in that month? 
+    """
     CNR_ID = models.AutoField(unique=True, primary_key=True)
     DateIssued = models.DateTimeField(auto_now_add=True)
     Month = models.PositiveIntegerField()
     Year = models.PositiveIntegerField()
     IsValid = models.BooleanField(default=True)
-    #CreditNoteResume table should contain a field with the sum of 
-    #the total amount of all credit notes for the dealer in the month and year 
-    #of the CreditNoteResume
 
     class Meta:
         db_table = 'CreditNoteResumeEmail'
@@ -107,8 +108,10 @@ class CreditNotes(models.Model):
     TotalDocumentAmount = models.DecimalField(max_digits=38, decimal_places=20)
     TotalVATAmountDocumentt = models.DecimalField(max_digits=38, decimal_places=20)
     TotalDocumentAmountWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
-    AccountingNumberID = models.CharField(max_length=30) #Import from Navision DB, will not change.
-    IssuedDate = models.DateTimeField() #Import from Navision DB, will not change.
+
+    #The fields below will be imported from the Navision DB and will not change.
+    AccountingNumberID = models.CharField(max_length=30)
+    IssuedDate = models.DateTimeField() 
 
     class Meta:
         db_table = 'CreditNotes'
@@ -137,15 +140,21 @@ class CreditNotes(models.Model):
 
 class AcknowledgementRequest(models.Model):
     R_ID = models.AutoField(primary_key=True, unique=True)
-    CNR_ID = models.ForeignKey( # send the same request over and over again until it is acknowledged
+
+    # send the same request over and over again until it is acknowledged, so CNR_ID is constant
+    CNR_ID = models.ForeignKey( 
         CreditNoteResumeEmail, 
         on_delete=models.CASCADE, 
         db_column='CNR_ID',
         default=''
         ) 
     CreatedDate = models.DateTimeField(auto_now_add=True)
-    SendDate = models.DateTimeField() #this will store the latest date a reminder has been sent
-    RemindersSent = models.PositiveIntegerField(default=0) #this will store the number of reminders sent
+
+    #this will store the latest date a reminder has been sent
+    SendDate = models.DateTimeField() 
+
+    #this will store the number of reminders sent
+    RemindersSent = models.PositiveIntegerField(default=0) 
 
     class Meta:
         db_table = 'AcknowledgementRequest'
@@ -176,7 +185,9 @@ class AcknowledgementReceived(models.Model):
         db_column='R_ID',
         default=''
         )
-    MsgFile = models.BinaryField() #store the email message file
+
+    #store the email message file
+    MsgFile = models.BinaryField() 
 
     class Meta:
         db_table = 'AcknowledgementReceived'
