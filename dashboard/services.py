@@ -15,12 +15,9 @@ def collect_unique_dealers_from_credit_notes(credit_notes):
     """
     Collect all unique dealers from a credit_notes queryset.
     """
-    #credit_notes = collect_credit_notes_from_previous_month() # returns a QuerySet
 
-    # define empty list
     unique_dealer_list = []
 
-    # iterate through the QuerySet
     for note in credit_notes: 
         if note.D_ID.DealerName not in unique_dealer_list:
             unique_dealer_list.append(note.D_ID.DealerName)
@@ -31,7 +28,7 @@ def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list
     """
     Create a dictionary with dealers as keys and their credit notes as values.
     """
-    # Group credit notes by dealer, don't use defaultdict
+
     grouped_credit_notes = {}
 
     for dealer in unique_dealer_list:
@@ -68,16 +65,15 @@ def credit_notes_totals_per_dealer(grouped_credit_notes):
     return totals_per_dealer
 
 def create_credit_note_resume_emails():
-    # Step 1: Collect credit notes from the previous month
+    """
+    Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
+    """
     credit_notes = collect_credit_notes_from_previous_month()
     
-    # Step 2: Collect unique dealers from these credit notes
     unique_dealers = collect_unique_dealers_from_credit_notes(credit_notes)
     
-    # Step 3: Group the credit notes by dealer
     grouped_credit_notes = credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealers)
     
-    # Step 4: Create CreditNoteResumeEmail instances for each unique dealer
     now = datetime.now()
     month = now.month
     year = now.year
@@ -90,7 +86,6 @@ def create_credit_note_resume_emails():
         )
         print(f'Created CreditNoteResumeEmail: {resume_email} for Dealer: {dealer_name}')
         
-        # Step 5: Update the CreditNotes records to associate them with the created CreditNoteResumeEmail instance.
         for note in notes:
             note.CNR_ID = resume_email
             note.save()
