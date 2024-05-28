@@ -193,6 +193,12 @@
 **Objective**: 
 - Remove obsolete templates, view functions and urls. 
 
+**Achievements**:
+- removed credit note resume email template, view function and url path as resume generation will not be a button to push on the front-end but will happen automatically on the back-end every month
+- removed template, view function and url path that showed credit notes from the previous month grouped by dealer as it is now obsolete
+- removed template, view and url path to page that shows credit notes from the previous month as it is obsolete
+- renamed dashboard_2 template, view and url function to dashboard in order to replace static dashboard with dynamic and redirect to dashboard on homepage
+
 Template below: 
 ---
 **Task**: [Issue #123](Link to the GitHub issue or task)  
