@@ -36,6 +36,9 @@ Prefixes: The first digit of a NIF number indicates the type of taxpayer:
 """
 
 def validate_vat(vat):
+    """
+    Validates the Portuguese VAT number (NIF) using the algorithm described above.
+    """
     # Ensure VAT is a string to handle leading zeros
     vat = str(vat)
     
@@ -71,8 +74,8 @@ def validate_vat(vat):
     # Verify if the last digit matches the check digit
     is_valid = int(vat[-1]) == check_digit
 
-    # Return the boolean result True or False
-    return is_valid
+    if not is_valid:
+        return ValidationError("Invalid VAT number.")
 
 def validate_d_id(d_id):
     # Regular expression to match the required D_ID format
