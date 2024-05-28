@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import (
     dashboard_view, 
-    credit_notes_previous_month_view,
     dashboard_2_view
 )
 
