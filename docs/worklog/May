@@ -184,6 +184,15 @@
 
 ---------------------------------------------------------------------------------------
 
+### Date: 16/05/2024
+
+**Task**: Clean project repository, remove dead code and refactor where needed.
+
+**Time Spent**: 
+
+**Objective**: 
+- Remove obsolete templates, view functions and urls. 
+
 Template below: 
 ---
 **Task**: [Issue #123](Link to the GitHub issue or task)  
