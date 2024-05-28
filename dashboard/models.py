@@ -14,8 +14,7 @@ from dashboard.validations import (
 class Dealers(models.Model):
     D_ID = models.CharField(
         max_length=10, 
-        unique=True, 
-        validators=[validate_d_id], 
+        unique=True,  
         primary_key=True
         )
     DealerName = models.CharField(max_length=100)
@@ -29,6 +28,7 @@ class Dealers(models.Model):
         db_table = 'Dealers'
    
     def clean(self):
+        validate_d_id(self.D_ID)
         if not validate_vat(self.DealerVATnumber):
             raise ValidationError({"DealerVATnumber": f"Invalid VAT number: {self.DealerVATnumber}"})
 
