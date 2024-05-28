@@ -75,7 +75,7 @@ def validate_vat(vat):
     is_valid = int(vat[-1]) == check_digit
 
     if not is_valid:
-        return ValidationError("Invalid VAT number.")
+        raise ValidationError("Invalid VAT number.")
 
 def validate_d_id(d_id):
     # Regular expression to match the required D_ID format
