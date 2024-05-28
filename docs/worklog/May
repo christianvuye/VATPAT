@@ -198,6 +198,30 @@
 - removed template, view function and url path that showed credit notes from the previous month grouped by dealer as it is now obsolete
 - removed template, view and url path to page that shows credit notes from the previous month as it is obsolete
 - renamed dashboard_2 template, view and url function to dashboard in order to replace static dashboard with dynamic and redirect to dashboard on homepage
+- updated import statements for improved readability
+- removed extra and trailing whitespaces
+- updated Dealer ID validation and moved it as part of the clean method of the Dealer model class
+- added migration to apply change to Dealer ID field in the Dealer model class
+- updated vat validation function to raise ValidationError instead of returning a boolean
+- updated dealer model clean method by calling the validate vat function directly
+- updated model file with docstrings and comments on how to change and potentially improve the model
+- removed unnecessary comments and added docstring to create credit note resume emails function
+- deleted auto generated Django file for testing as testing is handled by pytest
+- added docstrings to validation functions for easier understanding
+- added docstring to dashboard_view function for readability
+- removed obsolete docstring files
+
+**Blockers**:
+- None. Everything still working as it should. 
+
+**What did I learn?**:
+- Readable code is important, both for me and the people who will be working on it afterwards.
+
+**Next Steps**:
+- Start working on functionality again, and use the requirements document as a guide. 
+- Refactor only after you have completed some functionality. 
+
+---------------------------------------------------------------------------------------
 
 Template below: 
 ---
