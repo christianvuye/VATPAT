@@ -78,6 +78,9 @@ def validate_vat(vat):
         raise ValidationError("Invalid VAT number.")
 
 def validate_d_id(d_id):
+    """
+    Validates the D_ID format.
+    """
     # Regular expression to match the required D_ID format
     d_id_regex = re.compile(r'^PT\d{6}$')
 
@@ -129,13 +132,22 @@ def validate_email_date_consistency(month, year, date_issued):
         raise ValidationError("Month and Year must match the date the email was issued.")
 
 def validate_month(month):
+    """
+    Validates that the month is between 1 and 12.
+    """
     if month < 1 or month > 12:
         raise ValidationError("Month must be between 1 and 12.")
     
 def validate_year(year):
+    """
+    Validates that the year is between 2000 and 2050.
+    """
     if year < 2000 or year > 2050:
         raise ValidationError("Year must be between 2000 and 2050.")
 
 def validate_send_date(created_date, send_date):
+    """
+    Validates that the send date is not earlier than the created date.
+    """
     if send_date < created_date:
         raise ValidationError("Send date cannot be earlier than the created date.")
