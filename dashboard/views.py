@@ -6,7 +6,7 @@ from .services import (
     credit_notes_totals_per_dealer
 )
 
-def dashboard_2_view(request):
+def dashboard_view(request):
     credit_notes = collect_credit_notes_from_previous_month()
 
     unique_dealers = collect_unique_dealers_from_credit_notes(credit_notes)
@@ -15,7 +15,7 @@ def dashboard_2_view(request):
 
     totals_per_dealer = credit_notes_totals_per_dealer(grouped_credit_notes)
 
-    return render(request, 'dashboard/dashboard_2.html', {
+    return render(request, 'dashboard/dashboard.html', {
         'unique_dealers': unique_dealers,
         'grouped_credit_notes': grouped_credit_notes,
         'totals_per_dealer': totals_per_dealer
