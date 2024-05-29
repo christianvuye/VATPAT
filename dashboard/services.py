@@ -2,6 +2,7 @@ from .models import CreditNotes, CreditNoteResumeEmail
 from .utils import get_previous_month_date_range
 from datetime import datetime
 from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 
 """
 Add type hints to the functions and make them more generic. Avoid hardcoding model names and field names in the functions.
@@ -116,13 +117,13 @@ def generate_email_content(dealer, credit_notes, template):
         </body>
         </html>
         """,
-        subject,
-        recipient,
-        body,
-        table_header,
-        table_rows,
-        table_footer,
-        signature
+        mark_safe(subject),
+        mark_safe(recipient),
+        mark_safe(body),
+        mark_safe(table_header),
+        mark_safe(table_rows),
+        mark_safe(table_footer),
+        mark_safe(signature)
     )
 
     return e_mail_content
