@@ -19,6 +19,7 @@ credit_note_email_template = {
             </thead>
             <tbody>
         """,
+    "table_rows": "",
     "table_footer": 
         """
             </tbody>
