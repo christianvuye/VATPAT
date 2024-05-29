@@ -134,6 +134,17 @@ def generate_email_content(dealer, credit_notes, template):
 
     return e_mail_content
 
+def save_email_content_to_file(email_content, dealer_name):
+    """
+    Save email content to a file.
+    """
+    current_month = datetime.now().strftime('%B')
+    file_name = f'{dealer_name}_credit_note_resume_email_{current_month}.html'
+
+    with open(file_name, 'w', encoding="utf-8") as file:
+        file.write(email_content)
+    print(f'Saved email content to file: {file_name}')
+
 def create_credit_note_resume_emails(): # a function should do one thing, so split this function into smaller functions later when refactoring
     """
     Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
