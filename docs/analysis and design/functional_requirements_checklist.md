@@ -21,7 +21,7 @@
 - [X] Retrieve all credit notes issued to Dealers from the Navision database in the past month.
 
 ### b. Generate Credit Notes Resume Table:
-- [ ] The system should produce a Credit Notes Resume table for each dealer.
+- [X] The system should produce a Credit Notes Resume table for each dealer.
 
 ### c. Send Credit Notes Resume:
 - [ ] Email the Credit Notes Resume table to dealers.
@@ -34,7 +34,7 @@
 
 ## 3. VAT Protocol Acknowledgement Tracking
 ### a. Generation of Acknowledgement Sheets:
-- [ ] Generate VAT protocol acknowledgement sheets for issued credit notes.
+- [X] Generate VAT protocol acknowledgement sheets for issued credit notes.
 
 ### b. Sending Acknowledgement Sheets:
 - [ ] Email the generated sheets to Dealers.
@@ -56,10 +56,10 @@
 
 ## 6. System Setup and Integration
 ### a. System Environment:
-- [ ] VATPAT should be a web-based application.
+- [X] VATPAT should be a web-based application.
 - [ ] It will fetch data from the Navision database and run from a local server EHEINWNAV03SP, which also hosts Microsoft Dynamics Business Central – Navision.
 
 ### b. Integration Points:
-- [ ] Integrate with the existing Navision database to fetch credit note information.
+- [X] Integrate with the existing Navision database to fetch credit note information.
 - [ ] Integrate with an email system for sending out reminders, summaries, and tracking acknowledgements.
 - [ ] Integrate with a secure file storage system for record-keeping.
