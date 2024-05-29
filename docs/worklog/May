@@ -230,6 +230,32 @@
 
 **Task**: Create the function that generates the Credit Note Resume Table Email for the Dealers
 
+**Time Spent**: 4h
+
+**Objective**: 
+- Create the function that generates the Credit Note Resume Table Email for the Dealers and saves the file.
+
+**Achievements**:
+- added comments to make the the service functions more general in order to avoid code repetition and make querying the data easier
+- added service function to generate email content for credit note resume
+- added dictionary with email template content for credit note resume email
+- updated generate email function to mark HTML content as safe in order to avoid escaped characters
+- added unicode to email template for special characters
+- added generate email content function call to create credit note resume email
+- updated generate email function with correct type for recipient variable
+- updated create credit note resume email function by storing and printing generated email content
+- updated generate_email_content function to format issued date to day, month, year, without time
+- updated generate_email_content function to format VAT amounts to only two decimals
+- updated generate email content function to return HTML with UTF-8 encoding
+- added service function to save generated email content to a file
+- added save_email_content_to_file function call to create_credit_note_resume_emails so email contents get saved when generating credit note resume
+- updated email template to be fully portuguese instead of english
+
+**Blockers**:
+- None (yet)
+
+**What did I learn?**:
+- Not much. Coding monkey today.
 Template below: 
 ---
 **Task**: [Issue #123](Link to the GitHub issue or task)  
