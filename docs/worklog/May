@@ -184,11 +184,14 @@
 
 ---------------------------------------------------------------------------------------
 
-### Date: 16/05/2024
+### Date: 28/05/2024
 
-**Task**: Clean project repository, remove dead code and refactor where needed.
+**Task**: 
+- Clean project repository
+- remove dead code 
+- refactor where needed.
 
-**Time Spent**: 
+**Time Spent**: 2,5h
 
 **Objective**: 
 - Remove obsolete templates, view functions and urls. 
@@ -222,6 +225,10 @@
 - Refactor only after you have completed some functionality. 
 
 ---------------------------------------------------------------------------------------
+
+### Date: 29/05/2024
+
+**Task**: Create the function that generates the Credit Note Resume Table Email for the Dealers
 
 Template below: 
 ---
