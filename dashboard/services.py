@@ -92,6 +92,7 @@ def generate_email_content(dealer, credit_notes, template):
 
     for note in credit_notes:
         issued_date = note.IssuedDate.strftime('%d-%m-%Y')
+        total_vat_amount = f"{note.TotalVATAmountDocumentt:.2f}"
         table_rows += format_html(
             """
             <tr>
@@ -102,7 +103,7 @@ def generate_email_content(dealer, credit_notes, template):
             """,
             note.CN_ID,
             issued_date,
-            note.TotalVATAmountDocumentt
+            total_vat_amount
         )
     
     e_mail_content = format_html(
