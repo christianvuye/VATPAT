@@ -169,6 +169,8 @@ def create_credit_note_resume_emails(): # a function should do one thing, so spl
 
         email_content = generate_email_content(dealer_name, notes, credit_note_email_template)
         print(email_content)
+
+        save_email_content_to_file(email_content, dealer_name)
         
         for note in notes:
             note.CNR_ID = resume_email
