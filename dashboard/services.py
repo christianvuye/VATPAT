@@ -91,6 +91,7 @@ def generate_email_content(dealer, credit_notes, template):
     signature = template.get('signature')
 
     for note in credit_notes:
+        issued_date = note.IssuedDate.strftime('%d-%m-%Y')
         table_rows += format_html(
             """
             <tr>
@@ -100,7 +101,7 @@ def generate_email_content(dealer, credit_notes, template):
             </tr>
             """,
             note.CN_ID,
-            note.IssuedDate,
+            issued_date,
             note.TotalVATAmountDocumentt
         )
     
