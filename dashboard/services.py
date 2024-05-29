@@ -2,7 +2,7 @@ from .models import CreditNotes, CreditNoteResumeEmail
 from .utils import get_previous_month_date_range
 from datetime import datetime
 
-def collect_credit_notes_from_previous_month():
+def collect_credit_notes_from_previous_month(): # make this function more generic, so it can take any range of dates
     """
     Collect all credit notes from the previous month.
     """
@@ -11,7 +11,7 @@ def collect_credit_notes_from_previous_month():
     
     return credit_notes # returns a QuerySet
 
-def collect_unique_dealers_from_credit_notes(credit_notes):
+def collect_unique_dealers_from_credit_notes(credit_notes): # make this function more generic, so it can collect unique value from a QuerySet of any model, params: QuerySet, field_name -> for example: collect_unique_values_queryset(credit_notes, 'D_ID.DealerName')
     """
     Collect all unique dealers from a credit_notes queryset.
     """
@@ -24,7 +24,7 @@ def collect_unique_dealers_from_credit_notes(credit_notes):
     
     return unique_dealer_list
 
-def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list):
+def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list): # make this function more generic, so it can take any QuerySet and any list of unique values in that QuerySet
     """
     Create a dictionary with dealers as keys and their credit notes as values.
     """
@@ -39,7 +39,7 @@ def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list
     
     return grouped_credit_notes
 
-def credit_notes_totals_per_dealer(grouped_credit_notes):
+def credit_notes_totals_per_dealer(grouped_credit_notes): # make this function more generic, so it can take any dictionary and calculate totals for any summable field in the values of the dictionary
     """
     Calculate the Total Document Amount, Total Document VAT Amount, and Total Document Amount with VAT for each dealer. 
     """
@@ -64,7 +64,7 @@ def credit_notes_totals_per_dealer(grouped_credit_notes):
     
     return totals_per_dealer
 
-def create_credit_note_resume_emails():
+def create_credit_note_resume_emails(): # leave this function as is, it's bespoke for the CreditNoteResumeEmail model
     """
     Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
     """
