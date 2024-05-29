@@ -1,5 +1,6 @@
 from .models import CreditNotes, CreditNoteResumeEmail
 from .utils import get_previous_month_date_range
+from .email_templates import credit_note_email_template
 from datetime import datetime
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -128,7 +129,7 @@ def generate_email_content(dealer, credit_notes, template):
 
     return e_mail_content
 
-def create_credit_note_resume_emails(): # leave this function as is, it's bespoke for the CreditNoteResumeEmail model
+def create_credit_note_resume_emails(): # a function should do one thing, so split this function into smaller functions later when refactoring
     """
     Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
     """
@@ -149,6 +150,8 @@ def create_credit_note_resume_emails(): # leave this function as is, it's bespok
             Year=year
         )
         print(f'Created CreditNoteResumeEmail: {resume_email} for Dealer: {dealer_name}')
+
+        generate_email_content(dealer_name, notes, credit_note_email_template)
         
         for note in notes:
             note.CNR_ID = resume_email
