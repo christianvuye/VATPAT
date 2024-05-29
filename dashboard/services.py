@@ -109,6 +109,9 @@ def generate_email_content(dealer, credit_notes, template):
     e_mail_content = format_html(
         """
         <html>
+        <head>
+            <meta charset="UTF-8">
+        </head>
         <body>
             <p>Subject: {}</p>
             <p>Dear {}</p>
