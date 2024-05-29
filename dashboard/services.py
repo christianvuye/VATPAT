@@ -1,4 +1,8 @@
-from .models import CreditNotes, CreditNoteResumeEmail
+from .models import (
+    CreditNotes, 
+    CreditNoteResumeEmail,
+    AcknowledgementRequest
+)
 from .utils import get_previous_month_date_range
 from .email_templates import credit_note_email_template
 from datetime import datetime
@@ -188,3 +192,19 @@ def get_credit_note_resume_emails_by_month_and_year(month, year):
     resume_emails = CreditNoteResumeEmail.objects.filter(Month=month, Year=year)
     
     return resume_emails # returns a QuerySet
+
+def create_acknowledgement_requests(credit_note_resumes):
+    """
+    Create AcknowledgementRequest instances from a set of CreditNoteResumeEmail records.
+
+    Args:
+        credit_note_resumes (QuerySet): A queryset or list of CreditNoteResumeEmail records.
+    """
+    for resume in credit_note_resumes:
+        acknowledgement_request = AcknowledgementRequest.objects.create(
+            CNR_ID=resume,
+            CreatedDate=datetime.now(),
+            SendDate=datetime.now(),
+            RemindersSent=0
+        )
+        print(f'Created AcknowledgementRequest: {acknowledgement_request} for CreditNoteResumeEmail: {resume.CNR_ID}')
