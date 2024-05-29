@@ -81,7 +81,7 @@ def generate_email_content(dealer, credit_notes, template):
     """
     Generate email content based on template, dealer, and credit notes.
     """
-    recipient = dealer.DealerName
+    recipient = dealer
     
     subject = template.get('subject')
     body = template.get('body')
