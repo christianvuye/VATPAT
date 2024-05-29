@@ -1,6 +1,17 @@
 from .models import CreditNotes, CreditNoteResumeEmail
 from .utils import get_previous_month_date_range
 from datetime import datetime
+from django.utils.html import format_html
+
+"""
+Add type hints to the functions and make them more generic. Avoid hardcoding model names and field names in the functions.
+
+Make functions more pure by removing print statements and side effects. Instead, return the data and let the caller decide what to do with it.
+
+Avoid using global variables in functions. Pass the required data as arguments to the functions.
+
+Avoid HTML formatting in Python code. Instead, use templates to generate HTML content.
+"""
 
 def collect_credit_notes_from_previous_month(): # make this function more generic, so it can take any range of dates
     """
@@ -63,6 +74,58 @@ def credit_notes_totals_per_dealer(grouped_credit_notes): # make this function m
         }
     
     return totals_per_dealer
+
+def generate_email_content(dealer, credit_notes, template):
+    """
+    Generate email content based on template, dealer, and credit notes.
+    """
+    recipient = dealer.DealerName
+    
+    subject = template.get('subject')
+    body = template.get('body')
+    table_header = template.get('table_header')
+    table_rows = template.get('table_rows')
+    table_footer = template.get('table_footer')
+    signature = template.get('signature')
+
+    for note in credit_notes:
+        table_rows += format_html(
+            """
+            <tr>
+                <td>{}</td>
+                <td>{}</td>
+                <td>{}</td>
+            </tr>
+            """,
+            note.CN_ID,
+            note.IssuedDate,
+            note.TotalVATAmountDocumentt
+        )
+    
+    e_mail_content = format_html(
+        """
+        <html>
+        <body>
+            <p>Subject: {}</p>
+            <p>Dear {}</p>
+            {}
+            {}
+            {}
+            {}
+            {}
+        </body>
+        </html>
+        """,
+        subject,
+        recipient,
+        body,
+        table_header,
+        table_rows,
+        table_footer,
+        signature
+    )
+
+    return e_mail_content
 
 def create_credit_note_resume_emails(): # leave this function as is, it's bespoke for the CreditNoteResumeEmail model
     """
