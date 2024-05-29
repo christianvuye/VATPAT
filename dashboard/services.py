@@ -113,8 +113,8 @@ def generate_email_content(dealer, credit_notes, template):
             <meta charset="UTF-8">
         </head>
         <body>
-            <p>Subject: {}</p>
-            <p>Dear {}</p>
+            <p>Assunto: {}</p>
+            <p>Prezado(a) {}</p>
             {}
             {}
             {}
