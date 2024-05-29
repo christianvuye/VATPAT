@@ -13,6 +13,10 @@ Make functions more pure by removing print statements and side effects. Instead,
 Avoid using global variables in functions. Pass the required data as arguments to the functions.
 
 Avoid HTML formatting in Python code. Instead, use templates to generate HTML content.
+
+Create a function that gets credit notes or credit note resume emails for a specific date or date range. 
+
+This could be two separate functions, one for credit notes and one for credit note resume emails. -> get_credit_notes_by date(date) and get_credit_note_resume_emails_by_date(date)
 """
 
 def collect_credit_notes_from_previous_month(): # make this function more generic, so it can take any range of dates
@@ -176,3 +180,11 @@ def create_credit_note_resume_emails(): # a function should do one thing, so spl
             note.CNR_ID = resume_email
             note.save()
             print(f'Updated CreditNote: {note.CN_ID} with CreditNoteResumeEmail: {resume_email}')
+
+def get_credit_note_resume_emails_by_month_and_year(month, year):
+    """
+    Get CreditNoteResumeEmail instances for a specific month and year.
+    """
+    resume_emails = CreditNoteResumeEmail.objects.filter(Month=month, Year=year)
+    
+    return resume_emails # returns a QuerySet
