@@ -250,6 +250,8 @@
 - added service function to save generated email content to a file
 - added save_email_content_to_file function call to create_credit_note_resume_emails so email contents get saved when generating credit note resume
 - updated email template to be fully portuguese instead of english
+- added service function to query for credit note resumes in a given period
+- added a service function to create AcknowledgementRequest instances from a set of CreditNoteResumeEmail records
 
 **Blockers**:
 - None (yet)
