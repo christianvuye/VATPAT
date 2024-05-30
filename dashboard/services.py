@@ -153,7 +153,7 @@ def save_email_content_to_file(email_content, dealer_name):
         file.write(email_content)
     print(f'Saved email content to file: {file_name}')
 
-def create_credit_note_resume_emails(): # a function should do one thing, so split this function into smaller functions later when refactoring
+def create_credit_note_resume_emails(): # a function should do one thing, so split this function into smaller functions later when refactoring and pass the required data as arguments
     """
     Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
     """
@@ -216,3 +216,14 @@ def increment_reminders_sent(acknowledgement_request):
     acknowledgement_request.RemindersSent += 1
     acknowledgement_request.save()
     print(f'Updated AcknowledgementRequest: {acknowledgement_request} with RemindersSent: {acknowledgement_request.RemindersSent}')
+
+def send_acknowledgement_request_emails(acknowledgement_requests):
+    """
+    Send acknowledgement request emails for a set of AcknowledgementRequest instances.
+
+    Args:
+        acknowledgement_requests (QuerySet): A queryset or list of AcknowledgementRequest records.
+    """
+    for request in acknowledgement_requests:
+        # Send email
+        print(f'Sent acknowledgement request email for CreditNoteResumeEmail: {request.CNR_ID}')
