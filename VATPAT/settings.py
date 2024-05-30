@@ -129,9 +129,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email settings
+# Update the email settings with the correct values with Paulo
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_HOST = ""
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "postmaster@sandbox14f2a85cb0f84709881e45e8852489c6.mailgun.org"
-EMAIL_HOST_PASSWORD ="ed206fb068ce7c8f491b4a26de88d286-0996409b-123b2635"
+EMAIL_HOST_USER = "hp.finance@honda-eu.com"
+EMAIL_HOST_PASSWORD =""
