@@ -208,3 +208,11 @@ def create_acknowledgement_requests(credit_note_resumes):
             RemindersSent=0
         )
         print(f'Created AcknowledgementRequest: {acknowledgement_request} for CreditNoteResumeEmail: {resume.CNR_ID}')
+
+def increment_reminders_sent(acknowledgement_request):
+    """
+    Increment the number of reminders sent for an AcknowledgementRequest instance.
+    """
+    acknowledgement_request.RemindersSent += 1
+    acknowledgement_request.save()
+    print(f'Updated AcknowledgementRequest: {acknowledgement_request} with RemindersSent: {acknowledgement_request.RemindersSent}')
