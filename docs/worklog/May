@@ -258,7 +258,21 @@
 
 **What did I learn?**:
 - Not much. Coding monkey today.
-- Once the requirements are in place, take some time to slow down, review the work, polish it and to have it make more sense instead of just producing code like a code monkey. 
+- Once the requirements are in place, take some time to slow down, review the work, polish it and to have it make more sense instead of just producing code like a code monkey.
+
+---------------------------------------------------------------------------------------
+
+### Date: 30/05/2024
+
+**Task**: 
+- add send email functionality and increment AcknowledgementRequest’s RemindersSent field each time a reminder has been sent
+
+**Time Spent**: 
+
+**Objective**: 
+- Write the function to create an AcknowledgementRequest instance 
+- Write the function to send Credit Note Resume Table
+- Write the function to increment AcknowledgementRequest’s RemindersSent field each time a reminder has been sent
 
 Template below: 
 ---
