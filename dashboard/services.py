@@ -8,8 +8,11 @@ from .email_templates import credit_note_email_template
 from datetime import datetime
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+from django.core.mail import send_mail
 
 """
+This looks like shit. It needs to be fixed, but the models need to be set up correctly for this. 
+
 Add type hints to the functions and make them more generic. Avoid hardcoding model names and field names in the functions.
 
 Make functions more pure by removing print statements and side effects. Instead, return the data and let the caller decide what to do with it.
@@ -204,7 +207,7 @@ def create_acknowledgement_requests(credit_note_resumes):
         acknowledgement_request = AcknowledgementRequest.objects.create(
             CNR_ID=resume,
             CreatedDate=datetime.now(),
-            SendDate=datetime.now(),
+            SendDate=datetime.now(), # do not set this here, set it when sending the email
             RemindersSent=0
         )
         print(f'Created AcknowledgementRequest: {acknowledgement_request} for CreditNoteResumeEmail: {resume.CNR_ID}')
@@ -217,13 +220,22 @@ def increment_reminders_sent(acknowledgement_request):
     acknowledgement_request.save()
     print(f'Updated AcknowledgementRequest: {acknowledgement_request} with RemindersSent: {acknowledgement_request.RemindersSent}')
 
-def send_acknowledgement_request_emails(acknowledgement_requests):
+def send_acknowledgement_request_email(acknowledgement_request, dealer_instance, template): # pass the generated email content as an argument somehow
     """
-    Send acknowledgement request emails for a set of AcknowledgementRequest instances.
+    Send an acknowledgement request email to a dealer.
+    """
+    subject = template.get('subject')
+    body = template.get('body')
+    from_email = "hp.finance@honda-eu.com"
+    to_email = dealer_instance.DealerEmail
 
-    Args:
-        acknowledgement_requests (QuerySet): A queryset or list of AcknowledgementRequest records.
-    """
-    for request in acknowledgement_requests:
-        # Send email
-        print(f'Sent acknowledgement request email for CreditNoteResumeEmail: {request.CNR_ID}')
+    send_mail(
+        subject,
+        body,
+        from_email,
+        [to_email],
+        fail_silently=False
+    )
+    print(f'Sent acknowledgement request email to: {to_email}')
+
+    increment_reminders_sent(acknowledgement_request)
