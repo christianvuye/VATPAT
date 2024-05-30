@@ -274,6 +274,21 @@
 - Write the function to send Credit Note Resume Table
 - Write the function to increment AcknowledgementRequest’s RemindersSent field each time a reminder has been sent
 
+**Achievements**:
+- added service function to increment RemindersSent field for an acknowledgement_request instance
+- added send_acknowledgement_request_email service function
+- added email settings
+- updated email settings with expected values and left remaining settings blank to be discussed with Paulo
+- added service function to send acknowledgement request email to a dealer
+- added high level template for the acknowledgement dashboard
+
+**Blockers**:
+- Need access to email settings for securely sending out bulk emails from hp.finance@honda-eu.com
+
+**What did I learn?**:
+- This code will need to be refactored, the data and objects model is trash and as a result the functions containing the business logic are trash too. 
+
+---------------------------------------------------------------------------------------
 Template below: 
 ---
 **Task**: [Issue #123](Link to the GitHub issue or task)  
