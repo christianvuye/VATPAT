@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.views import LoginView
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 from .services import (
     collect_credit_notes_from_previous_month,
     collect_unique_dealers_from_credit_notes, 
@@ -19,6 +19,8 @@ class CustomLoginView(LoginView):
 # Therefore, we use a function-based view. 
 # But check with Jessamyn what she thinks is the right approach.
 
+
+# clean up all the code related to required login before being able to access the dashboard
 #@login_required
 def dashboard_view(request):
     """

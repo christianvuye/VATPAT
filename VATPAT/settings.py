@@ -145,6 +145,8 @@ OAUTH2_REDIRECT_URI = 'http://localhost:8000/get_token/'
 OAUTH2_AUTHORITY = f"https://login.microsoftonline.com/{OAUTH2_TENANT_ID}"
 OAUTH2_SCOPE = ["https://graph.microsoft.com/.default"]
 
+# clean up all the code related to required login before being able to access the dashboard
+# clean up all the different paths and urls too, because they are a mess.
 # Login 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
