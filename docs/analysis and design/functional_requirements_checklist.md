@@ -3,7 +3,7 @@
 ## 1. User Management
 ### a. User Authentication:
 - [ ] Users should log in using a username and password.
-- [ ] The system should support only two user accounts: ‘business’ and ‘power user’.
+- [X] The system should support only two user accounts: ‘business’ and ‘power user’.
 
 ### b. User Logout:
 - [ ] Users should be able to log out from the system.
