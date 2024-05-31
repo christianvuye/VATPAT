@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Website{% endblock %}</title>
+    <!-- Include any common CSS or meta tags -->
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <!-- Add a header section with navigation or branding -->
+        <nav>
+            <!-- Add navigation menu items -->
+        </nav>
+    </header>
+    
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+    <footer>
+        <!-- Add a footer section with copyright or contact information -->
+    </footer>
+    
+    <!-- Include any common JavaScript files -->
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>
