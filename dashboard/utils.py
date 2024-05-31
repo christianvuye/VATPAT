@@ -24,5 +24,3 @@ def get_previous_months(num_months):
         current_date = previous_month_date
 
     return previous_months
-
-print(get_previous_months(3)) 
