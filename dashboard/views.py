@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Dealers
 from django.contrib.auth.views import LoginView
 #from django.contrib.auth.decorators import login_required
 from .services import (
@@ -38,4 +39,13 @@ def dashboard_view(request):
         'unique_dealers': unique_dealers,
         'grouped_credit_notes': grouped_credit_notes,
         'totals_per_dealer': totals_per_dealer
+    })
+
+def dashboard_view_acknowledgements(request):
+    """
+    Renders a dashboard view with the acknowledgement tracking from the previous months.
+    """
+    dealers = Dealers.objects.all()
+    return render(request, 'dashboard/dashboard_acknowledgements.html', {
+        'dealers': dealers
     })
