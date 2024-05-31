@@ -12,10 +12,17 @@ def get_previous_month_date_range():
 
 def get_previous_months(num_months):
     """
-    Returns a list of the previous months from the current month.
+    Returns a list of the previous months from the current month, including the current month.
     """
-    today = datetime.today()
-    previous_months = []
-    previous_months = [(today - timedelta(days=30 * i)).strftime("%b '%y") for i in range(num_months + 1)]
-    previous_months.reverse() # Reverse the list to show the oldest month first
+    current_date = datetime.now()
+    previous_months = [current_date.strftime("%B '%y")]
+
+    for i in range(num_months - 1):
+        previous_month_date = current_date.replace(day=1) - timedelta(days=1)
+        previous_month = previous_month_date.strftime("%B '%y")
+        previous_months.append(previous_month)
+        current_date = previous_month_date
+
     return previous_months
+
+print(get_previous_months(3)) 
