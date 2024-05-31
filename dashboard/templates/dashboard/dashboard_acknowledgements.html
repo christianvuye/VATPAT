@@ -1,28 +1,120 @@
-<table>
-    <thead>
-        <tr>
-            <th>Dealer Name</th>
-            <th>January</th>
-            <th>February</th>
-            <th>March</th>
-            <!-- Add more months here -->
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Dealer 1</td>
-            <td>Value for January</td>
-            <td>Value for February</td>
-            <td>Value for March</td>
-            <!-- Add more values for each month here -->
-        </tr>
-        <tr>
-            <td>Dealer 2</td>
-            <td>Value for January</td>
-            <td>Value for February</td>
-            <td>Value for March</td>
-            <!-- Add more values for each month here -->
-        </tr>
-        <!-- Add more rows for each dealer here -->
-    </tbody>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dealer Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .clickable-row {
+            cursor: pointer;
+        }
+        .clickable-row:hover {
+            background-color: #f1f1f1;
+        }
+        .icon {
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <div style="height: 100px; background-color: #e9ecef;"></div> <!-- Placeholder for image -->
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Search for Dealer">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 text-right">
+                <span class="icon">&#128269;</span> <!-- Filter Icon -->
+                <span class="icon">&#9881;</span> <!-- Settings Icon -->
+                <span class="icon">&#8635;</span> <!-- Logout Icon -->
+            </div>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Dealers</th>
+                    <th>Jul '23</th>
+                    <th>Aug '23</th>
+                    <th>Sep '23</th>
+                    <th>Oct '23</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dealer 1</td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Dealer 2</td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Dealer 3</td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Dealer 4</td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Dealer 5</td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Dealer 6</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>Dealer 7</td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" checked></td>
+                </tr>
+                <tr>
+                    <td>Dealer 8</td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox" checked></td>
+                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" checked></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-12 text-center">
+                <span class="icon">&#171;</span> <!-- Left arrow -->
+                <span class="icon">&#187;</span> <!-- Right arrow -->
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
