@@ -6,10 +6,10 @@
 - [X] The system should support only two user accounts: ‘business’ and ‘power user’.
 
 ### b. User Logout:
-- [ ] Users should be able to log out from the system.
+- [X] Users should be able to log out from the system.
 
 ### c. Dashboard for Users:
-- [ ] Users should view a real-time status of all acknowledgements.
+- [X] Users should view a real-time status of all acknowledgements.
 - [ ] Users should view the communication history with dealers, including reminders sent and KPIs tracking dealer performance.
 - [ ] Users should retrieve and view stored acknowledgement sheets or e-mail replies with acknowledgements from dealers.
 
