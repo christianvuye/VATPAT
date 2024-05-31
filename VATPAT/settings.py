@@ -136,3 +136,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "hp.finance@honda-eu.com"
 EMAIL_HOST_PASSWORD =""
+
+# Login 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
