@@ -25,6 +25,12 @@
             right: 20px;
             z-index: 1000;
         }
+        .yes-icon {
+            color: green;
+        }
+        .no-icon {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -57,10 +63,10 @@
                 {% for dealer in dealers %}
                 <tr>
                     <td>{{ dealer.DealerName }}</td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
-                    <td><input type="checkbox"></td>
+                    <td><i class="fas fa-check yes-icon"></i></td> <!-- YES Checkmark -->
+                    <td><i class="fas fa-times no-icon"></i></td> <!-- NO Checkmark -->
+                    <td><i class="fas fa-check yes-icon"></i></td> <!-- YES Checkmark -->
+                    <td><i class="fas fa-times no-icon"></i></td> <!-- NO Checkmark -->
                 </tr>
                 {% endfor %}
             </tbody>
