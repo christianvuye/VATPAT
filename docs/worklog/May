@@ -289,6 +289,16 @@
 - This code will need to be refactored, the data and objects model is trash and as a result the functions containing the business logic are trash too. 
 
 ---------------------------------------------------------------------------------------
+
+### Date: 31/05/2024
+
+**Task**: 
+- add user accounts
+- make login screen first screen users see
+- work with Paulo to set up email settings
+
+**Achievements**:
+
 Template below: 
 ---
 **Task**: [Issue #123](Link to the GitHub issue or task)  
