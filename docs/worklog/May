@@ -298,6 +298,17 @@
 - work with Paulo to set up email settings
 
 **Achievements**:
+- added Custom Login View class that inherits from the LoginView class, for login page
+- added login template
+- added base template for other templates to use
+- added url pattern for custom login view
+- added login url and redirect url to settings file
+- moved login and base html templates one folder up as Django handles class based views different from function based views using render function
+- updated dashboard view function with the login_required decorator so dashboard can only be accessed after loggin in
+- added required settings for Azure AD to settings.py file
+- updated urls and settings so login page is the first page the users see when opening the dashboard app
+- updated settings, urls (both project and app level) and views so that login is required to see dashboard
+- added various comments for later cleanup and possible refactor of all the code related to the login page and the url paths
 
 Template below: 
 ---
