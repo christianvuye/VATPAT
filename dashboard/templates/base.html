@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}My Website{% endblock %}</title>
+    <title>{% block title %}VATPAT{% endblock %}</title>
     <!-- Include any common CSS or meta tags -->
     {% block css %}
     {% endblock %}
 </head>
 <body>
     <header>
-        <!-- Add a header section with navigation or branding -->
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}!</p>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
         <nav>
             <!-- Add navigation menu items -->
         </nav>
