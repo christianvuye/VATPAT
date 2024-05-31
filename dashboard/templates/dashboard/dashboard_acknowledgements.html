@@ -46,10 +46,9 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Dealers</th>
-                    <th>Jul '23</th>
-                    <th>Aug '23</th>
-                    <th>Sep '23</th>
-                    <th>Oct '23</th>
+                    {% for month in months %}
+                        <th>{{ month }}</th>
+                    {% endfor %}
                 </tr>
             </thead>
             <tbody>
