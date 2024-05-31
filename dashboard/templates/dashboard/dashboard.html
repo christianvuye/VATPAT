@@ -18,10 +18,16 @@
             color: red;
             font-weight: bold;
         }
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container mt-5">
+        <a href="{% url 'logout' %}" class="btn btn-danger logout-btn">Logout</a>
         <h1 class="mb-4">Dashboard - Credit Notes Last Month</h1>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
