@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Dealers
+from .utils import get_previous_months
 from django.contrib.auth.views import LoginView
 #from django.contrib.auth.decorators import login_required
 from .services import (
@@ -46,6 +47,11 @@ def dashboard_view_acknowledgements(request):
     Renders a dashboard view with the acknowledgement tracking from the previous months.
     """
     dealers = Dealers.objects.all()
+
+    # Get the current and previous 3 months
+    months = get_previous_months(3)
+
     return render(request, 'dashboard/dashboard_acknowledgements.html', {
-        'dealers': dealers
+        'dealers': dealers,
+        'months': months
     })
