@@ -137,6 +137,14 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "hp.finance@honda-eu.com"
 EMAIL_HOST_PASSWORD =""
 
+# Azure AD required settings -> update once you have required values
+OAUTH2_CLIENT_ID = 'your_client_id'
+OAUTH2_CLIENT_SECRET = 'your_client_secret'
+OAUTH2_TENANT_ID = 'your_tenant_id'
+OAUTH2_REDIRECT_URI = 'http://localhost:8000/get_token/'
+OAUTH2_AUTHORITY = f"https://login.microsoftonline.com/{OAUTH2_TENANT_ID}"
+OAUTH2_SCOPE = ["https://graph.microsoft.com/.default"]
+
 # Login 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'

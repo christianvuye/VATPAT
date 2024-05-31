@@ -170,7 +170,7 @@ def create_credit_note_resume_emails(): # a function should do one thing, so spl
     month = now.month
     year = now.year
 
-    for dealer_name, notes in grouped_credit_notes.items():
+    for dealer_name, notes in grouped_credit_notes.items(): # this is not a very logical way of creating credit note resumes
         resume_email = CreditNoteResumeEmail.objects.create(
             DateIssued=now,
             Month=month,
