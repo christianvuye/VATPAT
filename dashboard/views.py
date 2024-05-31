@@ -19,7 +19,7 @@ class CustomLoginView(LoginView):
 # Therefore, we use a function-based view. 
 # But check with Jessamyn what she thinks is the right approach.
 
-@login_required
+#@login_required
 def dashboard_view(request):
     """
     Renders the dashboard view with the data from the previous month.

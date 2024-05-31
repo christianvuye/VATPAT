@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth.decorators import login_required
 from .views import (
     CustomLoginView,
     dashboard_view
@@ -6,5 +7,5 @@ from .views import (
 
 urlpatterns = [
     path('', CustomLoginView.as_view(), name='login'),
-    path('dashboard', dashboard_view, name='dashboard')
+    path('dashboard/', login_required(dashboard_view), name='dashboard')
 ]

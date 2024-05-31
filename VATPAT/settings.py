@@ -146,5 +146,5 @@ OAUTH2_AUTHORITY = f"https://login.microsoftonline.com/{OAUTH2_TENANT_ID}"
 OAUTH2_SCOPE = ["https://graph.microsoft.com/.default"]
 
 # Login 
-LOGIN_URL = '/'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
