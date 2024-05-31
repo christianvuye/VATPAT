@@ -309,6 +309,26 @@
 - updated urls and settings so login page is the first page the users see when opening the dashboard app
 - updated settings, urls (both project and app level) and views so that login is required to see dashboard
 - added various comments for later cleanup and possible refactor of all the code related to the login page and the url paths
+- added url path for logout screen
+- added login and logout option to base template
+- updated base template by moving login and logout functionality to the navigation bar, and commenting it out for now
+- added logout button to dashboard
+- updated setting file with correct redirect URL after login
+- updated urls with correct redirection after logout
+- updated acknowledgements dashboard with bootstrap CSS
+- added view function for acknowledgement tracking dashboard
+- added url path to acknowledgements dashboard view
+- updated acknowledgement dashboard with dealer data from the VATPAT database
+- added util function to get x amount of previous months and return a list of previous months in reverse
+- added get previous months function call to acknowledgement dashboard view function so previous months can be accessed in template
+- updated acknowledgement dashboard template with actual months based on the current date instead of hardcoded strings
+- updated get previous months function to correctly return the current month and the last x previous months
+- removed obsolete print statement that was used for testing
+- updated get_previous_months function call in acknowledgements view with the correct parameters
+- updated acknowledgement dashboard template with filter and settings icons
+- updated acknowledgement dashboard template by removing arrows on the bottom of the table as they were not needed
+- updated acknowledgement dashboard with title
+- added yes and no checkmarks randomly on the acknowledgement dashboard as the logic does not exist yet
 
 Template below: 
 ---
