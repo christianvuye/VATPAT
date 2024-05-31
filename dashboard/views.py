@@ -49,7 +49,7 @@ def dashboard_view_acknowledgements(request):
     dealers = Dealers.objects.all()
 
     # Get the current and previous 3 months
-    months = get_previous_months(3)
+    months = get_previous_months(4)
 
     return render(request, 'dashboard/dashboard_acknowledgements.html', {
         'dealers': dealers,
