@@ -148,5 +148,6 @@ OAUTH2_SCOPE = ["https://graph.microsoft.com/.default"]
 # clean up all the code related to required login before being able to access the dashboard
 # clean up all the different paths and urls too, because they are a mess.
 # Login 
+# These are absolute paths in the development server, keep that in mind. 
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_REDIRECT_URL = '/dashboard/dashboard/'
