@@ -11,14 +11,14 @@ from dashboard.validations import (
     validate_send_date
 )
 
-class Dealers(models.Model):
+class Dealers(models.Model): #class Dealer, it is one dealer object 
     D_ID = models.CharField(
         max_length=10, 
         unique=True,  
         primary_key=True
-        )
-    DealerName = models.CharField(max_length=100)
-    DealerVATnumber = models.CharField(max_length=20)
+        ) #pip install flake8
+    DealerName = models.CharField(max_length=100) #lowercase is usual for python PEP-8 standard -> use tool 
+    DealerVATnumber = models.CharField(max_length=20) #use db_column to map to the name of of the column in the db while maintaining the PEP-8 standard
     DealerEmail = models.EmailField(max_length=80)
     CreatedDate = models.DateTimeField(auto_now_add=True)
     ModifiedDate = models.DateTimeField(auto_now=True)
@@ -38,7 +38,7 @@ class Dealers(models.Model):
     def delete(self):
         raise IntegrityError("Dealers cannot be deleted")
     
-    def __str__(self):
+    def __str__(self): #always have string methods -> these are show in forms on front end
         return (
             f"{self.D_ID}|" 
             f"{self.DealerName}|" 
@@ -46,25 +46,27 @@ class Dealers(models.Model):
             f"{self.DealerEmail}|" 
             f"{self.D_ID}"
         )
+#Two blank lines between classes -> PEP-8 standard
 
-class CreditNoteResumeEmail(models.Model):
+
+class CreditNoteResumeEmail(models.Model): #change name to CreditNoteResume object -> is it worth it? 
     """
     Should the CreditNoteResume table contain a field with the sum of 
     the total amount(s) of all the aggregated credit notes for that dealer in that month? 
     """
     CNR_ID = models.AutoField(unique=True, primary_key=True)
-    DateIssued = models.DateTimeField(auto_now_add=True)
-    Month = models.PositiveIntegerField()
-    Year = models.PositiveIntegerField()
-    IsValid = models.BooleanField(default=True)
+    DateIssued = models.DateTimeField(auto_now_add=True) #keep this and remove month and year fields
+    Month = models.PositiveIntegerField() #use datefield so that you don't have to make conversions to integer and vice versa
+    Year = models.PositiveIntegerField() #have a datefield with both month and year instead of two seperate fields
+    IsValid = models.BooleanField(default=True) #needs to be evaluated by Jessamyn 
 
     class Meta:
         db_table = 'CreditNoteResumeEmail'
 
     def clean(self):
         validate_email_date_consistency(self.Month, self.Year, self.DateIssued)
-        validate_month(self.Month)
-        validate_year(self.Year)    
+        validate_month(self.Month) #no need for this 
+        validate_year(self.Year) #no need for this either
     
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -73,7 +75,7 @@ class CreditNoteResumeEmail(models.Model):
     def delete(self):
         raise IntegrityError("CreditNoteResumeEmail cannot be deleted")
 
-    def __str__(self):
+    def __str__(self): #do you need all the fields in the string method? Probably not. 
         return (
             f"{self.CNR_ID}|" 
             f"{self.DateIssued}|" 
@@ -82,19 +84,21 @@ class CreditNoteResumeEmail(models.Model):
             f"{self.IsValid}"
         )
 
-class CreditNotes(models.Model):
+#python classes can inherit from multiple classes
+#Mixin class -> use this to avoid repeating the same code in multiple classes
+class CreditNotes(models.Model):   
     CN_ID = models.CharField(
         max_length=20, 
         unique=True, 
         primary_key=True, 
-        default=''
+        default='' #why is this set to default empty string? There are no empty strings in the db for this field, see what happens when you remove this
         )
 
     D_ID = models.ForeignKey(
         Dealers, 
         on_delete=models.CASCADE, 
         db_column='D_ID', 
-        default=''
+        default='' #why is this set to default empty string? There are no empty strings in the db for this field, see what happens when you remove this
         )
     
     CNR_ID = models.ForeignKey(
@@ -105,6 +109,7 @@ class CreditNotes(models.Model):
         db_column='CNR_ID' 
         )
     
+    #these fields are imported from the Navision DB as well 
     TotalDocumentAmount = models.DecimalField(max_digits=38, decimal_places=20)
     TotalVATAmountDocumentt = models.DecimalField(max_digits=38, decimal_places=20)
     TotalDocumentAmountWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
@@ -125,9 +130,9 @@ class CreditNotes(models.Model):
         super().save(*args, **kwargs)
 
     def delete(self):
-        raise IntegrityError("CreditNotes cannot be deleted")
+        raise IntegrityError("CreditNoteResume cannot be deleted") # create a parent class that has all the common methods and inherit from it
 
-    def __str__(self):
+    def __str__(self): #less fields in the string method -> only the most important ones, not more than 20 or 30
         return (
             f"{self.CN_ID}|" 
             f"{self.D_ID}|" 
@@ -146,7 +151,7 @@ class AcknowledgementRequest(models.Model):
         CreditNoteResumeEmail, 
         on_delete=models.CASCADE, 
         db_column='CNR_ID',
-        default=''
+        default='' #why is this set to default empty string? There are no empty strings in the db for this field, see what happens when you remove this
         ) 
     CreatedDate = models.DateTimeField(auto_now_add=True)
 
@@ -169,7 +174,7 @@ class AcknowledgementRequest(models.Model):
     def delete(self):
         raise IntegrityError("AcknowledgementRequest cannot be deleted")
     
-    def __str__(self):
+    def __str__(self): #less fields in the string method -> only the most important ones, not more than 20 or 30
         return (
             f"{self.R_ID}|" 
             f"{self.CNR_ID}|" 
@@ -177,7 +182,7 @@ class AcknowledgementRequest(models.Model):
             f"{self.SendDate}"
         )
 
-class AcknowledgementReceived(models.Model):
+class AcknowledgementReceived(models.Model): #we check if a response has been received for a request
     A_ID = models.AutoField(primary_key=True, unique=True)
     R_ID = models.ForeignKey(
         AcknowledgementRequest, 
@@ -187,7 +192,8 @@ class AcknowledgementReceived(models.Model):
         )
 
     #store the email message file
-    MsgFile = models.BinaryField() 
+    #storing it as a BLOB -> BLOB would be for images, use a text field instead, then you can query it
+    MsgFile = models.BinaryField() #why is this a binary field? This should be a text field than you can query it. 
 
     class Meta:
         db_table = 'AcknowledgementReceived'

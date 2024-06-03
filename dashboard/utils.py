@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-def get_previous_month_date_range():
+def get_previous_month_date_range(): #get_date_range, but I could leave is as it is -> only write code you actually need.
     """
     Returns the first and last day of the previous month.
     """

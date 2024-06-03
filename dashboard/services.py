@@ -25,21 +25,28 @@ Create a function that gets credit notes or credit note resume emails for a spec
 
 This could be two separate functions, one for credit notes and one for credit note resume emails. -> get_credit_notes_by date(date) and get_credit_note_resume_emails_by_date(date)
 """
-
+#get_credit_notes_by_date(start_date: datetime, end_date: datetime) 
+#create/keep bespoke specific function that calls the generic one
+#consider adding this as a static method to the credit notes model class
+#do you even need a function for this? You're just doing a filter on a queryset
+#its only used in one place, so you could just do the filter there, 
+#arguably this function actually obscures the code and makes it harder to read bcs objects.filter is pretty clear
 def collect_credit_notes_from_previous_month(): # make this function more generic, so it can take any range of dates
     """
     Collect all credit notes from the previous month.
     """
-    start_date, end_date = get_previous_month_date_range()
+    start_date, end_date = get_previous_month_date_range() 
     credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
     
     return credit_notes # returns a QuerySet
 
+#does this need to be more generic? -> Does it NEED to be? Only refactoring when you need it.
+#this 
 def collect_unique_dealers_from_credit_notes(credit_notes): # make this function more generic, so it can collect unique value from a QuerySet of any model, params: QuerySet, field_name -> for example: collect_unique_values_queryset(credit_notes, 'D_ID.DealerName')
     """
     Collect all unique dealers from a credit_notes queryset.
     """
-
+    #do this as a query on the database instead of in Python code
     unique_dealer_list = []
 
     for note in credit_notes: 
@@ -48,6 +55,7 @@ def collect_unique_dealers_from_credit_notes(credit_notes): # make this function
     
     return unique_dealer_list
 
+#any function 
 def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list): # make this function more generic, so it can take any QuerySet and any list of unique values in that QuerySet
     """
     Create a dictionary with dealers as keys and their credit notes as values.
@@ -63,6 +71,7 @@ def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list
     
     return grouped_credit_notes
 
+# can we do this aggregaton and annotation in the database instead of using Python code? 
 def credit_notes_totals_per_dealer(grouped_credit_notes): # make this function more generic, so it can take any dictionary and calculate totals for any summable field in the values of the dictionary
     """
     Calculate the Total Document Amount, Total Document VAT Amount, and Total Document Amount with VAT for each dealer. 
@@ -156,11 +165,12 @@ def save_email_content_to_file(email_content, dealer_name):
         file.write(email_content)
     print(f'Saved email content to file: {file_name}')
 
+#print(dir(Objects)) -> Model.set
 def create_credit_note_resume_emails(): # a function should do one thing, so split this function into smaller functions later when refactoring and pass the required data as arguments
     """
     Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
     """
-    credit_notes = collect_credit_notes_from_previous_month()
+    credit_notes = collect_credit_notes_from_previous_month() #dealer.creditnotes_set.all() or .filter() instead of this function
     
     unique_dealers = collect_unique_dealers_from_credit_notes(credit_notes)
     
