@@ -29,6 +29,23 @@ Evaluate suggested changes to the models to be made by the following criteria:
 7. Maintainability: Is the change well-documented and easy to understand for future maintenance?
 """
 
+"""
+Classes that refer to one object, such as a dealer, should be singular. 
+
+Therefore, the class name should be Dealer instead of Dealers. CreditNotes should be CreditNote.
+
+Evaluation criteria for change:
+1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
+2. Impact: It will break existing functionality and require significant modifications.
+3. Complexity: It will introduce some complexity.
+4. Performance: Unknown.
+5. User Experience: It will not enhance user experience or provide business value.
+6. Testing: No time to thoroughly test and validate.
+7. Maintainability: It will make the code easier to maintain in the future.
+
+Based on the evaluation criteria, the change is not recommended.
+"""
+
 class Dealers(models.Model): #class Dealer, it is one dealer object 
     D_ID = models.CharField(
         max_length=10, 
