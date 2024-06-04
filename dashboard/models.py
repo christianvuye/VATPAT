@@ -15,35 +15,12 @@ from dashboard.validations import (
 Evaluate suggested changes to the models to be made by the following criteria:
 
 1. Necessity: Is the change essential for core functionality, bug fixes, or project requirements?
-
 2. Impact: Does the change break existing functionality or require significant modifications?
-
 3. Complexity: Can the change be implemented within the remaining time without introducing significant complexity?
-
 4. Performance: Does the change improve performance, such as optimizing database queries?
-
 5. User Experience: Does the change enhance user experience or provide business value?
-
 6. Testing: Can the change be thoroughly tested and validated within the available time?
-
 7. Maintainability: Is the change well-documented and easy to understand for future maintenance?
-"""
-
-"""
-Classes that refer to one object, such as a dealer, should be singular. 
-
-Therefore, the class name should be Dealer instead of Dealers. CreditNotes should be CreditNote.
-
-Evaluation criteria for change:
-1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
-2. Impact: It will break existing functionality and require significant modifications.
-3. Complexity: It will introduce some complexity.
-4. Performance: Unknown.
-5. User Experience: It will not enhance user experience or provide business value.
-6. Testing: No time to thoroughly test and validate.
-7. Maintainability: It will make the code easier to maintain in the future.
-
-Based on the evaluation criteria, the change is not recommended.
 """
 
 """
@@ -51,50 +28,53 @@ PIP Install Flake8 to enforce PEP-8 style guide in the code.
 
 Evaluation criteria for change:
 1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
-
 2. Impact: It will not break existing functionality and will not require significant modifications.
-
 3. Complexity: It will introduce some extra complexity.
-
 4. Performance: Unknown.
-
 5. User Experience: It will not enhance user experience or provide business value.
-
 6. Testing: No time to thoroughly test and validate.
-
 7. Maintainability: It will make the code easier to maintain in the future.
-
 Based on the evaluation criteria, the change is not recommended for now. 
 """
 
-"""
-By PEP-8 standards, variable names should be lowercase with underscores between words.
-
-To maintain the PEP-8 standard, use the db_column parameter to map to the name of the column in the database.
-
-Evaluation criteria for change:
-1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
-
-2. Impact: It will not existing functionality and will require some modifications.
-
-3. Complexity: It will introduce some complexity.
-
-4. Performance: Unknown.
-
-5. User Experience: It will not enhance user experience or provide business value.
-
-6. Testing: No time to thoroughly test and validate.
-
-7. Maintainability: It will make the code more readable and easier to maintain in the future.
-
-Based on the evaluation criteria, the change is not recommended for now.
-"""
 class Dealers(models.Model): 
+    """
+    Classes that refer to one object, such as a dealer, should be singular. 
+
+    Therefore, the class name should be Dealer instead of Dealers. CreditNotes should be CreditNote.
+
+    Evaluation criteria for change:
+    1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
+    2. Impact: It will break existing functionality and require significant modifications.
+    3. Complexity: It will introduce some complexity.
+    4. Performance: Unknown.
+    5. User Experience: It will not enhance user experience or provide business value.
+    6. Testing: No time to thoroughly test and validate.
+    7. Maintainability: It will make the code easier to maintain in the future.
+
+    Based on the evaluation criteria, the change is not recommended.
+    """
     D_ID = models.CharField(
         max_length=10, 
         unique=True,  
         primary_key=True
-        ) 
+        )
+    """
+    By PEP-8 standards, variable names should be lowercase with underscores between words.
+
+    To maintain the PEP-8 standard, use the db_column parameter to map to the name of the column in the database.
+
+    Evaluation criteria for change:
+    1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
+    2. Impact: It will not existing functionality and will require some modifications.
+    3. Complexity: It will introduce some complexity.
+    4. Performance: Unknown.
+    5. User Experience: It will not enhance user experience or provide business value.
+    6. Testing: No time to thoroughly test and validate.
+    7. Maintainability: It will make the code more readable and easier to maintain in the future.
+    
+    Based on the evaluation criteria, the change is not recommended for now.
+    """ 
     DealerName = models.CharField(max_length=100) 
     DealerVATnumber = models.CharField(max_length=20)
     DealerEmail = models.EmailField(max_length=80)
@@ -149,7 +129,7 @@ class Dealers(models.Model):
         )
 
 
-class CreditNoteResumeEmail(models.Model): #change name to CreditNoteResume object -> is it worth it? 
+class CreditNoteResumeEmail(models.Model): 
     """
     Should the CreditNoteResume table contain a field with the sum of 
     the total amount(s) of all the aggregated credit notes for that dealer in that month? 
