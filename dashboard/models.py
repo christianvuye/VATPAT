@@ -204,7 +204,7 @@ class CreditNoteResumeEmail(models.Model):
     def delete(self):
         raise IntegrityError("CreditNoteResumeEmail cannot be deleted")
 
-    def __str__(self): #do you need all the fields in the string method? Probably not. 
+    def __str__(self): 
         return (
             f"{self.CNR_ID}|" 
             f"{self.DateIssued}|" 
