@@ -147,7 +147,6 @@ class Dealers(models.Model):
             f"{self.DealerEmail}|" 
             f"{self.D_ID}"
         )
-#Two blank lines between classes -> PEP-8 standard
 
 
 class CreditNoteResumeEmail(models.Model): #change name to CreditNoteResume object -> is it worth it? 
@@ -184,6 +183,7 @@ class CreditNoteResumeEmail(models.Model): #change name to CreditNoteResume obje
             f"{self.Year}|" 
             f"{self.IsValid}"
         )
+
 
 #python classes can inherit from multiple classes
 #Mixin class -> use this to avoid repeating the same code in multiple classes
@@ -244,6 +244,7 @@ class CreditNotes(models.Model):
             f"{self.IssuedDate}"
         )
 
+
 class AcknowledgementRequest(models.Model):
     R_ID = models.AutoField(primary_key=True, unique=True)
 
@@ -282,6 +283,7 @@ class AcknowledgementRequest(models.Model):
             f"{self.CreatedDate}|"
             f"{self.SendDate}"
         )
+
 
 class AcknowledgementReceived(models.Model): #we check if a response has been received for a request
     A_ID = models.AutoField(primary_key=True, unique=True)
