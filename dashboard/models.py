@@ -214,6 +214,24 @@ class CreditNoteResumeEmail(models.Model):
         )
 
 
+"""
+A Django model is a Python class. 
+
+Python classes can inherit from multiple parent classes.
+
+A Mixin class is a class that can be used to avoid repeating the same code in multiple classes.
+
+Evaluation criteria for change:
+1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
+2. Impact: It might break existing functionality and requires at least some modifications.
+3. Complexity: It will reduce complexity by using a Mixin class.
+4. Performance: Unknown.
+5. User Experience: It will not enhance user experience or provide business value.
+6. Testing: No time to thoroughly test and validate.
+7. Maintainability: It will make the code easier to maintain in the future.
+
+Based on the evaluation criteria, the change is not recommended for now.
+"""
 #python classes can inherit from multiple classes
 #Mixin class -> use this to avoid repeating the same code in multiple classes
 class CreditNotes(models.Model):   
