@@ -176,10 +176,26 @@ class CreditNoteResumeEmail(models.Model):
     class Meta:
         db_table = 'CreditNoteResumeEmail'
 
+    """
+    Validations are not necessary for the Month and Year fields if you use a single DateIssued field.
+
+    If you remove the Month and Year fields, you can remove the validations for these fields.
+
+    Evaluation criteria for change:
+    1. Necessity: Not necessary if the fields are removed.
+    2. Impact: It will not break existing functionality and will not require significant modifications.
+    3. Complexity: It will reduce complexity.
+    4. Performance: Performance might improve by removing unnecessary validations.
+    5. User Experience: It might enhance user experience by improving performance.
+    6. Testing: No time to thoroughly test and validate.
+    7. Maintainability: It will make the code easier to maintain in the future.
+
+    Based on the evaluation criteria, the change is recommended if the fields are removed.
+    """
     def clean(self):
         validate_email_date_consistency(self.Month, self.Year, self.DateIssued)
-        validate_month(self.Month) #no need for this 
-        validate_year(self.Year) #no need for this either
+        validate_month(self.Month) 
+        validate_year(self.Year)
     
     def save(self, *args, **kwargs):
         self.full_clean()
