@@ -131,15 +131,29 @@ class Dealers(models.Model):
 
 class CreditNoteResumeEmail(models.Model): 
     """
-    Should the CreditNoteResume table contain a field with the sum of 
-    the total amount(s) of all the aggregated credit notes for that dealer in that month? 
-    """
+    The name of the object is CreditNoteResume, so the class name should be CreditNoteResume instead of CreditNoteResumeEmail.
+
+    Evaluation criteria for change:
+    1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
+    2. Impact: It will break existing functionality and require significant modifications.
+    3. Complexity: It will introduce some complexity.
+    4. Performance: Unknown.
+    5. User Experience: It will not enhance user experience or provide business value.
+    6. Testing: No time to thoroughly test and validate.
+    7. Maintainability: It will make the code easier to maintain in the future.
+
+    Based on the evaluation criteria, the change is not recommended.
+    """    
     CNR_ID = models.AutoField(unique=True, primary_key=True)
     DateIssued = models.DateTimeField(auto_now_add=True) #keep this and remove month and year fields
     Month = models.PositiveIntegerField() #use datefield so that you don't have to make conversions to integer and vice versa
     Year = models.PositiveIntegerField() #have a datefield with both month and year instead of two seperate fields
     IsValid = models.BooleanField(default=True) #needs to be evaluated by Jessamyn 
 
+    """
+    Should the CreditNoteResume table contain a field with the sum of 
+    the total amount(s) of all the aggregated credit notes for that dealer in that month? 
+    """
     class Meta:
         db_table = 'CreditNoteResumeEmail'
 
