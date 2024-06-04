@@ -308,8 +308,19 @@ class AcknowledgementRequest(models.Model):
         CreditNoteResumeEmail, 
         on_delete=models.CASCADE, 
         db_column='CNR_ID',
-        default='' #why is this set to default empty string? There are no empty strings in the db for this field, see what happens when you remove this
+        default=''
         ) 
+    """
+    It is not clear why the default value for the CNR_ID field is an empty string.
+
+    There are no empty strings in the database for this field.
+
+    However, the Django admin console might require a default value for this field and suggest an empty string.
+
+    It is too risky to remove the default value now with the remaining time.
+
+    Removing the default value and seeing what happens is not a good idea in these circumstances.
+    """
     CreatedDate = models.DateTimeField(auto_now_add=True)
 
     #this will store the latest date a reminder has been sent
