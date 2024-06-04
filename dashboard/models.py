@@ -46,12 +46,32 @@ Evaluation criteria for change:
 Based on the evaluation criteria, the change is not recommended.
 """
 
-class Dealers(models.Model): #class Dealer, it is one dealer object 
+"""
+PIP Install Flake8 to enforce PEP-8 style guide in the code.
+
+Evaluation criteria for change:
+1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
+
+2. Impact: It will not break existing functionality and will not require significant modifications.
+
+3. Complexity: It will introduce some extra complexity.
+
+4. Performance: Unknown.
+
+5. User Experience: It will not enhance user experience or provide business value.
+
+6. Testing: No time to thoroughly test and validate.
+
+7. Maintainability: It will make the code easier to maintain in the future.
+
+Based on the evaluation criteria, the change is not recommended for now. 
+"""
+class Dealers(models.Model): 
     D_ID = models.CharField(
         max_length=10, 
         unique=True,  
         primary_key=True
-        ) #pip install flake8
+        ) 
     DealerName = models.CharField(max_length=100) #lowercase is usual for python PEP-8 standard -> use tool 
     DealerVATnumber = models.CharField(max_length=20) #use db_column to map to the name of of the column in the db while maintaining the PEP-8 standard
     DealerEmail = models.EmailField(max_length=80)
