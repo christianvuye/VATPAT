@@ -360,8 +360,26 @@ class AcknowledgementReceived(models.Model): #we check if a response has been re
         default='' #see docstring in CreditNotes, AcknowledgementRequest re: default value
         )
 
-    #store the email message file
-    #storing it as a BLOB -> BLOB would be for images, use a text field instead, then you can query it
+    """
+    Why is the email message file stored as a BLOB? 
+
+    Storing it as a BLOB is not recommended. 
+
+    Instead, store the email message file as a text field so that you can query it. 
+
+    BLOB would be for images. 
+
+    Evaluation criteria for change:
+    1. Necessity: It is essential for core functionality, bug fixes, or project requirements.
+    2. Impact: The business logic has not been written yet, so it will not break existing functionality.
+    3. Complexity: Stays approximately the same? 
+    4. Performance: Text fields are better for querying than BLOBs?
+    5. User Experience: It will enhance user experience with better performance.
+    6. Testing: No time to thoroughly test and validate.
+    7. Maintainability: Stay approximately the same?
+
+    Based on the evaluation criteria, the change is recommended.
+    """
     MsgFile = models.BinaryField() #why is this a binary field? This should be a text field than you can query it. 
 
     class Meta:
