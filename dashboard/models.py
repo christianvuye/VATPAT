@@ -237,14 +237,24 @@ class CreditNotes(models.Model):
         max_length=20, 
         unique=True, 
         primary_key=True, 
-        default='' #why is this set to default empty string? There are no empty strings in the db for this field, see what happens when you remove this
+        default='' 
         )
+    """
+    It's not clear why the default value for the CN_ID and D_ID fields is an empty string.
 
+    There are no empty strings in the database for these fields.
+
+    However, the Django admin console might require a default value for these fields and suggest an empty string.
+
+    It is too risky to remove the default value now with the remaining time. 
+
+    Removing the default value and seeing what happens is not a good idea in these circumstances.
+    """
     D_ID = models.ForeignKey(
         Dealers, 
         on_delete=models.CASCADE, 
         db_column='D_ID', 
-        default='' #why is this set to default empty string? There are no empty strings in the db for this field, see what happens when you remove this
+        default='' 
         )
     
     CNR_ID = models.ForeignKey(
