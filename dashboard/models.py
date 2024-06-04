@@ -357,7 +357,7 @@ class AcknowledgementReceived(models.Model): #we check if a response has been re
         AcknowledgementRequest, 
         on_delete=models.CASCADE, 
         db_column='R_ID',
-        default=''
+        default='' #see docstring in CreditNotes, AcknowledgementRequest re: default value
         )
 
     #store the email message file
