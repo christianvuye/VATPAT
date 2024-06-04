@@ -342,7 +342,7 @@ class AcknowledgementRequest(models.Model):
     def delete(self):
         raise IntegrityError("AcknowledgementRequest cannot be deleted")
     
-    def __str__(self): #less fields in the string method -> only the most important ones, not more than 20 or 30
+    def __str__(self):
         return (
             f"{self.R_ID}|" 
             f"{self.CNR_ID}|" 
