@@ -66,14 +66,37 @@ Evaluation criteria for change:
 
 Based on the evaluation criteria, the change is not recommended for now. 
 """
+
+"""
+By PEP-8 standards, variable names should be lowercase with underscores between words.
+
+To maintain the PEP-8 standard, use the db_column parameter to map to the name of the column in the database.
+
+Evaluation criteria for change:
+1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
+
+2. Impact: It will not existing functionality and will require some modifications.
+
+3. Complexity: It will introduce some complexity.
+
+4. Performance: Unknown.
+
+5. User Experience: It will not enhance user experience or provide business value.
+
+6. Testing: No time to thoroughly test and validate.
+
+7. Maintainability: It will make the code more readable and easier to maintain in the future.
+
+Based on the evaluation criteria, the change is not recommended for now.
+"""
 class Dealers(models.Model): 
     D_ID = models.CharField(
         max_length=10, 
         unique=True,  
         primary_key=True
         ) 
-    DealerName = models.CharField(max_length=100) #lowercase is usual for python PEP-8 standard -> use tool 
-    DealerVATnumber = models.CharField(max_length=20) #use db_column to map to the name of of the column in the db while maintaining the PEP-8 standard
+    DealerName = models.CharField(max_length=100) 
+    DealerVATnumber = models.CharField(max_length=20)
     DealerEmail = models.EmailField(max_length=80)
     CreatedDate = models.DateTimeField(auto_now_add=True)
     ModifiedDate = models.DateTimeField(auto_now=True)
