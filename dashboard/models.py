@@ -116,7 +116,30 @@ class Dealers(models.Model):
     def delete(self):
         raise IntegrityError("Dealers cannot be deleted")
     
-    def __str__(self): #always have string methods -> these are show in forms on front end
+    """
+    String method should only return the most important fields, not all of them. 
+
+    The character limit for the string method should be around 20-30 characters.
+
+    Evaluation criteria for change:
+
+    1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
+
+    2. Impact: It will not break existing functionality and will not require significant modifications.
+
+    3. Complexity: It will not introduce any complexity.
+
+    4. Performance: Unknown.
+
+    5. User Experience: It will not enhance user experience or provide business value.
+
+    6. Testing: No time to thoroughly test and validate.
+
+    7. Maintainability: It will make the code easier to maintain in the future.
+
+    Based on the evaluation criteria, the change is not recommended for now.
+    """
+    def __str__(self): 
         return (
             f"{self.D_ID}|" 
             f"{self.DealerName}|" 
