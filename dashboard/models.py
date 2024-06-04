@@ -145,10 +145,29 @@ class CreditNoteResumeEmail(models.Model):
     Based on the evaluation criteria, the change is not recommended.
     """    
     CNR_ID = models.AutoField(unique=True, primary_key=True)
-    DateIssued = models.DateTimeField(auto_now_add=True) #keep this and remove month and year fields
-    Month = models.PositiveIntegerField() #use datefield so that you don't have to make conversions to integer and vice versa
-    Year = models.PositiveIntegerField() #have a datefield with both month and year instead of two seperate fields
-    IsValid = models.BooleanField(default=True) #needs to be evaluated by Jessamyn 
+
+    """
+    The field DateIssued is a DateTimeField, so the fields Month and Year are redundant.
+
+    Instead of having separate fields for Month and Year, use a single DateIssued field with the date of the credit note.
+
+    If you use Month and Year, you will need to convert them to a date format when doing operations on these fields. 
+
+    Evaluation criteria for change:
+    1. Necessity: Re-evaluate after reviewing the business logic, to see how the date fields are used.
+    2. Impact: It might break existing functionality and require significant modifications.
+    3. Complexity: It might reduce complexity by using a single DateIssued field.
+    4. Performance: Less conversion between fields might improve performance.
+    5. User Experience: It might enhance user experience by improvng performance.
+    6. Testing: No time to thoroughly test and validate.
+    7. Maintainability: It will make the code easier to maintain in the future.
+
+    Based on the evaluation criteria, the change is probably a good idea, but review the business logic before implementing it.
+    """
+    DateIssued = models.DateTimeField(auto_now_add=True) 
+    Month = models.PositiveIntegerField() 
+    Year = models.PositiveIntegerField()
+    IsValid = models.BooleanField(default=True) #needs to be evaluated by Jessamyn, based on the business logic 
 
     """
     Should the CreditNoteResume table contain a field with the sum of 
