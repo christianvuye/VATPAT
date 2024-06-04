@@ -232,8 +232,6 @@ Evaluation criteria for change:
 
 Based on the evaluation criteria, the change is not recommended for now.
 """
-#python classes can inherit from multiple classes
-#Mixin class -> use this to avoid repeating the same code in multiple classes
 class CreditNotes(models.Model):   
     CN_ID = models.CharField(
         max_length=20, 
