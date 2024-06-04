@@ -265,12 +265,12 @@ class CreditNotes(models.Model):
         db_column='CNR_ID' 
         )
     
-    #these fields are imported from the Navision DB as well 
+    #Imported from NavisionDB 
     TotalDocumentAmount = models.DecimalField(max_digits=38, decimal_places=20)
     TotalVATAmountDocumentt = models.DecimalField(max_digits=38, decimal_places=20)
     TotalDocumentAmountWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
 
-    #The fields below will be imported from the Navision DB and will not change.
+    #Imported from NavisionDB
     AccountingNumberID = models.CharField(max_length=30)
     IssuedDate = models.DateTimeField() 
 
@@ -286,9 +286,9 @@ class CreditNotes(models.Model):
         super().save(*args, **kwargs)
 
     def delete(self):
-        raise IntegrityError("CreditNoteResume cannot be deleted") # create a parent class that has all the common methods and inherit from it
+        raise IntegrityError("CreditNoteResume cannot be deleted")
 
-    def __str__(self): #less fields in the string method -> only the most important ones, not more than 20 or 30
+    def __str__(self):
         return (
             f"{self.CN_ID}|" 
             f"{self.D_ID}|" 
