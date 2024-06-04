@@ -11,6 +11,24 @@ from dashboard.validations import (
     validate_send_date
 )
 
+"""
+Evaluate suggested changes to the models to be made by the following criteria:
+
+1. Necessity: Is the change essential for core functionality, bug fixes, or project requirements?
+
+2. Impact: Does the change break existing functionality or require significant modifications?
+
+3. Complexity: Can the change be implemented within the remaining time without introducing significant complexity?
+
+4. Performance: Does the change improve performance, such as optimizing database queries?
+
+5. User Experience: Does the change enhance user experience or provide business value?
+
+6. Testing: Can the change be thoroughly tested and validated within the available time?
+
+7. Maintainability: Is the change well-documented and easy to understand for future maintenance?
+"""
+
 class Dealers(models.Model): #class Dealer, it is one dealer object 
     D_ID = models.CharField(
         max_length=10, 
