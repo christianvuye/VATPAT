@@ -67,6 +67,16 @@
 - updated services file by removing obsolete comments.
 - updated services.py with docstring on decison to replace Python function with a direct query in the database.
 - updated services.py with docstrings whether functions should be kept or can be replaced with direct queries in the database.
+- added docstring on whether totals should be added to creditnoteresume model as fields
+- added docstring to generate email content function, consider whether to generate in view layer or service layer
+- updated save email content to file function with docstring on whether this function should exist at all
+- added docstring to create credit note resume function on changing approach of creating credit note resumes
+- added docstring to get credit notes resume emails by month and year to signify it should be deleted
+- added docstring to create acknowledgement request function to confirm it is gtg
+- added docstrings to increment reminders set and send acknowledgement request email functions
+- added docstring to url pattern for review
+- added docstring to utils functions
+- add docstrings and comments for validation functions that can be removed
 
 **What did I learn?**:
 
