@@ -282,7 +282,7 @@ def get_credit_note_resume_emails_by_month_and_year(month, year):
     """
     resume_emails = CreditNoteResumeEmail.objects.filter(Month=month, Year=year)
     
-    return resume_emails # returns a QuerySet
+    return resume_emails
 
 def create_acknowledgement_requests(credit_note_resumes):
     """
