@@ -25,12 +25,36 @@ Create a function that gets credit notes or credit note resume emails for a spec
 
 This could be two separate functions, one for credit notes and one for credit note resume emails. -> get_credit_notes_by date(date) and get_credit_note_resume_emails_by_date(date)
 """
-#get_credit_notes_by_date(start_date: datetime, end_date: datetime) 
-#create/keep bespoke specific function that calls the generic one
-#consider adding this as a static method to the credit notes model class
-#do you even need a function for this? You're just doing a filter on a queryset
-#its only used in one place, so you could just do the filter there, 
-#arguably this function actually obscures the code and makes it harder to read bcs objects.filter is pretty clear
+
+"""
+This function should be more generic and get credit notes by date.
+
+def get_credit_notes_by_date(start_date: datetime, end_date: datetime) -> QuerySet: 
+    credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
+
+    return credit_notes
+
+Evaluation criteria for change:
+1. Necessity: Not essential for core functionality, as the existing function works. However, it would be beneficial to make the function more generic to reuse it for other date ranges.
+2. Impact: The change does not break existing functionality but requires modifications to the function.
+3. Complexity: The change is straightforward and can be implemented within the remaining time.
+4. Performance: The change does not improve performance.
+5. User Experience: The change does not directly impact user experience. 
+6. Testing: The change can be thoroughly tested and validated within the available time.
+7. Maintainability: The change improves maintainability by making the function more generic, reusable, and easier to read. 
+
+Conclusion: The change is recommended as it improves the code quality and maintainability without significant drawbacks.
+"""
+
+"""
+Consider whether this function is needed or if the QuerySet filter can be done directly in another function.
+
+It is only used in one place, so it might be more straightforward to do the filter directly in that function.
+
+Arguably, this function adds an unnecessary layer of abstraction and complexity as objects.filter is clear and concise.
+
+Conclusion: This function can be removed to simplify the code and reduce unnecessary complexity.
+"""
 def collect_credit_notes_from_previous_month(): # make this function more generic, so it can take any range of dates
     """
     Collect all credit notes from the previous month.
