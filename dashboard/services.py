@@ -271,7 +271,11 @@ def create_credit_note_resume_emails():
             note.CNR_ID = resume_email
             note.save()
             print(f'Updated CreditNote: {note.CN_ID} with CreditNoteResumeEmail: {resume_email}')
+"""
+This function is not needed. It's simply doing a query that can be done directly somewhere else. 
 
+Remove this function to simplify the code and reduce unnecessary complexity.
+"""
 def get_credit_note_resume_emails_by_month_and_year(month, year):
     """
     Get CreditNoteResumeEmail instances for a specific month and year.
