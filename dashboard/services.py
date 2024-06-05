@@ -113,6 +113,10 @@ def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list
 
 """
 Question the necessity of this function. Can the aggregation and annotation be done directly with a query in the database instead of using Python code?
+
+Should these totals be added to the CreditNotesResumeEmail model as fields? 
+
+@Jessamyn: Could you give your input on this and what would be the best approach to handle this?
 """
 def credit_notes_totals_per_dealer(grouped_credit_notes):
     """
