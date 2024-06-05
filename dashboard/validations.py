@@ -1,5 +1,7 @@
 import re
 from django.core.exceptions import ValidationError
+
+# This file seems good, no comments. This would be a great candidate for unit testing.
 """
 The algorithm to verify the NIF number in Portugal is as follows:
 
