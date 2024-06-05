@@ -143,6 +143,15 @@ def credit_notes_totals_per_dealer(grouped_credit_notes):
     
     return totals_per_dealer
 
+"""
+Waiting for input from Jessamyn on what the best approach for this is. 
+
+Should the email content be generated in the service layer or should it be generated in the view layer?
+
+Should the email content be generated in the view layer and passed to the service layer for sending?
+
+@Jessamyn: Could you provide guidance on this? What would be the best approach to handle this?
+"""
 def generate_email_content(dealer, credit_notes, template):
     """
     Generate email content based on template, dealer, and credit notes.
