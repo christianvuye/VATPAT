@@ -115,8 +115,11 @@ def validate_total_with_vat(TotalDocumentAmount, TotalVATAmountDocumentt, TotalD
     """
     if TotalDocumentAmount + TotalVATAmountDocumentt != TotalDocumentAmountWithVAT:
         raise ValidationError("The total amount with VAT must be the sum of the total amount and the VAT amount.")
-    
-def validate_email_date_consistency(month, year, date_issued):
+
+"""
+These date validation functions are not needed anymore because the CNR model has been updated to use a DateField instead of separate month and year fields.
+"""
+def validate_email_date_consistency(month, year, date_issued): # can be removed
     """
     Validates that the Month and Year fields correspond to the DateIssued.
     
@@ -131,14 +134,14 @@ def validate_email_date_consistency(month, year, date_issued):
     if date_issued.month != month or date_issued.year != year:
         raise ValidationError("Month and Year must match the date the email was issued.")
 
-def validate_month(month):
+def validate_month(month): # can be removed
     """
     Validates that the month is between 1 and 12.
     """
     if month < 1 or month > 12:
         raise ValidationError("Month must be between 1 and 12.")
     
-def validate_year(year):
+def validate_year(year): # can be removed
     """
     Validates that the year is between 2000 and 2050.
     """
