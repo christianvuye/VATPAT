@@ -55,14 +55,14 @@ Arguably, this function adds an unnecessary layer of abstraction and complexity 
 
 Conclusion: This function can be removed to simplify the code and reduce unnecessary complexity.
 """
-def collect_credit_notes_from_previous_month(): # make this function more generic, so it can take any range of dates
+def collect_credit_notes_from_previous_month():
     """
     Collect all credit notes from the previous month.
     """
     start_date, end_date = get_previous_month_date_range() 
     credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
     
-    return credit_notes # returns a QuerySet
+    return credit_notes
 
 #does this need to be more generic? -> Does it NEED to be? Only refactoring when you need it.
 #this 
