@@ -47,3 +47,25 @@
 - After reviewing existing code, decide on proceeding in the best way with the remaining time. 
 
 ---------------------------------------------------------------------------------------
+
+### Date: 05/06/2024
+
+**Task**: 
+- Evaluate which changes and refactors are worth pursuing in the remaining time in the following files:
+    - services.py
+    - urls.py
+    - utils.py
+    - validations.py 
+    - views.py
+
+**Time Spent**: 2.5h
+
+**Objective**: 
+
+**Achievements**:
+
+**What did I learn?**:
+
+**Blockers**:
+
+**Next Steps**:
