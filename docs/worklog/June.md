@@ -63,6 +63,10 @@
 **Objective**: 
 
 **Achievements**:
+- updated services.py with decision on whether to keep credit note collection function, make it more generic and/or simply calling objects.filter when needed. 
+- updated services file by removing obsolete comments.
+- updated services.py with docstring on decison to replace Python function with a direct query in the database.
+- updated services.py with docstrings whether functions should be kept or can be replaced with direct queries in the database.
 
 **What did I learn?**:
 
