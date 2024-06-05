@@ -23,8 +23,14 @@ from django.views.generic import RedirectView
 # clean up all the different paths and urls too, because they are a mess.
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # You have a login view linked here and in dashboard urls, with the same name. Do you really need both?
+    # If not, you should remove the one that is not used. If you do, make sure each has a distinct name.
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+    # Interesting -- I actually didn't know about next_page. I have always used the redirect url settings
+    # https://docs.djangoproject.com/en/5.0/ref/settings/#login-redirect-url
+    # https://docs.djangoproject.com/en/5.0/ref/settings/#logout-redirect-url
     path('logout/', auth_views.LogoutView.as_view(next_page='/dashboard/'), name='logout'),
     path('dashboard/', include('dashboard.urls')),
+    # As long as dashboard requires login, which it does, it's normal to redirect to that
     path('', RedirectView.as_view(url='dashboard/', permanent=True)), # Homepage should be login probably, but for now redirect to dashboard
 ]
