@@ -6,8 +6,9 @@ from .views import (
     dashboard_view_acknowledgements
 )
 
-# clean up all the code related to required login before being able to access the dashboard
-# clean up all the different paths and urls too, because they are a mess.
+"""
+Sort out the URL patterns for the dashboard app, decide which pages to see first and how navigation will work.
+"""
 urlpatterns = [
     path('', CustomLoginView.as_view(), name='login'),
     path('dashboard/', login_required(dashboard_view), name='dashboard'),
