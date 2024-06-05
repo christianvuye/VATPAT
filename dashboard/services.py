@@ -93,8 +93,10 @@ def collect_unique_dealers_from_credit_notes(credit_notes):
     
     return unique_dealer_list
 
-#any function 
-def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list): # make this function more generic, so it can take any QuerySet and any list of unique values in that QuerySet
+"""
+Question the necessity of this function. Can the grouping and aggregation be done directly with a query the database?
+"""
+def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list):
     """
     Create a dictionary with dealers as keys and their credit notes as values.
     """
@@ -109,8 +111,10 @@ def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list
     
     return grouped_credit_notes
 
-# can we do this aggregaton and annotation in the database instead of using Python code? 
-def credit_notes_totals_per_dealer(grouped_credit_notes): # make this function more generic, so it can take any dictionary and calculate totals for any summable field in the values of the dictionary
+"""
+Question the necessity of this function. Can the aggregation and annotation be done directly with a query in the database instead of using Python code?
+"""
+def credit_notes_totals_per_dealer(grouped_credit_notes):
     """
     Calculate the Total Document Amount, Total Document VAT Amount, and Total Document Amount with VAT for each dealer. 
     """
