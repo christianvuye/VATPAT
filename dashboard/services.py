@@ -226,13 +226,25 @@ def save_email_content_to_file(email_content, dealer_name):
     with open(file_name, 'w', encoding="utf-8") as file:
         file.write(email_content)
     print(f'Saved email content to file: {file_name}')
+"""
+Waiting on input from Jessamyn on what the best approach for this is.
 
-#print(dir(Objects)) -> Model.set
-def create_credit_note_resume_emails(): # a function should do one thing, so split this function into smaller functions later when refactoring and pass the required data as arguments
+I have made several notes for Jessamyn to provide input on.
+
+#print(dir(Objects)) -> Model.set -> I don't understand what this comment means. Could you provide more context?
+
+A function should do one thing, so split this function into smaller functions later when refactoring and pass the required data as arguments.
+
+#dealer.creditnotes_set.all() -> This is a query that fetches all credit notes for a specific dealer. It is not clear why this is mentioned here. Could you provide more context?
+
+@Jessamyn: I feel that creating Credit Note Resumes this way is not the best approach. Could you provide guidance on what you think is the most logical way to create Credit Note Resumes?
+"""
+
+def create_credit_note_resume_emails(): 
     """
     Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
     """
-    credit_notes = collect_credit_notes_from_previous_month() #dealer.creditnotes_set.all() or .filter() instead of this function
+    credit_notes = collect_credit_notes_from_previous_month() 
     
     unique_dealers = collect_unique_dealers_from_credit_notes(credit_notes)
     
@@ -242,7 +254,7 @@ def create_credit_note_resume_emails(): # a function should do one thing, so spl
     month = now.month
     year = now.year
 
-    for dealer_name, notes in grouped_credit_notes.items(): # this is not a very logical way of creating credit note resumes
+    for dealer_name, notes in grouped_credit_notes.items():
         resume_email = CreditNoteResumeEmail.objects.create(
             DateIssued=now,
             Month=month,
