@@ -37,7 +37,7 @@ def get_credit_notes_by_date(start_date: datetime, end_date: datetime) -> QueryS
 Evaluation criteria for change:
 1. Necessity: Not essential for core functionality, as the existing function works. However, it would be beneficial to make the function more generic to reuse it for other date ranges.
 2. Impact: The change does not break existing functionality but requires modifications to the function.
-3. Complexity: The change is straightforward and can be implemented within the remaining time.
+3. Complexity: The change reduces complexity by making the function more generic and reusable.
 4. Performance: The change does not improve performance.
 5. User Experience: The change does not directly impact user experience. 
 6. Testing: The change can be thoroughly tested and validated within the available time.
@@ -64,13 +64,27 @@ def collect_credit_notes_from_previous_month():
     
     return credit_notes
 
-#does this need to be more generic? -> Does it NEED to be? Only refactoring when you need it.
-#this 
-def collect_unique_dealers_from_credit_notes(credit_notes): # make this function more generic, so it can collect unique value from a QuerySet of any model, params: QuerySet, field_name -> for example: collect_unique_values_queryset(credit_notes, 'D_ID.DealerName')
+"""
+Does this function need to exist? Can the unique dealers from a given QuerySet be filtered with a query directly?
+
+This function is only used in one place, so it might be more straightforward to do the filtering directly in that function.
+
+Instead of using Python code to filter unique dealers, use a query directly in the database. This will improve performance and reduce complexity.
+
+1. Necessity: Not essential for core functionality, as the existing function works.
+2. Impact: The change does not break existing functionality but requires modifications of a different function.
+3. Complexity: The change reduces complexity by removing an unnecessary function.
+4. Performance: The change improves performance by using a database query instead of filtering in Python.
+5. User Experience: The change improves performance, which can enhance user experience.
+6. Testing: The change can be thoroughly tested and validated within the available time.
+7. Maintainability: The change improves maintainability by simplifying the code and reducing unnecessary complexity.
+
+Conclusion: The change is recommended as it improves performance and maintainability without significant drawbacks.
+"""
+def collect_unique_dealers_from_credit_notes(credit_notes):
     """
     Collect all unique dealers from a credit_notes queryset.
     """
-    #do this as a query on the database instead of in Python code
     unique_dealer_list = []
 
     for note in credit_notes: 
