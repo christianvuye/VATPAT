@@ -144,25 +144,6 @@ def create_acknowledgement_requests(credit_note_resumes):
         print(f'Created AcknowledgementRequest: {acknowledgement_request} for CreditNoteResumeEmail: {resume.CNR_ID}')
 
 """
-Is this function really needed? 
-
-It only does: acknowledgement_request.RemindersSent += 1 and acknowledgement_request.save().
-
-This could be done directly in the function that sends the email.
-
-Consider removing this function to simplify the code and reduce unnecessary complexity.
-
-@Jessamyn: Could you provide guidance on whether this function is needed or if it can be removed?
-"""
-def increment_reminders_sent(acknowledgement_request):
-    """
-    Increment the number of reminders sent for an AcknowledgementRequest instance.
-    """
-    acknowledgement_request.RemindersSent += 1
-    acknowledgement_request.save()
-    print(f'Updated AcknowledgementRequest: {acknowledgement_request} with RemindersSent: {acknowledgement_request.RemindersSent}')
-
-"""
 @Jessamyn: Could you provide guidance on what the best approach for sending emails with Django is?
 
 We are using Azure, could you provide me with some guidance on how to set up email sending with Azure?
