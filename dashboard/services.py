@@ -11,15 +11,6 @@ from django.utils.safestring import mark_safe
 from django.core.mail import send_mail
 from django.db.models import Count, Sum
 
-"""
-Waiting for input from Jessamyn on what the best approach for this is. 
-
-Should the email content be generated in the service layer or should it be generated in the view layer?
-
-Should the email content be generated in the view layer and passed to the service layer for sending?
-
-@Jessamyn: Could you provide guidance on this? What would be the best approach to handle this?
-"""
 def generate_email_content(dealer, credit_notes, template):
     """
     Generate email content based on template, dealer, and credit notes.
@@ -94,19 +85,6 @@ def save_email_content_to_file(email_content, dealer_name):
     with open(file_name, 'w', encoding="utf-8") as file:
         file.write(email_content)
     print(f'Saved email content to file: {file_name}')
-"""
-Waiting on input from Jessamyn on what the best approach for this is.
-
-I have made several notes for Jessamyn to provide input on.
-
-#print(dir(Objects)) -> Model.set -> I don't understand what this comment means. Could you provide more context?
-
-A function should do one thing, so split this function into smaller functions later when refactoring and pass the required data as arguments.
-
-#dealer.creditnotes_set.all() -> This is a query that fetches all credit notes for a specific dealer. It is not clear why this is mentioned here. Could you provide more context?
-
-@Jessamyn: I feel that creating Credit Note Resumes this way is not the best approach. Could you provide guidance on what you think is the most logical way to create Credit Note Resumes?
-"""
 
 def create_credit_note_resume(): 
     """
