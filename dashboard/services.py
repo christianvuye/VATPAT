@@ -11,35 +11,6 @@ from django.utils.safestring import mark_safe
 from django.core.mail import send_mail
 
 """
-Does this function need to exist? Can the unique dealers from a given QuerySet be filtered with a query directly?
-
-This function is only used in one place, so it might be more straightforward to do the filtering directly in that function.
-
-Instead of using Python code to filter unique dealers, use a query directly in the database. This will improve performance and reduce complexity.
-
-1. Necessity: Not essential for core functionality, as the existing function works.
-2. Impact: The change does not break existing functionality but requires modifications of a different function.
-3. Complexity: The change reduces complexity by removing an unnecessary function.
-4. Performance: The change improves performance by using a database query instead of filtering in Python.
-5. User Experience: The change improves performance, which can enhance user experience.
-6. Testing: The change can be thoroughly tested and validated within the available time.
-7. Maintainability: The change improves maintainability by simplifying the code and reducing unnecessary complexity.
-
-Conclusion: The change is recommended as it improves performance and maintainability without significant drawbacks.
-"""
-def collect_unique_dealers_from_credit_notes(credit_notes):
-    """
-    Collect all unique dealers from a credit_notes queryset.
-    """
-    unique_dealer_list = []
-
-    for note in credit_notes: 
-        if note.D_ID.DealerName not in unique_dealer_list:
-            unique_dealer_list.append(note.D_ID.DealerName)
-    
-    return unique_dealer_list
-
-"""
 Question the necessity of this function. Can the grouping and aggregation be done directly with a query the database?
 """
 def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list):
@@ -190,13 +161,15 @@ def create_credit_note_resume_emails():
     """
     Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
     """
-    #credit_notes = collect_credit_notes_from_previous_month() 
-
+    # Get the date range for the previous month
     start_date, end_date = get_previous_month_date_range()
+
+    # Get all credit notes issued in the previous month
     credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
-    
-    unique_dealers = collect_unique_dealers_from_credit_notes(credit_notes)
-    
+
+    # Get a list of unique dealers from the credit notes for the previous month
+    unique_dealers = credit_notes.values('D_ID').distinct()
+        
     grouped_credit_notes = credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealers)
     
     now = datetime.now()
