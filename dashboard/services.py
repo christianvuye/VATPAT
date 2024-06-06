@@ -5,8 +5,6 @@ from .models import (
 )
 from .utils import get_previous_month_date_range
 from datetime import datetime
-from django.utils.html import format_html
-from django.utils.safestring import mark_safe
 from django.core.mail import EmailMultiAlternatives
 from django.db.models import Count, Sum
 from django.db.models.query import QuerySet
