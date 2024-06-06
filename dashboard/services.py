@@ -76,20 +76,3 @@ def send_acknowledgement_email(recipient: Dealers, subject: str, text_body: str,
         msg.attach_alternative(html_body, "text/html")
     msg.send()
     return True
-"""
-Waiting on input from Jessamyn on what the best approach for this is.
-
-Should the email content be saved to a file at all or should it added to the CreditNoteResumeEmail model as a field?
-
-@Jessamyn: Could you provide guidance on this? What would be the best approach to handle this?
-"""
-def save_email_content_to_file(email_content, dealer_name):
-    """
-    Save email content to a file.
-    """
-    current_month = datetime.now().strftime('%B')
-    file_name = f'{dealer_name}_credit_note_resume_email_{current_month}.html'
-
-    with open(file_name, 'w', encoding="utf-8") as file:
-        file.write(email_content)
-    print(f'Saved email content to file: {file_name}')
