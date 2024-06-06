@@ -125,7 +125,7 @@ class CreditNotes(models.Model):
         super().save(*args, **kwargs)
 
     def delete(self):
-        raise IntegrityError("CreditNoteResume cannot be deleted")
+        raise IntegrityError("CreditNote cannot be deleted")
 
     def __str__(self):
         return (
