@@ -1,6 +1,6 @@
 from .models import (
     CreditNotes, 
-    CreditNoteResumeEmail,
+    CreditNoteResume,
     AcknowledgementRequest
 )
 from .utils import get_previous_month_date_range
@@ -134,7 +134,7 @@ def create_credit_note_resume_emails():
     year = now.year
 
     for dealer_name, notes in grouped_credit_notes.items():
-        resume_email = CreditNoteResumeEmail.objects.create(
+        resume_email = CreditNoteResume.objects.create(
             DateIssued=now,
             Month=month,
             Year=year
@@ -159,7 +159,7 @@ def get_credit_note_resume_emails_by_month_and_year(month, year):
     """
     Get CreditNoteResumeEmail instances for a specific month and year.
     """
-    resume_emails = CreditNoteResumeEmail.objects.filter(Month=month, Year=year)
+    resume_emails = CreditNoteResume.objects.filter(Month=month, Year=year)
     
     return resume_emails
 
