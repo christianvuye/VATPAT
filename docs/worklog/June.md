@@ -83,3 +83,16 @@
 **Blockers**:
 
 **Next Steps**:
+
+---------------------------------------------------------------------------------------
+
+### Date: 05/06/2024
+
+**Task**: 
+- Refactor models, services, urls, utils, validations and views. 
+
+**Time Spent**: 2.5h
+
+**Objective**: 
+
+**Achievements**:
