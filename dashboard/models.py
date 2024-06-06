@@ -11,70 +11,12 @@ from dashboard.validations import (
     validate_send_date
 )
 
-"""
-Evaluate suggested changes to the models to be made by the following criteria:
-
-1. Necessity: Is the change essential for core functionality, bug fixes, or project requirements?
-2. Impact: Does the change break existing functionality or require significant modifications?
-3. Complexity: Can the change be implemented within the remaining time without introducing significant complexity?
-4. Performance: Does the change improve performance, such as optimizing database queries?
-5. User Experience: Does the change enhance user experience or provide business value?
-6. Testing: Can the change be thoroughly tested and validated within the available time?
-7. Maintainability: Is the change well-documented and easy to understand for future maintenance?
-"""
-
-"""
-PIP Install Flake8 to enforce PEP-8 style guide in the code.
-
-Evaluation criteria for change:
-1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
-2. Impact: It will not break existing functionality and will not require significant modifications.
-3. Complexity: It will introduce some extra complexity.
-4. Performance: Unknown.
-5. User Experience: It will not enhance user experience or provide business value.
-6. Testing: No time to thoroughly test and validate.
-7. Maintainability: It will make the code easier to maintain in the future.
-Based on the evaluation criteria, the change is not recommended for now. 
-"""
-
 class Dealers(models.Model): 
-    """
-    Classes that refer to one object, such as a dealer, should be singular. 
-
-    Therefore, the class name should be Dealer instead of Dealers. CreditNotes should be CreditNote.
-
-    Evaluation criteria for change:
-    1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
-    2. Impact: It will break existing functionality and require significant modifications.
-    3. Complexity: It will introduce some complexity.
-    4. Performance: Unknown.
-    5. User Experience: It will not enhance user experience or provide business value.
-    6. Testing: No time to thoroughly test and validate.
-    7. Maintainability: It will make the code easier to maintain in the future.
-
-    Based on the evaluation criteria, the change is not recommended.
-    """
     D_ID = models.CharField(
         max_length=10, 
         unique=True,  
         primary_key=True
         )
-    """
-    By PEP-8 standards, variable names should be lowercase with underscores between words.
-
-    To maintain the PEP-8 standard, use the db_column parameter to map to the name of the column in the database.
-
-    Evaluation criteria for change:
-    1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
-    2. Impact: It will not existing functionality and will require some modifications.
-    3. Complexity: It will introduce some complexity.
-    4. Performance: Unknown.
-    5. User Experience: It will not enhance user experience or provide business value.
-    6. Testing: No time to thoroughly test and validate.
-    7. Maintainability: It will make the code more readable and easier to maintain in the future.
-    
-    Based on the evaluation criteria, the change is not recommended for now.
-    """ 
     DealerName = models.CharField(max_length=100) 
     DealerVATnumber = models.CharField(max_length=20)
     DealerEmail = models.EmailField(max_length=80)
@@ -96,29 +38,6 @@ class Dealers(models.Model):
     def delete(self):
         raise IntegrityError("Dealers cannot be deleted")
     
-    """
-    String method should only return the most important fields, not all of them. 
-
-    The character limit for the string method should be around 20-30 characters.
-
-    Evaluation criteria for change:
-
-    1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
-
-    2. Impact: It will not break existing functionality and will not require significant modifications.
-
-    3. Complexity: It will not introduce any complexity.
-
-    4. Performance: Unknown.
-
-    5. User Experience: It will not enhance user experience or provide business value.
-
-    6. Testing: No time to thoroughly test and validate.
-
-    7. Maintainability: It will make the code easier to maintain in the future.
-
-    Based on the evaluation criteria, the change is not recommended for now.
-    """
     def __str__(self): 
         return (
             f"{self.D_ID}|" 
@@ -129,23 +48,8 @@ class Dealers(models.Model):
         )
 
 
-class CreditNoteResumeEmail(models.Model): 
-    """
-    The name of the object is CreditNoteResume, so the class name should be CreditNoteResume instead of CreditNoteResumeEmail.
-
-    Evaluation criteria for change:
-    1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
-    2. Impact: It will break existing functionality and require significant modifications.
-    3. Complexity: It will introduce some complexity.
-    4. Performance: Unknown.
-    5. User Experience: It will not enhance user experience or provide business value.
-    6. Testing: No time to thoroughly test and validate.
-    7. Maintainability: It will make the code easier to maintain in the future.
-
-    Based on the evaluation criteria, the change is not recommended.
-    """    
+class CreditNoteResumeEmail(models.Model):   
     CNR_ID = models.AutoField(unique=True, primary_key=True)
-
     """
     The field DateIssued is a DateTimeField, so the fields Month and Year are redundant.
 
@@ -214,24 +118,6 @@ class CreditNoteResumeEmail(models.Model):
         )
 
 
-"""
-A Django model is a Python class. 
-
-Python classes can inherit from multiple parent classes.
-
-A Mixin class is a class that can be used to avoid repeating the same code in multiple classes.
-
-Evaluation criteria for change:
-1. Necessity: It is not essential for core functionality, bug fixes, or project requirements.
-2. Impact: It might break existing functionality and requires at least some modifications.
-3. Complexity: It will reduce complexity by using a Mixin class.
-4. Performance: Unknown.
-5. User Experience: It will not enhance user experience or provide business value.
-6. Testing: No time to thoroughly test and validate.
-7. Maintainability: It will make the code easier to maintain in the future.
-
-Based on the evaluation criteria, the change is not recommended for now.
-"""
 class CreditNotes(models.Model):   
     CN_ID = models.CharField(
         max_length=20, 
@@ -309,18 +195,8 @@ class AcknowledgementRequest(models.Model):
         on_delete=models.CASCADE, 
         db_column='CNR_ID',
         default=''
-        ) 
-    """
-    It is not clear why the default value for the CNR_ID field is an empty string.
-
-    There are no empty strings in the database for this field.
-
-    However, the Django admin console might require a default value for this field and suggest an empty string.
-
-    It is too risky to remove the default value now with the remaining time.
-
-    Removing the default value and seeing what happens is not a good idea in these circumstances.
-    """
+        ) #see docstring in CreditNotes re: default value
+   
     CreatedDate = models.DateTimeField(auto_now_add=True)
 
     #this will store the latest date a reminder has been sent
@@ -357,7 +233,7 @@ class AcknowledgementReceived(models.Model): #we check if a response has been re
         AcknowledgementRequest, 
         on_delete=models.CASCADE, 
         db_column='R_ID',
-        default='' #see docstring in CreditNotes, AcknowledgementRequest re: default value
+        default='' #see docstring in CreditNotes re: default value
         )
 
     """
