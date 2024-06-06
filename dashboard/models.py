@@ -1,13 +1,9 @@
 from django.db import models, IntegrityError
-from django.core.exceptions import ValidationError
 from dashboard.validations import (
     validate_vat, 
     validate_d_id, 
     validate_vat_amounts, 
     validate_total_with_vat, 
-    validate_email_date_consistency, 
-    validate_month, 
-    validate_year, 
     validate_send_date
 )
 
@@ -50,56 +46,15 @@ class Dealers(models.Model):
 
 class CreditNoteResume(models.Model):   
     CNR_ID = models.AutoField(unique=True, primary_key=True)
-    """
-    The field DateIssued is a DateTimeField, so the fields Month and Year are redundant.
-
-    Instead of having separate fields for Month and Year, use a single DateIssued field with the date of the credit note.
-
-    If you use Month and Year, you will need to convert them to a date format when doing operations on these fields. 
-
-    Evaluation criteria for change:
-    1. Necessity: Re-evaluate after reviewing the business logic, to see how the date fields are used.
-    2. Impact: It might break existing functionality and require significant modifications.
-    3. Complexity: It might reduce complexity by using a single DateIssued field.
-    4. Performance: Less conversion between fields might improve performance.
-    5. User Experience: It might enhance user experience by improvng performance.
-    6. Testing: No time to thoroughly test and validate.
-    7. Maintainability: It will make the code easier to maintain in the future.
-
-    Based on the evaluation criteria, the change is probably a good idea, but review the business logic before implementing it.
-    """
     DateIssued = models.DateTimeField(auto_now_add=True) 
-    Month = models.PositiveIntegerField() 
-    Year = models.PositiveIntegerField()
-    IsValid = models.BooleanField(default=True) #needs to be evaluated by Jessamyn, based on the business logic 
+    IsValid = models.BooleanField(default=True)
+    TotalCreditNotes =  models.IntegerField
+    TotalDocumentAmounts = models.DecimalField(max_digits=38, decimal_places=20)
+    TotalVATAmounts = models.DecimalField(max_digits=38, decimal_places=20)
+    TotalDocumentAmountsWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
 
-    """
-    Should the CreditNoteResume table contain a field with the sum of 
-    the total amount(s) of all the aggregated credit notes for that dealer in that month? 
-    """
     class Meta:
         db_table = 'CreditNoteResume'
-
-    """
-    Validations are not necessary for the Month and Year fields if you use a single DateIssued field.
-
-    If you remove the Month and Year fields, you can remove the validations for these fields.
-
-    Evaluation criteria for change:
-    1. Necessity: Not necessary if the fields are removed.
-    2. Impact: It will not break existing functionality and will not require significant modifications.
-    3. Complexity: It will reduce complexity.
-    4. Performance: Performance might improve by removing unnecessary validations.
-    5. User Experience: It might enhance user experience by improving performance.
-    6. Testing: No time to thoroughly test and validate.
-    7. Maintainability: It will make the code easier to maintain in the future.
-
-    Based on the evaluation criteria, the change is recommended if the fields are removed.
-    """
-    def clean(self):
-        validate_email_date_consistency(self.Month, self.Year, self.DateIssued)
-        validate_month(self.Month) 
-        validate_year(self.Year)
     
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -112,8 +67,6 @@ class CreditNoteResume(models.Model):
         return (
             f"{self.CNR_ID}|" 
             f"{self.DateIssued}|" 
-            f"{self.Month}|" 
-            f"{self.Year}|" 
             f"{self.IsValid}"
         )
 
