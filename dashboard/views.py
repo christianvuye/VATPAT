@@ -4,18 +4,35 @@ from .utils import get_previous_months
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 
+"""
+Consider using class based views for everything.
+
+With class based views, all views share a consistent structure and can be easily extended or customized.
+
+DashboardView could be a ListView, with the model being CreditNotes and the grouping could be done in get_queryset.
+"""
+
 class CustomLoginView(LoginView):
     """
     Custom login view that uses the login.html template.
     """
     template_name = 'login.html'
 
-# Django recommends using function-based views over class-based views when the view is simple.
-# In this case, the view is simple and does not require any additional methods or attributes.
-# Therefore, we use a function-based view. 
-# But check with Jessamyn what she thinks is the right approach.
+"""
+Create a common base.html that all templates inherit from.
 
-# clean up all the code related to required login before being able to access the dashboard
+This guarantees a consistent look and feel on your site, ensures you are using the same versions of
+
+JS libraries, and generally makes your life MUCH easier. I also recommend having your custom JS in .js
+
+files that are loaded into the template via static. This gives you options like linting the JS, 
+
+compressing it, loading it from a CDN, etc.
+
+Note that the base template typically needs blocks to allow inheritors to enter their own title,
+
+head content, body content, and js/footer content.
+"""
 
 @login_required
 def dashboard_view(request):
