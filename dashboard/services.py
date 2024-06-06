@@ -9,12 +9,6 @@ from datetime import datetime
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.core.mail import send_mail
-from django.db.models.query import QuerySet
-
-def get_credit_notes_by_date(start_date: datetime, end_date: datetime) -> QuerySet: 
-    credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
-
-    return credit_notes
 
 """
 Does this function need to exist? Can the unique dealers from a given QuerySet be filtered with a query directly?
