@@ -17,24 +17,6 @@ def get_credit_notes_by_date(start_date: datetime, end_date: datetime) -> QueryS
     return credit_notes
 
 """
-Consider whether this function is needed or if the QuerySet filter can be done directly in another function.
-
-It is only used in one place, so it might be more straightforward to do the filter directly in that function.
-
-Arguably, this function adds an unnecessary layer of abstraction and complexity as objects.filter is clear and concise.
-
-Conclusion: This function can be removed to simplify the code and reduce unnecessary complexity.
-"""
-def collect_credit_notes_from_previous_month():
-    """
-    Collect all credit notes from the previous month.
-    """
-    start_date, end_date = get_previous_month_date_range() 
-    credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
-    
-    return credit_notes
-
-"""
 Does this function need to exist? Can the unique dealers from a given QuerySet be filtered with a query directly?
 
 This function is only used in one place, so it might be more straightforward to do the filtering directly in that function.
@@ -214,7 +196,10 @@ def create_credit_note_resume_emails():
     """
     Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
     """
-    credit_notes = collect_credit_notes_from_previous_month() 
+    #credit_notes = collect_credit_notes_from_previous_month() 
+
+    start_date, end_date = get_previous_month_date_range()
+    credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
     
     unique_dealers = collect_unique_dealers_from_credit_notes(credit_notes)
     
