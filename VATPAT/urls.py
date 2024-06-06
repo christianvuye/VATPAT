@@ -19,11 +19,8 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from django.views.generic import RedirectView
 
-# clean up all the code related to required login before being able to access the dashboard
-# clean up all the different paths and urls too, because they are a mess.
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='/dashboard/'), name='logout'),
     path('dashboard/', include('dashboard.urls')),
     path('', RedirectView.as_view(url='dashboard/', permanent=True)), # Homepage should be login probably, but for now redirect to dashboard
