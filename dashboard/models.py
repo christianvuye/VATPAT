@@ -149,8 +149,12 @@ class AcknowledgementRequest(models.Model):
         db_column='CNR_ID',
         default=''
         ) #see docstring in CreditNotes re: default value
-   
+    
+    #this will store the date the request was created
     CreatedDate = models.DateTimeField(auto_now_add=True)
+
+    #store the text content of the email message
+    EmailMessage = models.TextField()
 
     #this will store the latest date a reminder has been sent
     SendDate = models.DateTimeField() 
