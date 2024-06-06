@@ -76,64 +76,6 @@ def send_acknowledgement_email(recipient: Dealers, subject: str, text_body: str,
         msg.attach_alternative(html_body, "text/html")
     msg.send()
     return True
-
-def generate_email_content(dealer, credit_notes, template):
-    """
-    Generate email content based on template, dealer, and credit notes.
-    """
-    recipient = dealer
-    
-    subject = template.get('subject')
-    body = template.get('body')
-    table_header = template.get('table_header')
-    table_rows = template.get('table_rows')
-    table_footer = template.get('table_footer')
-    signature = template.get('signature')
-
-    for note in credit_notes:
-        issued_date = note.IssuedDate.strftime('%d-%m-%Y')
-        total_vat_amount = f"{note.TotalVATAmountDocumentt:.2f}"
-        table_rows += format_html(
-            """
-            <tr>
-                <td>{}</td>
-                <td>{}</td>
-                <td>{}</td>
-            </tr>
-            """,
-            note.CN_ID,
-            issued_date,
-            total_vat_amount
-        )
-    
-    e_mail_content = format_html(
-        """
-        <html>
-        <head>
-            <meta charset="UTF-8">
-        </head>
-        <body>
-            <p>Assunto: {}</p>
-            <p>Prezado(a) {}</p>
-            {}
-            {}
-            {}
-            {}
-            {}
-        </body>
-        </html>
-        """,
-        mark_safe(subject),
-        mark_safe(recipient),
-        mark_safe(body),
-        mark_safe(table_header),
-        mark_safe(table_rows),
-        mark_safe(table_footer),
-        mark_safe(signature)
-    )
-
-    return e_mail_content
-
 """
 Waiting on input from Jessamyn on what the best approach for this is.
 
