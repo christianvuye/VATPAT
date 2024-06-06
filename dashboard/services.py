@@ -118,9 +118,6 @@ def create_credit_note_resume_emails():
     # Get all credit notes issued in the previous month
     credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
 
-    # Get a list of unique dealers from the credit notes for the previous month
-    unique_dealers = credit_notes.values('D_ID').distinct()
-
     # Group and aggregate the credit notes by dealer
     grouped_credit_notes = credit_notes.values('D_ID').annotate(
         total_credit_notes=Count('CN_ID'),
@@ -128,28 +125,23 @@ def create_credit_note_resume_emails():
         total_vat_amount=Sum('TotalVATAmountDocumentt'),
         total_document_amount_with_vat=Sum('TotalDocumentAmountWithVAT')
     )
-    
-    now = datetime.now()
-    month = now.month
-    year = now.year
 
-    for dealer_name, notes in grouped_credit_notes.items():
-        resume_email = CreditNoteResume.objects.create(
-            DateIssued=now,
-            Month=month,
-            Year=year
+    # Create a CreditNoteResume instance for each unique dealer
+    for item in grouped_credit_notes:
+        # Create a CreditNoteResume instance
+        credit_note_resume = CreditNoteResume.objects.create(
+            TotalCreditNotes=item['total_credit_notes'],
+            TotalDocumentAmounts=item['total_document_amount'],
+            TotalVATAmounts=item['total_vat_amount'],
+            TotalDocumentAmountsWithVAT=item['total_document_amount_with_vat']
         )
-        print(f'Created CreditNoteResumeEmail: {resume_email} for Dealer: {dealer_name}')
 
-        email_content = generate_email_content(dealer_name, notes, credit_note_email_template)
-        print(email_content)
-
-        save_email_content_to_file(email_content, dealer_name)
+        # Update the credit notes with the CreditNoteResume ID
+        CreditNotes.objects.filter(
+            IssuedDate__range=[start_date, end_date],
+            D_ID=item['D_ID']
+        ).update(CNR_ID=credit_note_resume)
         
-        for note in notes:
-            note.CNR_ID = resume_email
-            note.save()
-            print(f'Updated CreditNote: {note.CN_ID} with CreditNoteResumeEmail: {resume_email}')
 """
 This function is not needed. It's simply doing a query that can be done directly somewhere else. 
 
