@@ -96,3 +96,25 @@
 **Objective**: 
 
 **Achievements**:
+- updated models by removing obsolete docstrings on changes that will not be made
+- updated services by removing obsolete docstring
+- updated business logic with more generic function for collecting credit notes by date instead of by previous month specifically
+- removed collect credit notes from previous month function as the same result can be achieved with a queryset filter
+- removed obsolete function that can be achieved with a queryset filter
+- removed helper function that filters unique dealers from a given queryset of credit notes and replace it with an ORM based filter queryset function
+- removed helper functions that group and aggregate credit notes by dealer by ORM QuerySet annotate, count and sum methods
+- updated models by renaming credit note resume email object to credit note resume as it is clearer and avoids confusion about what the object is and what it does
+- replaced credit note resume email with credit note resume object name in admin file
+- removed import of credit note resume model description in business logic
+- updated views to not import obsolete helper functions for dashboard view
+- added migration for renaming credit note resume email to credit note resume
+- updated credit note resume model by removing month and year as these are stored in date issued, removed obsolete date validations and added fields that add totals for each credit note resume
+- updated string when integrity error is raised
+- updated credit note resume model with missing brackets for total credit notes fields
+- updated function that creates credit note resume by removing obsolete helper functions and replacing it with ORM queryset methods
+- renamed create credit note resume function by removing email suffix
+- removed unneccessary docstrings
+- removed obsolete helper function because the same functionality can be achieved with a simple QuerySet method
+- removed function that increments acknowledgement request tracker as this can be done when email is being sent
+- updated increment sending to comment for now
+- updated instance creation functions with type hinting for input and return values and put them on top of the script
