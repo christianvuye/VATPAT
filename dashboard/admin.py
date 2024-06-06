@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     Dealers, 
-    CreditNoteResumeEmail, 
+    CreditNoteResume, 
     CreditNotes, 
     AcknowledgementRequest, 
     AcknowledgementReceived
@@ -9,7 +9,7 @@ from .models import (
 
 # Register your models here.
 admin.site.register(Dealers)
-admin.site.register(CreditNoteResumeEmail)
+admin.site.register(CreditNoteResume)
 admin.site.register(CreditNotes)
 admin.site.register(AcknowledgementRequest)
 admin.site.register(AcknowledgementReceived)
