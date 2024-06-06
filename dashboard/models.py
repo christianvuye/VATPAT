@@ -48,7 +48,7 @@ class CreditNoteResume(models.Model):
     CNR_ID = models.AutoField(unique=True, primary_key=True)
     DateIssued = models.DateTimeField(auto_now_add=True) 
     IsValid = models.BooleanField(default=True)
-    TotalCreditNotes =  models.IntegerField
+    TotalCreditNotes =  models.IntegerField()
     TotalDocumentAmounts = models.DecimalField(max_digits=38, decimal_places=20)
     TotalVATAmounts = models.DecimalField(max_digits=38, decimal_places=20)
     TotalDocumentAmountsWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
