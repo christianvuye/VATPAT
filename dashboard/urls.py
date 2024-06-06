@@ -11,6 +11,6 @@ Sort out the URL patterns for the dashboard app, decide which pages to see first
 """
 urlpatterns = [
     path('', CustomLoginView.as_view(), name='login'),
-    path('dashboard/', login_required(dashboard_view), name='dashboard'),
-    path('dashboard_view_acknowledgements/', login_required(dashboard_view_acknowledgements), name='dashboard_view_acknowledgements')
+    path('dashboard/', dashboard_view, name='dashboard'),
+    path('dashboard_view_acknowledgements/', dashboard_view_acknowledgements, name='dashboard_view_acknowledgements')
 ]

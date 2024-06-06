@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Dealers
 from .utils import get_previous_months
 from django.contrib.auth.views import LoginView
-#from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 
 class CustomLoginView(LoginView):
     """
@@ -16,7 +16,8 @@ class CustomLoginView(LoginView):
 # But check with Jessamyn what she thinks is the right approach.
 
 # clean up all the code related to required login before being able to access the dashboard
-#@login_required
+
+@login_required
 def dashboard_view(request):
     """
     Renders the dashboard view with the data from the previous month.
@@ -25,6 +26,7 @@ def dashboard_view(request):
     return render(request, 'dashboard/dashboard.html', 
                   )
 
+@login_required
 def dashboard_view_acknowledgements(request):
     """
     Renders a dashboard view with the acknowledgement tracking from the previous months.
