@@ -118,3 +118,20 @@
 - removed function that increments acknowledgement request tracker as this can be done when email is being sent
 - updated increment sending to comment for now
 - updated instance creation functions with type hinting for input and return values and put them on top of the script
+- updated send acknowledgement email function with a new send email function that supports HTML
+- updated function format to make it more readable
+- added email base template for acknowledgement requests
+- removed email template as python file
+- removed obsolete imports into business logic
+- removed function to generate email content
+- removed function to store email html as file on a fileserver as the email text will be saved in the database in a text field instead
+- removed obsolete imports
+- added EmailMessage text field to AcknowledgementRequest model to store the html content of the acknowledgement email to be sent
+- added docstring regarding why django forces a default value
+- updated models with default values requested by django in order to make migrations
+- added migrations for adding new fields to models
+- removed double login path
+- removed obsolete comment from url pattern
+- moved login required decorator to views instead of wrapping it around urls
+- removed obsolete validation functions
+- update views with docstrings on class based views, creating common base.html, dedicated JS files
