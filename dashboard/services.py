@@ -4,11 +4,10 @@ from .models import (
     AcknowledgementRequest
 )
 from .utils import get_previous_month_date_range
-from .email_templates import credit_note_email_template
 from datetime import datetime
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from django.core.mail import send_mail, EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 from django.db.models import Count, Sum
 from django.db.models.query import QuerySet
 from django.conf import settings
