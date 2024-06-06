@@ -18,7 +18,11 @@ Evaluate suggested changes to the models to be made by the following criteria:
 - A Django model is a Python class. Python classes can inherit from multiple parent classes. A Mixin class is a class that can be used to avoid repeating the same code in multiple classes.
 - The field DateIssued is a DateTimeField, so the fields Month and Year are redundant. Instead of having separate fields for Month and Year, use a single DateIssued field with the date of the credit note. If you use Month and Year, you will need to convert them to a date format when doing operations on these fields. 
 - Store emails as text values, not as BLOB. A BLOB is for images. 
-
+- Add type hints to the functions and make them more generic. Avoid hardcoding model names and field names in the functions.
+- Make functions more pure by removing print statements and side effects. Instead, return the data and let the caller decide what to do with it.
+- Avoid using global variables in functions. Pass the required data as arguments to the functions.
+- Avoid HTML formatting in Python code. Instead, use templates to generate HTML content.
+- Use Querys instead of Python functions for aggregations where possible. 
 
 
     
