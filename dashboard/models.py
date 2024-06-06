@@ -55,9 +55,9 @@ class CreditNoteResume(models.Model):
         2) Quit and manually define a default value in models.py.
     """
     TotalCreditNotes =  models.IntegerField(default=0)
-    TotalDocumentAmounts = models.DecimalField(max_digits=38, decimal_places=20)
-    TotalVATAmounts = models.DecimalField(max_digits=38, decimal_places=20)
-    TotalDocumentAmountsWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
+    TotalDocumentAmounts = models.DecimalField(default=0, max_digits=38, decimal_places=20)
+    TotalVATAmounts = models.DecimalField(default=0,max_digits=38, decimal_places=20)
+    TotalDocumentAmountsWithVAT = models.DecimalField(default=0,max_digits=38, decimal_places=20)
 
     class Meta:
         db_table = 'CreditNoteResume'
