@@ -9,56 +9,7 @@ from datetime import datetime
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.core.mail import send_mail
-
-"""
-Question the necessity of this function. Can the grouping and aggregation be done directly with a query the database?
-"""
-def credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealer_list):
-    """
-    Create a dictionary with dealers as keys and their credit notes as values.
-    """
-
-    grouped_credit_notes = {}
-
-    for dealer in unique_dealer_list:
-        grouped_credit_notes[dealer] = []
-        for note in credit_notes:
-            if note.D_ID.DealerName == dealer:
-                grouped_credit_notes[dealer].append(note)
-    
-    return grouped_credit_notes
-
-"""
-Question the necessity of this function. Can the aggregation and annotation be done directly with a query in the database instead of using Python code?
-
-Should these totals be added to the CreditNotesResumeEmail model as fields? 
-
-@Jessamyn: Could you give your input on this and what would be the best approach to handle this?
-"""
-def credit_notes_totals_per_dealer(grouped_credit_notes):
-    """
-    Calculate the Total Document Amount, Total Document VAT Amount, and Total Document Amount with VAT for each dealer. 
-    """
-
-    totals_per_dealer = {}
-
-    for dealer, notes in grouped_credit_notes.items():
-        total_document_amount = 0
-        total_document_vat_amount = 0
-        total_document_amount_with_vat = 0
-
-        for note in notes:
-            total_document_amount += note.TotalDocumentAmount
-            total_document_vat_amount += note.TotalVATAmountDocumentt
-            total_document_amount_with_vat += note.TotalDocumentAmountWithVAT
-        
-        totals_per_dealer[dealer] = {
-            'TotalDocumentAmount': total_document_amount,
-            'TotalVATAmountDocumentt': total_document_vat_amount,
-            'TotalDocumentAmountWithVAT': total_document_amount_with_vat
-        }
-    
-    return totals_per_dealer
+from django.db.models import Count, Sum
 
 """
 Waiting for input from Jessamyn on what the best approach for this is. 
@@ -169,8 +120,14 @@ def create_credit_note_resume_emails():
 
     # Get a list of unique dealers from the credit notes for the previous month
     unique_dealers = credit_notes.values('D_ID').distinct()
-        
-    grouped_credit_notes = credit_notes_previous_month_per_dealer_dict(credit_notes, unique_dealers)
+
+    # Group and aggregate the credit notes by dealer
+    grouped_credit_notes = credit_notes.values('D_ID').annotate(
+        total_credit_notes=Count('CN_ID'),
+        total_document_amount=Sum('TotalDocumentAmount'),
+        total_vat_amount=Sum('TotalVATAmountDocumentt'),
+        total_document_amount_with_vat=Sum('TotalDocumentAmountWithVAT')
+    )
     
     now = datetime.now()
     month = now.month
