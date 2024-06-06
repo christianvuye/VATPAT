@@ -11,22 +11,6 @@ from django.utils.safestring import mark_safe
 from django.core.mail import send_mail
 
 """
-This looks like shit. It needs to be fixed, but the models need to be set up correctly for this. 
-
-Add type hints to the functions and make them more generic. Avoid hardcoding model names and field names in the functions.
-
-Make functions more pure by removing print statements and side effects. Instead, return the data and let the caller decide what to do with it.
-
-Avoid using global variables in functions. Pass the required data as arguments to the functions.
-
-Avoid HTML formatting in Python code. Instead, use templates to generate HTML content.
-
-Create a function that gets credit notes or credit note resume emails for a specific date or date range. 
-
-This could be two separate functions, one for credit notes and one for credit note resume emails. -> get_credit_notes_by date(date) and get_credit_note_resume_emails_by_date(date)
-"""
-
-"""
 This function should be more generic and get credit notes by date.
 
 def get_credit_notes_by_date(start_date: datetime, end_date: datetime) -> QuerySet: 
