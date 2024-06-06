@@ -48,7 +48,7 @@ class Dealers(models.Model):
         )
 
 
-class CreditNoteResumeEmail(models.Model):   
+class CreditNoteResume(models.Model):   
     CNR_ID = models.AutoField(unique=True, primary_key=True)
     """
     The field DateIssued is a DateTimeField, so the fields Month and Year are redundant.
@@ -78,7 +78,7 @@ class CreditNoteResumeEmail(models.Model):
     the total amount(s) of all the aggregated credit notes for that dealer in that month? 
     """
     class Meta:
-        db_table = 'CreditNoteResumeEmail'
+        db_table = 'CreditNoteResume'
 
     """
     Validations are not necessary for the Month and Year fields if you use a single DateIssued field.
@@ -106,7 +106,7 @@ class CreditNoteResumeEmail(models.Model):
         super().save(*args, **kwargs)
     
     def delete(self):
-        raise IntegrityError("CreditNoteResumeEmail cannot be deleted")
+        raise IntegrityError("CreditNoteResume cannot be deleted")
 
     def __str__(self): 
         return (
@@ -144,7 +144,7 @@ class CreditNotes(models.Model):
         )
     
     CNR_ID = models.ForeignKey(
-        CreditNoteResumeEmail, 
+        CreditNoteResume, 
         on_delete=models.SET_NULL, 
         null=True, 
         blank=True, 
@@ -191,7 +191,7 @@ class AcknowledgementRequest(models.Model):
 
     # send the same request over and over again until it is acknowledged, so CNR_ID is constant
     CNR_ID = models.ForeignKey( 
-        CreditNoteResumeEmail, 
+        CreditNoteResume, 
         on_delete=models.CASCADE, 
         db_column='CNR_ID',
         default=''
