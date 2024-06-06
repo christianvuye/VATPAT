@@ -66,8 +66,12 @@ def send_acknowledgement_email(recipient: Dealers, subject: str, text_body: str,
     Send an acknowledgement email to a dealer.
     """
     recipients = [formataddr((recipient.DealerName, recipient.DealerEmail))]
-    msg = EmailMultiAlternatives(subject, text_body, to=recipients,
-                                 reply_to=settings.REPLY_TO)
+    msg = EmailMultiAlternatives(
+        subject, 
+        text_body, 
+        to=recipients,
+        reply_to=settings.REPLY_TO
+        )
     
     if html_body:
         msg.attach_alternative(html_body, "text/html")
