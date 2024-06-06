@@ -9,26 +9,12 @@ from datetime import datetime
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from django.core.mail import send_mail
-
-"""
-This function should be more generic and get credit notes by date.
+from django.db.models.query import QuerySet
 
 def get_credit_notes_by_date(start_date: datetime, end_date: datetime) -> QuerySet: 
     credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
 
     return credit_notes
-
-Evaluation criteria for change:
-1. Necessity: Not essential for core functionality, as the existing function works. However, it would be beneficial to make the function more generic to reuse it for other date ranges.
-2. Impact: The change does not break existing functionality but requires modifications to the function.
-3. Complexity: The change reduces complexity by making the function more generic and reusable.
-4. Performance: The change does not improve performance.
-5. User Experience: The change does not directly impact user experience. 
-6. Testing: The change can be thoroughly tested and validated within the available time.
-7. Maintainability: The change improves maintainability by making the function more generic, reusable, and easier to read. 
-
-Conclusion: The change is recommended as it improves the code quality and maintainability without significant drawbacks.
-"""
 
 """
 Consider whether this function is needed or if the QuerySet filter can be done directly in another function.
