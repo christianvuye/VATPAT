@@ -8,9 +8,12 @@ from .email_templates import credit_note_email_template
 from datetime import datetime
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.db.models import Count, Sum
 from django.db.models.query import QuerySet
+from django.conf import settings
+from email.utils import formataddr
+from .models import Dealers
 
 def create_credit_note_resume() -> None: 
     """
@@ -57,6 +60,19 @@ def create_acknowledgement_request(credit_note_resumes: QuerySet) -> None:
             RemindersSent=0
         )
         print(f'Created AcknowledgementRequest: {acknowledgement_request} for CreditNoteResumeEmail: {resume.CNR_ID}')
+
+def send_acknowledgement_email(recipient: Dealers, subject: str, text_body: str, html_body: str) -> bool:
+    """
+    Send an acknowledgement email to a dealer.
+    """
+    recipients = [formataddr((recipient.DealerName, recipient.DealerEmail))]
+    msg = EmailMultiAlternatives(subject, text_body, to=recipients,
+                                 reply_to=settings.REPLY_TO)
+    
+    if html_body:
+        msg.attach_alternative(html_body, "text/html")
+    msg.send()
+    return True
 
 def generate_email_content(dealer, credit_notes, template):
     """
@@ -132,28 +148,3 @@ def save_email_content_to_file(email_content, dealer_name):
     with open(file_name, 'w', encoding="utf-8") as file:
         file.write(email_content)
     print(f'Saved email content to file: {file_name}')
-
-"""
-@Jessamyn: Could you provide guidance on what the best approach for sending emails with Django is?
-
-We are using Azure, could you provide me with some guidance on how to set up email sending with Azure?
-"""
-def send_acknowledgement_request_email(acknowledgement_request, dealer_instance, template): # pass the generated email content as an argument somehow
-    """
-    Send an acknowledgement request email to a dealer.
-    """
-    subject = template.get('subject')
-    body = template.get('body')
-    from_email = "hp.finance@honda-eu.com"
-    to_email = dealer_instance.DealerEmail
-
-    send_mail(
-        subject,
-        body,
-        from_email,
-        [to_email],
-        fail_silently=False
-    )
-    print(f'Sent acknowledgement request email to: {to_email}')
-
-    #increment_reminders_sent
