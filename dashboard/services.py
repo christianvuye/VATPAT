@@ -166,4 +166,4 @@ def send_acknowledgement_request_email(acknowledgement_request, dealer_instance,
     )
     print(f'Sent acknowledgement request email to: {to_email}')
 
-    increment_reminders_sent(acknowledgement_request)
+    #increment_reminders_sent
