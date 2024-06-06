@@ -48,7 +48,13 @@ class CreditNoteResume(models.Model):
     CNR_ID = models.AutoField(unique=True, primary_key=True)
     DateIssued = models.DateTimeField(auto_now_add=True) 
     IsValid = models.BooleanField(default=True)
-    TotalCreditNotes =  models.IntegerField()
+    """
+    It is impossible to add a non-nullable field 'TotalCreditNotes' to creditnoteresume without specifying a default. This is because the database needs something to populate existing rows.
+    Please select a fix:
+        1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+        2) Quit and manually define a default value in models.py.
+    """
+    TotalCreditNotes =  models.IntegerField(default=0)
     TotalDocumentAmounts = models.DecimalField(max_digits=38, decimal_places=20)
     TotalVATAmounts = models.DecimalField(max_digits=38, decimal_places=20)
     TotalDocumentAmountsWithVAT = models.DecimalField(max_digits=38, decimal_places=20)
