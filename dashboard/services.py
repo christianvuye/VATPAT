@@ -108,7 +108,7 @@ A function should do one thing, so split this function into smaller functions la
 @Jessamyn: I feel that creating Credit Note Resumes this way is not the best approach. Could you provide guidance on what you think is the most logical way to create Credit Note Resumes?
 """
 
-def create_credit_note_resume_emails(): 
+def create_credit_note_resume(): 
     """
     Create CreditNoteResumeEmail instances for each unique dealer based on the credit notes from the previous month.
     """
@@ -141,7 +141,7 @@ def create_credit_note_resume_emails():
             IssuedDate__range=[start_date, end_date],
             D_ID=item['D_ID']
         ).update(CNR_ID=credit_note_resume)
-        
+
 """
 This function is not needed. It's simply doing a query that can be done directly somewhere else. 
 
