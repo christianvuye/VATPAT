@@ -154,7 +154,16 @@ class AcknowledgementRequest(models.Model):
     CreatedDate = models.DateTimeField(auto_now_add=True)
 
     #store the text content of the email message
-    EmailMessage = models.TextField()
+    EmailMessage = models.TextField(default='')
+
+    """
+    Added default value because of the following error when making migrations:
+
+    It is impossible to add a non-nullable field 'EmailMessage' to acknowledgementrequest without specifying a default. This is because the database needs something to populate existing rows.
+    Please select a fix:
+        1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+        2) Quit and manually define a default value in models.py.
+    """
 
     #this will store the latest date a reminder has been sent
     SendDate = models.DateTimeField() 
