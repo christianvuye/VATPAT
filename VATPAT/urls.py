@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('logout/', auth_views.LogoutView.as_view(next_page='/dashboard/'), name='logout'),
     path('dashboard/', include('dashboard.urls')),
-    path('', RedirectView.as_view(url='dashboard/', permanent=True)), # Homepage should be login probably, but for now redirect to dashboard
+    path('', RedirectView.as_view(url='dashboard/', permanent=True)),
 ]
