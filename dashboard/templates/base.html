@@ -31,6 +31,24 @@
             align-items: center;
             justify-content: flex-end;
         }
+        .navbar-nav .nav-item .nav-link {
+            margin: 0 5px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar-nav .nav-item .nav-link:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .navbar-nav .nav-item .nav-link.active {
+            background-color: #0056b3;
+            color: #fff;
+        }
+        .navbar-nav .nav-item .nav-link.logout-link:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }
     </style>
     {% endblock %}
 </head>
@@ -54,17 +72,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'dashboard_view_acknowledgements' %}">Acknowledgements</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'dashboard_view_acknowledgements' %}active{% endif %}" href="{% url 'dashboard_view_acknowledgements' %}">Acknowledgements</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'admin:index' %}active{% endif %}" href="{% url 'admin:index' %}">Admin</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                            <a class="nav-link logout-link" href="{% url 'logout' %}">Logout</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
