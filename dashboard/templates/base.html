@@ -64,10 +64,10 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
+                                <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'Credit Note Overview' %}">Last Month</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% if request.resolver_match.url_name == 'dashboard_view_acknowledgements' %}active{% endif %}" href="{% url 'dashboard_view_acknowledgements' %}">Acknowledgements</a>
+                                <a class="nav-link {% if request.resolver_match.url_name == 'dashboard_view_acknowledgements' %}active{% endif %}" href="{% url 'Acknowledgement Tracker' %}">Acknowledgements</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {% if request.resolver_match.url_name == 'admin:index' %}active{% endif %}" href="{% url 'admin:index' %}">Admin</a>

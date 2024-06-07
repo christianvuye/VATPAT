@@ -11,6 +11,6 @@ Sort out the URL patterns for the dashboard app, decide which pages to see first
 """
 urlpatterns = [
     path('', CustomLoginView.as_view(), name='login'),
-    path('dashboard/', dashboard_view, name='dashboard'),
-    path('dashboard_view_acknowledgements/', dashboard_view_acknowledgements, name='dashboard_view_acknowledgements')
+    path('dashboard/', dashboard_view, name='Credit Note Overview'),
+    path('dashboard_view_acknowledgements/', dashboard_view_acknowledgements, name='Acknowledgement Tracker')
 ]
