@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block navbar %}
-<!-- No navigation bar for the login page -->
+    {% if user.is_authenticated %}
+        {{ block.super }}
+    {% else %}
+        <!-- No navigation bar for the login page if the user is not authenticated -->
+    {% endif %}
 {% endblock %}
 
 {% block css %}
