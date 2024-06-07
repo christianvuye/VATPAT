@@ -1,10 +1,30 @@
 {% extends 'base.html' %}
 
+{% block css %}
+    {{ block.super }}
+    <style>
+        .centered-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+    {% if not user.is_authenticated %}
+        <div class="container centered-form">
+            <div class="col-md-4">
+                <h2 class="text-center">Login</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <p class="text-center">You are already logged in.</p>
+    {% endif %}
 {% endblock %}
