@@ -86,7 +86,7 @@
 
 ---------------------------------------------------------------------------------------
 
-### Date: 05/06/2024
+### Date: 06/06/2024
 
 **Task**: 
 - Refactor models, services, urls, utils, validations and views. 
@@ -135,3 +135,24 @@
 - moved login required decorator to views instead of wrapping it around urls
 - removed obsolete validation functions
 - update views with docstrings on class based views, creating common base.html, dedicated JS files
+---------------------------------------------------------------------------------------
+
+### Date: 06/06/2024
+
+**Achievements**:
+- updated base html template to serve as the foundation for all oher templates so they can be an extension of the base html template
+- updated login html template
+- made dashboard template an extension of base html template
+- added navigation bar to base html
+- removed duplicate vatpat button from navigation bar
+- hid navigation bar on login screen
+- removed duplicate VATPAT text in nav bar
+- removed duplicate log out button from base html template
+- updated login html template so user sees navigation bar when logged in
+- added colour overlay on top of navigation bar buttons
+- raised navigation bar to the same height as VATPAT header
+- updated navigation bar button names to be more descriptive and succint
+- moved credit notes last month title in navigation header when user is present on the page
+- reduced margin between table and navigation bar
+- updated acknowledgements dashboard so it is an extension of base html template
+- update base html template so navigation bar buttons do not show when logged out
