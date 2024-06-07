@@ -2,6 +2,10 @@
 
 {% block title %}Dashboard - Credit Notes Last Month{% endblock %}
 
+{% block page_title %}
+    <h2 class="page-title">Credit Notes Last Month</h2>
+{% endblock %}
+
 {% block css %}
     {{ block.super }}
     <style>
@@ -23,7 +27,6 @@
 
 {% block content %}
     <div class="container mt-5">
-        <h1 class="mb-4">Dashboard - Credit Notes Last Month</h1>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
