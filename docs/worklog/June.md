@@ -137,7 +137,7 @@
 - update views with docstrings on class based views, creating common base.html, dedicated JS files
 ---------------------------------------------------------------------------------------
 
-### Date: 06/06/2024
+### Date: 07/06/2024
 
 **Achievements**:
 - updated base html template to serve as the foundation for all oher templates so they can be an extension of the base html template
@@ -156,3 +156,13 @@
 - reduced margin between table and navigation bar
 - updated acknowledgements dashboard so it is an extension of base html template
 - update base html template so navigation bar buttons do not show when logged out
+---------------------------------------------------------------------------------------
+
+### Date: 08/06/2024
+- moved custom JavaScript to static folder
+- replaced custom inline javascript with javascript in static
+- added comment for future staticfiles
+- extends tag must be the first tag in the Django template, even before {% load static %}
+
+**Next Steps**:
+- download Bootstrap CSS and JS locally and place it in static
