@@ -1,0 +1,9 @@
+function toggleDetails(id) {
+    console.log("Toggling details for: ", id);
+    var element = document.getElementById(id);
+    if (element.classList.contains('hidden')) {
+        element.classList.remove('hidden');
+    } else {
+        element.classList.add('hidden');
+    }
+}
