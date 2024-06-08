@@ -1,3 +1,4 @@
+{% load static %}
 {% extends 'base.html' %}
 
 {% block title %}Dashboard - Credit Notes Last Month{% endblock %}
@@ -83,15 +84,5 @@
 
 {% block scripts %}
     {{ block.super }}
-    <script>
-        function toggleDetails(id) {
-            console.log("Toggling details for: ", id);
-            var element = document.getElementById(id);
-            if (element.classList.contains('hidden')) {
-                element.classList.remove('hidden');
-            } else {
-                element.classList.add('hidden');
-            }
-        }
-    </script>
+    <script src="{% static 'js/toggleDetails.js' %}"></script>
 {% endblock %}
