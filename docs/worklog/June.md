@@ -180,6 +180,9 @@
 - added jquery locally to static
 - replaced jquery online fetching with local static jquery
 - updated base and dashboard html templates with correct references to static local javascript and removed obsolete comments in views
+- updated dashboard view function to return the required data by query with Django's ORM
+- updated dashboard template to match the data provided by the dashboard view
 
 **Next Steps**:
-- fix dashboard view and urls
+- fix dashboard view and urls -> focus on fixing view first, URL can be done later
+- set up Azure email
