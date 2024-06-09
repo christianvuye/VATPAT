@@ -166,3 +166,20 @@
 
 **Next Steps**:
 - download Bootstrap CSS and JS locally and place it in static
+
+---------------------------------------------------------------------------------------
+
+### Date: 09/06/2024
+- added bootstrap css locally in static
+- added bootstrap javascript locally in static
+- added local bootstrap files to base html template so they can be loaded in through static
+- added additional path for django to look for static files
+- added fonts locally into static instead of relying on fetching online
+- replaced online font fetching with local fetching through static
+- added fa solid font locally in static webfonts
+- added jquery locally to static
+- replaced jquery online fetching with local static jquery
+- updated base and dashboard html templates with correct references to static local javascript and removed obsolete comments in views
+
+**Next Steps**:
+- fix dashboard view and urls
