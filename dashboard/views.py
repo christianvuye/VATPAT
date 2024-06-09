@@ -18,22 +18,6 @@ class CustomLoginView(LoginView):
     """
     template_name = 'login.html'
 
-"""
-Create a common base.html that all templates inherit from.
-
-This guarantees a consistent look and feel on your site, ensures you are using the same versions of
-
-JS libraries, and generally makes your life MUCH easier. I also recommend having your custom JS in .js
-
-files that are loaded into the template via static. This gives you options like linting the JS, 
-
-compressing it, loading it from a CDN, etc.
-
-Note that the base template typically needs blocks to allow inheritors to enter their own title,
-
-head content, body content, and js/footer content.
-"""
-
 @login_required
 def dashboard_view(request):
     """
