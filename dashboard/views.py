@@ -31,7 +31,7 @@ def dashboard_view(request):
     credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
 
     # Get the unique dealers
-    dealers = credit_notes.values('D_ID').distinct()
+    dealers = credit_notes.values('D_ID', 'D_ID__DealerName').distinct() 
 
     # Group and aggregate the credit notes by dealer
     credit_notes_aggregated = credit_notes.values('D_ID').annotate(
