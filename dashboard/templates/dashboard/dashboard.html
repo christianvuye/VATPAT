@@ -35,37 +35,45 @@
             <thead class="thead-dark">
                 <tr>
                     <th>Dealer Name</th>
-                    <th>Total Credit Notes</th>
+                    <th>ID</th>
+                    <th>Issued Date</th>
                     <th>Total Amount</th>
                     <th>Total VAT Amount</th>
                     <th>Total Amount + VAT</th>
+                    <th>Acknowledgement Sent</th>
+                    <th>Acknowledgement Received</th>
                 </tr>
             </thead>
             <tbody>
                 {% for dealer in dealers %}
                     {% for credit_note_aggregated in credit_notes_aggregated %}
                         {% if credit_note_aggregated.D_ID == dealer.D_ID %}
-                            <tr class="clickable-row" onclick="toggleDetails('{{ dealer.D_ID }}-details')">
+                            <tr>
                                 <td><strong>{{ dealer.D_ID__DealerName }}</strong></td>
-                                <td><strong>{{ credit_note_aggregated.total_credit_notes }}</strong></td>
+                                <td>{{ dealer.D_ID }}</td>
+                                <td></td>
                                 <td><strong>{{ credit_note_aggregated.total_document_amount|floatformat:2 }}</strong></td>
                                 <td><strong>{{ credit_note_aggregated.total_vat_amount|floatformat:2 }}</strong></td>
                                 <td><strong>{{ credit_note_aggregated.total_document_amount_with_vat|floatformat:2 }}</strong></td>
+                                <td class="text-red-bold">No</td>
+                                <td class="text-red-bold">No</td>
                             </tr>
-                            <tbody id="{{ dealer.D_ID }}-details" class="hidden">
-                                {% for note in credit_notes %}
-                                    {% if note.D_ID == dealer.D_ID %}
+                            <tr>    
+                                {% for credit_note in credit_notes %}
+                                    {% if credit_note.D_ID_id == dealer.D_ID %}
                                         <tr>
                                             <td></td>
-                                            <td>{{ note.CN_ID }}</td>
-                                            <td>{{ note.IssuedDate|date:"F j, Y" }}</td>
-                                            <td>{{ note.TotalDocumentAmount|floatformat:2 }}</td>
-                                            <td>{{ note.TotalVATAmountDocumentt|floatformat:2 }}</td>
-                                            <td>{{ note.TotalDocumentAmountWithVAT|floatformat:2 }}</td>
+                                            <td>{{ credit_note.CN_ID }}</td>
+                                            <td>{{ credit_note.IssuedDate|date:"F j, Y" }}</td>
+                                            <td>{{ credit_note.TotalDocumentAmount|floatformat:2 }}</td>
+                                            <td>{{ credit_note.TotalVATAmountDocument|floatformat:2 }}</td>
+                                            <td>{{ credit_note.TotalDocumentAmountWithVAT|floatformat:2 }}</td>
+                                            <td></td>
+                                            <td></td>
                                         </tr>
                                     {% endif %}
                                 {% endfor %}
-                            </tbody>
+                            </tr>
                         {% endif %}
                     {% endfor %}
                 {% endfor %}
