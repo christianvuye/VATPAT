@@ -46,7 +46,7 @@
                     {% for credit_note in credit_notes %}
                         {% if credit_note.D_ID == dealer.D_ID %}
                             <tr class="clickable-row" onclick="toggleDetails('{{ dealer.D_ID }}-details')">
-                                <td><strong>{{ dealer.D_ID }}</strong></td>
+                                <td><strong>{{ dealer.D_ID__DealerName }}</strong></td>
                                 <td><strong>{{ credit_note.total_credit_notes }}</strong></td>
                                 <td><strong>{{ credit_note.total_document_amount|floatformat:2 }}</strong></td>
                                 <td><strong>{{ credit_note.total_vat_amount|floatformat:2 }}</strong></td>
