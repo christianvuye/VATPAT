@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth.decorators import login_required
 from .views import (
     CustomLoginView,
@@ -12,5 +12,6 @@ Sort out the URL patterns for the dashboard app, decide which pages to see first
 urlpatterns = [
     path('', CustomLoginView.as_view(), name='login'),
     path('dashboard/', dashboard_view, name='Credit Note Overview'),
-    path('dashboard_view_acknowledgements/', dashboard_view_acknowledgements, name='Acknowledgement Tracker')
+    path('dashboard_view_acknowledgements/', dashboard_view_acknowledgements, name='Acknowledgement Tracker'),
+    path("azure-signin/", include("azure_signin.urls", namespace="azure_signin"))
 ]
