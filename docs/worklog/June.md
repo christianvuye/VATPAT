@@ -186,3 +186,16 @@
 **Next Steps**:
 - fix dashboard view and urls -> focus on fixing view first, URL can be done later
 - set up Azure email
+
+---------------------------------------------------------------------------------------
+
+### Date: 10/06/2024
+- added DealerName to return of QuerySet dictionary for view function of Dashboard
+- updated dashboard template to show DealerName instead of D_ID in table
+- added aggregated credit note variable as context for dashboard view and loop through it in the template
+- added credit_notes variable to dashboard view function that returns a non aggregated QuerySet of CreditNotes from the past month
+- renamed credit_note to credit_note_aggregated in for loop on template to avoid confusion with non aggregated credit note
+- renamed table header column to Dealer Name instead of Dealer ID
+- updated dashboard template with new data fed from dashboard view
+- fixed dashboard template on click issues
+- added Azure AD settings and url path to login to Azure AD
