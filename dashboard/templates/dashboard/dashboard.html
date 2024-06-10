@@ -43,7 +43,7 @@
             </thead>
             <tbody>
                 {% for dealer in dealers %}
-                    {% for credit_note in credit_notes %}
+                    {% for credit_note in credit_notes_aggregated %}
                         {% if credit_note.D_ID == dealer.D_ID %}
                             <tr class="clickable-row" onclick="toggleDetails('{{ dealer.D_ID }}-details')">
                                 <td><strong>{{ dealer.D_ID__DealerName }}</strong></td>

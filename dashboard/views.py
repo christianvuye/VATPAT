@@ -43,7 +43,7 @@ def dashboard_view(request):
 
     return render(request, 'dashboard/dashboard.html', {
         'dealers': dealers,
-        'credit_notes': credit_notes_aggregated
+        'credit_notes_aggregated': credit_notes_aggregated
     }
                   )
 
