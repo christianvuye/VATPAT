@@ -53,6 +53,10 @@ class CreditNoteResume(models.Model):
     Please select a fix:
         1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
         2) Quit and manually define a default value in models.py.
+    
+    -> Jessamyn: Provide a one-off default now
+
+    Only add manual default values if it makes logical sense in terms of business requirements. 
     """
     TotalCreditNotes =  models.IntegerField(default=0)
     TotalDocumentAmounts = models.DecimalField(default=0, max_digits=38, decimal_places=20)
@@ -84,17 +88,7 @@ class CreditNotes(models.Model):
         primary_key=True, 
         default='' 
         )
-    """
-    It's not clear why the default value for the CN_ID and D_ID fields is an empty string.
 
-    There are no empty strings in the database for these fields.
-
-    However, the Django admin console might require a default value for these fields and suggest an empty string.
-
-    It is too risky to remove the default value now with the remaining time. 
-
-    Removing the default value and seeing what happens is not a good idea in these circumstances.
-    """
     D_ID = models.ForeignKey(
         Dealers, 
         on_delete=models.CASCADE, 
@@ -161,15 +155,6 @@ class AcknowledgementRequest(models.Model):
 
     #store the text content of the email message
     EmailMessage = models.TextField(default='')
-
-    """
-    Added default value because of the following error when making migrations:
-
-    It is impossible to add a non-nullable field 'EmailMessage' to acknowledgementrequest without specifying a default. This is because the database needs something to populate existing rows.
-    Please select a fix:
-        1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
-        2) Quit and manually define a default value in models.py.
-    """
 
     #this will store the latest date a reminder has been sent
     SendDate = models.DateTimeField() 

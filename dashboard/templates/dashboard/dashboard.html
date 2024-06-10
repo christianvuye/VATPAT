@@ -45,7 +45,8 @@
                 </tr>
             </thead>
             <tbody>
-                {% for dealer in dealers %}
+                <!-- look into simplified version of the loops if you have time, because this is not the most efficient way to do it -->
+                {% for dealer in dealers %} 
                     {% for credit_note_aggregated in credit_notes_aggregated %}
                         {% if credit_note_aggregated.D_ID == dealer.D_ID %}
                             <tr class="clickable-row" onclick="toggleDetails('{{ dealer|slugify }}-details')">
