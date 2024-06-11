@@ -166,7 +166,9 @@ AZURE_SIGNIN = {
     #     ("employeeNumber", "employee_id"),
     #     ("affiliationNumber", "omk2"),
     # ],  # Optional
-    # "REDIRECT_URI": "https://<domain>/azure-signin/callback",  # Optional
+    #"REDIRECT_URI": "http://localhost:8000/callback",
+    #"REDIRECT_URI": "http://localhost:8000/azure-singin/callback",
+    #"https://<domain>/azure-signin/callback",  # Trying this based on Paulo's request 
     "SCOPES": ['https://graph.microsoft.com/.default'],  # Optional
     "AUTHORITY": "https://login.microsoftonline.com/" + config('TENANT_ID'),  # Optional Or https://login.microsoftonline.com/common if multi-tenant
     # "LOGOUT_REDIRECT_URI": "https://<domain>/logout",  # Optional
