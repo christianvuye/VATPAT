@@ -9,3 +9,4 @@ app = ConfidentialClientApplication(
 
 token = app.acquire_token_for_client(scopes=["https://graph.microsoft.com/.default"])
 print(token)
+print(type(token)) # returns dict
