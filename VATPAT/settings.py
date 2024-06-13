@@ -17,7 +17,8 @@ from ms_identity_python.django import Auth
 AUTH = Auth(
     client_credential = config('CLIENT_SECRET'),
     redirect_uri = config('REDIRECT_URI'),
-    scopes = ["https://graph.microsoft.com/.default"],
+    client_id = config('CLIENT_ID'),
+    # scopes = ["https://graph.microsoft.com/.default"],
     authority = "https://login.microsoftonline.com/" + config('TENANT_ID')
 )
 
