@@ -199,3 +199,14 @@
 - updated dashboard template with new data fed from dashboard view
 - fixed dashboard template on click issues
 - added Azure AD settings and url path to login to Azure AD
+
+### Date: 13/06/2024
+- added requirements text file with list of pip libraries installed
+- added MSAL authenthication that gets Azure token with ConfidentialClientApplication Aquire Token for Client method
+- added azure ad redirect uri comment
+- added ms_identity.python.django for authenthication
+- added views and urls for user authenthication and calling the downstream api
+- added index html template for loggin in
+- added display html template to show to user after login
+- removed scopes keyword argument and added client id keyword argument
+- added index url for signing in
