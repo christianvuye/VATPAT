@@ -166,7 +166,7 @@ AZURE_SIGNIN = {
     #     ("employeeNumber", "employee_id"),
     #     ("affiliationNumber", "omk2"),
     # ],  # Optional
-    #"REDIRECT_URI": "http://localhost:8000/callback",
+    #"REDIRECT_URI": "http://localhost:8000/callback", -> This is the URL that the user will be redirected to after the login
     #"REDIRECT_URI": "http://localhost:8000/azure-singin/callback",
     #"https://<domain>/azure-signin/callback",  # Trying this based on Paulo's request 
     "SCOPES": ['https://graph.microsoft.com/.default'],  # Optional
