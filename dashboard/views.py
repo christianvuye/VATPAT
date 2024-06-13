@@ -1,9 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Dealers, CreditNotes
 from .utils import get_previous_months, get_previous_month_date_range
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Sum
+from django.conf import settings
+from decouple import config
+import requests
+import json
+
+__version__ = "0.3.0"
 
 """
 Consider using class based views for everything.
@@ -61,4 +67,32 @@ def dashboard_view_acknowledgements(request):
     return render(request, 'dashboard/dashboard_acknowledgements.html', {
         'dealers': dealers,
         'months': months
+    })
+
+#templates from identity django web app library
+@settings.AUTH.login_required
+def index(request):
+    user = settings.AUTH.get_user(request)
+    assert user  # User would not be None since we decorated this view with @login_required
+    return render(request, 'index.html', dict(
+        user=user,
+        version=__version__,
+        edit_profile_url=settings.AUTH.get_edit_profile_url(request),
+        downstream_api=config('ENDPOINT'),
+    ))
+
+# Instead of using the login_required decorator,
+# here we demonstrate how to handle the error explicitly.
+def call_downstream_api(request):
+    token = settings.AUTH.get_token_for_user(request, ('https://graph.microsoft.com/.default', "").split())
+    if "error" in token:
+        return redirect(settings.AUTH.login)
+    api_result = requests.get(  # Use access token to call downstream api
+        config('ENDPOINT'),
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        timeout=30,
+    ).json()  # Here we assume the response format is json
+    return render(request, 'display.html', {
+        "title": "Result of downstream API call",
+        "content": json.dumps(api_result, indent=4),
     })
