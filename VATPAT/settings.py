@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import json 
 from pathlib import Path
 from decouple import config
+from ms_identity_python.django import Auth 
+
+AUTH = Auth(
+    client_credential = config('CLIENT_SECRET'),
+    redirect_uri = config('REDIRECT_URI'),
+    scopes = ["https://graph.microsoft.com/.default"],
+    authority = "https://login.microsoftonline.com/" + config('TENANT_ID')
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dashboard',
     "azure_signin",
+    "identity",
 ]
 
 MIDDLEWARE = [
@@ -57,7 +66,12 @@ ROOT_URLCONF = 'VATPAT.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / "templates",  # Enable this project's templates folder.
+                # You can also add your own "identity/login.html" and
+                # "identity/auth_error.html" into this folder
+                # to override the default templates came with identity package.
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
