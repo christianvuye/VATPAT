@@ -18,7 +18,7 @@ urlpatterns = [
     path('dashboard_view_acknowledgements/', dashboard_view_acknowledgements, name='Acknowledgement Tracker'),
     path("azure-signin/", include("azure_signin.urls", namespace="azure_signin")),
     settings.AUTH.urlpattern,
-    path('', index),
+    path('index', index),
     path("call_downstream_api", call_downstream_api),
     path('admin/', admin.site.urls),
 ]
