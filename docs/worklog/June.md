@@ -210,3 +210,6 @@
 - added display html template to show to user after login
 - removed scopes keyword argument and added client id keyword argument
 - added index url for signing in
+
+### Date: 21/06/2024
+- decomposed new feature request into smaller, more manageable chunks
