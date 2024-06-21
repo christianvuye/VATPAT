@@ -195,6 +195,6 @@ AUTHENTICATION_BACKENDS = [
     "azure_signin.backends.AzureSigninBackend"
 ]
 
-LOGIN_URL = "azure_signin:login"
-LOGIN_REDIRECT_URL = "/" # Or any other endpoint
-LOGOUT_REDIRECT_URL = LOGIN_REDIRECT_URL
+# LOGIN_URL = "azure_signin:login"
+# LOGIN_REDIRECT_URL = "/" # Or any other endpoint
+# LOGOUT_REDIRECT_URL = LOGIN_REDIRECT_URL
