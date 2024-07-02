@@ -37,12 +37,15 @@ def dashboard_view(request):
         total_document_amount_with_vat=Sum('TotalDocumentAmountWithVAT')
     )
 
-    return render(request, 'dashboard/dashboard.html', {
+    # Define the context to pass to the template
+    context = {
         'credit_notes': credit_notes,
         'dealers': dealers,
         'credit_notes_aggregated': credit_notes_aggregated
     }
-    )
+
+    return render(request, 'dashboard/dashboard.html', context
+                  )
 
 
 @login_required
@@ -66,15 +69,18 @@ def dashboard_view_month_year(request):
         'November',
         'December'
     ]
-    
+
     now = datetime.datetime.now()
-    
-    years = list(range(now.year, now.year- 10 , -1))
-    
-    return render(request, 'dashboard/dashboard_select_month_year.html', {
+
+    years = list(range(now.year, now.year - 10, -1))
+
+    context = {
         'months': months,
         'years': years
-    })
+    }
+
+    return render(request, 'dashboard/dashboard_select_month_year.html', context)
+
 
 @login_required
 def dashboard_view_acknowledgements(request):
@@ -86,7 +92,9 @@ def dashboard_view_acknowledgements(request):
     # Get the current and previous 3 months
     months = get_previous_months(4)
 
-    return render(request, 'dashboard/dashboard_acknowledgements.html', {
+    context = {
         'dealers': dealers,
         'months': months
-    })
+    }
+
+    return render(request, 'dashboard/dashboard_acknowledgements.html', context)
