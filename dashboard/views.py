@@ -1,23 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Dealers, CreditNotes
 from .utils import get_previous_months, get_previous_month_date_range
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Sum
-from django.conf import settings
-from decouple import config
-import requests
-import json
-
-__version__ = "0.3.0"
-
-"""
-Consider using class based views for everything.
-
-With class based views, all views share a consistent structure and can be easily extended or customized.
-
-DashboardView could be a ListView, with the model being CreditNotes and the grouping could be done in get_queryset.
-"""
 
 class CustomLoginView(LoginView):
     """
