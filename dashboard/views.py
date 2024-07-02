@@ -4,12 +4,15 @@ from .utils import get_previous_months, get_previous_month_date_range
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Sum
+import datetime
+
 
 class CustomLoginView(LoginView):
     """
     Custom login view that uses the login.html template.
     """
     template_name = 'login.html'
+
 
 @login_required
 def dashboard_view(request):
@@ -20,10 +23,11 @@ def dashboard_view(request):
     start_date, end_date = get_previous_month_date_range()
 
     # Get all credit notes issued in the previous month
-    credit_notes = CreditNotes.objects.filter(IssuedDate__range=[start_date, end_date])
+    credit_notes = CreditNotes.objects.filter(
+        IssuedDate__range=[start_date, end_date])
 
     # Get the unique dealers
-    dealers = credit_notes.values('D_ID', 'D_ID__DealerName').distinct() 
+    dealers = credit_notes.values('D_ID', 'D_ID__DealerName').distinct()
 
     # Group and aggregate the credit notes by dealer
     credit_notes_aggregated = credit_notes.values('D_ID').annotate(
@@ -38,7 +42,39 @@ def dashboard_view(request):
         'dealers': dealers,
         'credit_notes_aggregated': credit_notes_aggregated
     }
-                  )
+    )
+
+
+@login_required
+def dashboard_view_month_year(request):
+    """
+    Provides data to the template to select a month and year. 
+    """
+
+    # Generate months and years for the dropdown
+    months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ]
+    
+    now = datetime.datetime.now()
+    
+    years = list(range(now.year, now.year- 10 , -1))
+    
+    return render(request, 'dashboard/dashboard_select_month_year.html', {
+        'months': months,
+        'years': years
+    })
 
 @login_required
 def dashboard_view_acknowledgements(request):
