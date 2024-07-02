@@ -72,7 +72,7 @@ def dashboard_view_month_year(request):
 
     now = datetime.datetime.now()
 
-    years = list(range(now.year, now.year - 10, -1))
+    years = list(range(now.year, now.year - 11, -1))
 
     context = {
         'months': months,
