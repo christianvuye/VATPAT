@@ -3,6 +3,7 @@ from .views import (
     CustomLoginView,
     dashboard_view,
     dashboard_view_acknowledgements,
+    dashboard_view_month_year
 )
 
 """
@@ -12,4 +13,5 @@ urlpatterns = [
     path('', CustomLoginView.as_view(), name='login'),
     path('dashboard/', dashboard_view, name='Credit Note Overview'),
     path('dashboard_view_acknowledgements/', dashboard_view_acknowledgements, name='Acknowledgement Tracker'),
+    path('dashboard_view_month_year/', dashboard_view_month_year, name='Month Year Selector'),
 ]
