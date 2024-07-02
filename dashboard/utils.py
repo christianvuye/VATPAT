@@ -1,10 +1,5 @@
 from datetime import datetime, timedelta
 
-"""
-You could make these functions more generic. But only write code you actually need.
-
-Only make a specific function more generic if you need that generic functionality in multiple places.
-"""
 def get_previous_month_date_range(): 
     """
     Returns the first and last day of the previous month.
