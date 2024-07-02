@@ -18,13 +18,11 @@ AUTH = Auth(
     client_credential = config('CLIENT_SECRET'),
     redirect_uri = config('REDIRECT_URI'),
     client_id = config('CLIENT_ID'),
-    # scopes = ["https://graph.microsoft.com/.default"],
     authority = "https://login.microsoftonline.com/" + config('TENANT_ID')
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -36,7 +34,6 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -68,10 +65,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / "templates",  # Enable this project's templates folder.
-                # You can also add your own "identity/login.html" and
-                # "identity/auth_error.html" into this folder
-                # to override the default templates came with identity package.
+            BASE_DIR / "templates", 
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -147,54 +141,19 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Email settings
-# Update the email settings with the correct values with Paulo
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = ""
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = "hp.finance@honda-eu.com"
-# EMAIL_HOST_PASSWORD =""
-
-# Azure AD required settings -> update once you have required values
-# OAUTH2_CLIENT_ID = 'your_client_id'
-# OAUTH2_CLIENT_SECRET = 'your_client_secret'
-# OAUTH2_TENANT_ID = 'your_tenant_id'
-# OAUTH2_REDIRECT_URI = 'http://localhost:8000/get_token/'
-# OAUTH2_AUTHORITY = f"https://login.microsoftonline.com/{OAUTH2_TENANT_ID}"
-# OAUTH2_SCOPE = ["https://graph.microsoft.com/.default"]
-
-# clean up all the code related to required login before being able to access the dashboard
-# clean up all the different paths and urls too, because they are a mess.
-# Login 
-# These are absolute paths in the development server, keep that in mind. 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/dashboard/'
 
 # Azure AD 
 AZURE_SIGNIN = {
-    "CLIENT_ID": config('CLIENT_ID'),  # Mandatory
-    "CLIENT_SECRET": config('CLIENT_SECRET'),  # Mandatory
-    "TENANT_ID": config('TENANT_ID'),  # Mandatory
-    # "SAVE_ID_TOKEN_CLAIMS": True,  # Optional, default is False.
-    # "RENAME_ATTRIBUTES": [
-    #     ("employeeNumber", "employee_id"),
-    #     ("affiliationNumber", "omk2"),
-    # ],  # Optional
-    #"REDIRECT_URI": "http://localhost:8000/callback", -> This is the URL that the user will be redirected to after the login
-    #"REDIRECT_URI": "http://localhost:8000/azure-singin/callback",
-    #"https://<domain>/azure-signin/callback",  # Trying this based on Paulo's request 
-    "SCOPES": ['https://graph.microsoft.com/.default'],  # Optional
-    "AUTHORITY": "https://login.microsoftonline.com/" + config('TENANT_ID'),  # Optional Or https://login.microsoftonline.com/common if multi-tenant
-    # "LOGOUT_REDIRECT_URI": "https://<domain>/logout",  # Optional
-    # "PUBLIC_URLS": ["<public:view_name>",]  # Optional, public views accessible by non-authenticated users
+    "CLIENT_ID": config('CLIENT_ID'),  
+    "CLIENT_SECRET": config('CLIENT_SECRET'),
+    "TENANT_ID": config('TENANT_ID'), 
+    "SCOPES": ['https://graph.microsoft.com/.default'],
+    "AUTHORITY": "https://login.microsoftonline.com/" + config('TENANT_ID'), 
 }
 
 AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "azure_signin.backends.AzureSigninBackend"
 ]
-
-# LOGIN_URL = "azure_signin:login"
-# LOGIN_REDIRECT_URL = "/" # Or any other endpoint
-# LOGOUT_REDIRECT_URL = LOGIN_REDIRECT_URL
