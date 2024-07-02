@@ -48,16 +48,6 @@ class CreditNoteResume(models.Model):
     CNR_ID = models.AutoField(unique=True, primary_key=True)
     DateIssued = models.DateTimeField(auto_now_add=True) 
     IsValid = models.BooleanField(default=True)
-    """
-    It is impossible to add a non-nullable field 'TotalCreditNotes' to creditnoteresume without specifying a default. This is because the database needs something to populate existing rows.
-    Please select a fix:
-        1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
-        2) Quit and manually define a default value in models.py.
-    
-    -> Jessamyn: Provide a one-off default now
-
-    Only add manual default values if it makes logical sense in terms of business requirements. 
-    """
     TotalCreditNotes =  models.IntegerField(default=0)
     TotalDocumentAmounts = models.DecimalField(default=0, max_digits=38, decimal_places=20)
     TotalVATAmounts = models.DecimalField(default=0,max_digits=38, decimal_places=20)
@@ -148,18 +138,18 @@ class AcknowledgementRequest(models.Model):
         on_delete=models.CASCADE, 
         db_column='CNR_ID',
         default=''
-        ) #see docstring in CreditNotes re: default value
+        )
     
-    #this will store the date the request was created
+    #stores the date the request was created
     CreatedDate = models.DateTimeField(auto_now_add=True)
 
-    #store the text content of the email message
+    #stores the text content of the email message
     EmailMessage = models.TextField(default='')
 
-    #this will store the latest date a reminder has been sent
+    #stores the latest date a reminder has been sent
     SendDate = models.DateTimeField() 
 
-    #this will store the number of reminders sent
+    #stores the number of reminders sent
     RemindersSent = models.PositiveIntegerField(default=0) 
 
     class Meta:
@@ -184,13 +174,13 @@ class AcknowledgementRequest(models.Model):
         )
 
 
-class AcknowledgementReceived(models.Model): #we check if a response has been received for a request
+class AcknowledgementReceived(models.Model): #check if a response has been received for a request
     A_ID = models.AutoField(primary_key=True, unique=True)
     R_ID = models.ForeignKey(
         AcknowledgementRequest, 
         on_delete=models.CASCADE, 
         db_column='R_ID',
-        default='' #see docstring in CreditNotes re: default value
+        default='' 
         )
 
     """
@@ -201,19 +191,8 @@ class AcknowledgementReceived(models.Model): #we check if a response has been re
     Instead, store the email message file as a text field so that you can query it. 
 
     BLOB would be for images. 
-
-    Evaluation criteria for change:
-    1. Necessity: It is essential for core functionality, bug fixes, or project requirements.
-    2. Impact: The business logic has not been written yet, so it will not break existing functionality.
-    3. Complexity: Stays approximately the same? 
-    4. Performance: Text fields are better for querying than BLOBs?
-    5. User Experience: It will enhance user experience with better performance.
-    6. Testing: No time to thoroughly test and validate.
-    7. Maintainability: Stay approximately the same?
-
-    Based on the evaluation criteria, the change is recommended.
     """
-    MsgFile = models.BinaryField() #why is this a binary field? This should be a text field than you can query it. 
+    MsgFile = models.BinaryField() #this should not be a binary field but a text field so it can be queried
 
     class Meta:
         db_table = 'AcknowledgementReceived'
