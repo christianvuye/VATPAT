@@ -25,7 +25,7 @@
             <label for="month">Month:</label>
             <select name="month" id="month" class="form-control ml-2">
                 {% for month in months %}
-                    <option value="{{ month.value }}">{{ month.name }}</option>
+                    <option value="{{ forloop.counter0 }}">{{ month }}</option>
                 {% endfor %}
             </select>
 
