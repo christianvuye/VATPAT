@@ -1,7 +1,8 @@
 from .models import (
     CreditNotes, 
     CreditNoteResume,
-    AcknowledgementRequest
+    AcknowledgementRequest,
+    Dealers
 )
 from .utils import get_previous_month_date_range
 from datetime import datetime
@@ -10,7 +11,6 @@ from django.db.models import Count, Sum
 from django.db.models.query import QuerySet
 from django.conf import settings
 from email.utils import formataddr
-from .models import Dealers
 
 def create_credit_note_resume() -> None: 
     """
