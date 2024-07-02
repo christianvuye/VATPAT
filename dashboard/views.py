@@ -68,19 +68,3 @@ def dashboard_view_acknowledgements(request):
         'dealers': dealers,
         'months': months
     })
-
-# Instead of using the login_required decorator,
-# here we demonstrate how to handle the error explicitly.
-def call_downstream_api(request):
-    token = settings.AUTH.get_token_for_user(request, ('https://graph.microsoft.com/.default', "").split())
-    if "error" in token:
-        return redirect(settings.AUTH.login)
-    api_result = requests.get(  # Use access token to call downstream api
-        config('ENDPOINT'),
-        headers={'Authorization': 'Bearer ' + token['access_token']},
-        timeout=30,
-    ).json()  # Here we assume the response format is json
-    return render(request, 'display.html', {
-        "title": "Result of downstream API call",
-        "content": json.dumps(api_result, indent=4),
-    })
