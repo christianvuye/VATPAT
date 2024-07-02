@@ -73,6 +73,10 @@ def dashboard_view_month_year(request):
     now = datetime.datetime.now()
 
     years = list(range(now.year, now.year - 11, -1))
+    
+    # Get selected month and year from the form query parameters
+    selected_month = request.GET.get('month')
+    selected_year = request.GET.get('year')
 
     context = {
         'months': months,
