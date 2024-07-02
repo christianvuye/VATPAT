@@ -69,18 +69,6 @@ def dashboard_view_acknowledgements(request):
         'months': months
     })
 
-#templates from identity django web app library
-@settings.AUTH.login_required
-def index(request):
-    user = settings.AUTH.get_user(request)
-    assert user  # User would not be None since we decorated this view with @login_required
-    return render(request, 'index.html', dict(
-        user=user,
-        version=__version__,
-        edit_profile_url=settings.AUTH.get_edit_profile_url(request),
-        downstream_api=config('ENDPOINT'),
-    ))
-
 # Instead of using the login_required decorator,
 # here we demonstrate how to handle the error explicitly.
 def call_downstream_api(request):
