@@ -45,7 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- look into simplified version of the loops if you have time, because this is not the most efficient way to do it -->
+                <!-- simplify the loops below, because this is very inefficient -->
                 {% for dealer in dealers %} 
                     {% for credit_note_aggregated in credit_notes_aggregated %}
                         {% if credit_note_aggregated.D_ID == dealer.D_ID %}
