@@ -7,7 +7,7 @@ charset-normalizer==3.3.2
 colorama==0.4.6
 cryptography==42.0.8
 distlib==0.3.6
-Django==4.2.6
+Django==4.2.16
 django-azure-active-directory-signin @ git+https://github.com/christianvuye/django-azure-active-directory-signin.git@ed575430df77addf9b39a335156ab1d202dcc712
 django-environ==0.10.0
 exceptiongroup==1.1.3
